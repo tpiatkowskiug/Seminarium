@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title — moja aplikacja platformy ASP.NET</title>
+   
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -18,23 +19,39 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nazwa aplikacji", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("LabSystem", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Informacje", "About", "Home")</li>
-                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
+    <header>
+        <a id="main-header-logo" href="@Url.Content("~/")">
+            <img src="@Url.Content("~/Content/Images/labSystem-logo-main.png")" class="center" />
+        </a>
+    </header>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
+    </div>
+
+    <div class="navbar-inverse">
         <footer>
-            <p>&copy; @DateTime.Now.Year — moja aplikacja platformy ASP.NET</p>
+            <nav>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Informacje", "About", "Home")</li>
+                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    <li><a href="@Url.Action("StaticContent", "Home", new { viewname = "Regulamin" })">Regulamin</a></li>
+                </ul>
+            </nav>
+            <div id="footer-copyright">
+                <p>&copy; @DateTime.Now.Year — LabSystem 2.0</p>
+            </div>
         </footer>
     </div>
 
