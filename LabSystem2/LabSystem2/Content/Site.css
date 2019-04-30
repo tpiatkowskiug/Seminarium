@@ -91,8 +91,8 @@ a:hover, a:visited, a:link, a:active {
 
 nav.genres-horizontal ul {
     overflow: hidden;
-    border-left: 1px solid #E5E5E5;
-    border-top: 1px solid #E5E5E5;
+    /*border-left: 1px solid #E5E5E5;
+    border-top: 1px solid #E5E5E5;*/
     font-size: 18px;
     font-family: 'Segoe UI Semibold', 'Segoe WP', 'Segoe UI';
 }
@@ -105,7 +105,9 @@ nav.genres-horizontal ul {
         height: 54px;
         text-align: left;
         border-right: 1px solid #E5E5E5;
+        border-left: 1px solid #E5E5E5;
         border-bottom: 1px solid #E5E5E5;
+        border-top: 1px solid #E5E5E5;
         line-height: 54px;
     }
 

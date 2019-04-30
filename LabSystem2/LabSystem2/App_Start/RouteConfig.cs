@@ -14,10 +14,26 @@ namespace LabSystem2
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "ProductDetails",
+                url: "album-{id}.html",
+                defaults: new { controller = "Store", action = "Details" }
+);
+
+            routes.MapRoute(
                 name: "StaticPages",
                 url: "strony/{viewname}.html",
                 defaults: new { controller = "Home", action = "StaticContent" }
             );
+
+
+            routes.MapRoute(
+                name: "ProductList",
+                url: "gatunki/{genrename}",
+                defaults: new { controller = "Store", action = "List" },
+                constraints: new { genrename = @"[\w& ]+" }
+            );
+
+
 
             routes.MapRoute(
                 name: "Default",
