@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using LabSystem2.DAL;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -23,6 +24,11 @@ namespace LabSystem2.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+        }
+
+        static ApplicationDbContext()
+        {
+            Database.SetInitializer<ApplicationDbContext>(new StoreInitializer());
         }
 
         public DbSet<Product> Productus { get; set; }

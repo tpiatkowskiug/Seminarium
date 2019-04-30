@@ -18,8 +18,8 @@ namespace LabSystem2.Models
         public string ProductTitle { get; set; }
         public DateTime DateAdded { get; set; }
         public string Description { get; set; }
-        public decimal PriceNetto { get; set; }
-        public decimal PriceBrutto { get; set; }
+        public string PriceNetto { get; set; }
+        public string PriceBrutto { get; set; }
         public bool IsHidden { get; set; }
 
         public virtual Genre Genre { get; set; } //właściwość nawigacyjna
