@@ -20,9 +20,10 @@ namespace LabSystem2.Models
         public string Description { get; set; }
         public decimal PriceNetto { get; set; }
         public decimal PriceBrutto { get; set; }
-
-        public virtual Genre Genre { get; set; }
         public bool IsHidden { get; set; }
+
+        public virtual Genre Genre { get; set; } //właściwość nawigacyjna
+        
        
     }
 }

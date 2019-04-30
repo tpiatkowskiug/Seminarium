@@ -14,18 +14,18 @@ namespace LabSystem2.Models
         [Display(Name = "Zleceniodawca")]
         public int? CustomerId { get; set; }
 
+        [Display(Name = "Rodzaj badań")]
+        public int? GenreId { get; set; }
+
+        [Display(Name = "Szczegóły")]
+        public int? ProductId { get; set; }
+
         [Display(Name = "Ilość prób")]
         public int QuantitySample { get; set; }
 
         [Display(Name = "Oznakowanie prób")]
         [DataType(DataType.MultilineText)]
         public string MarkingSample { get; set; }
-
-        [Display(Name = "Rodzaj badań")]
-        public int? GenreId { get; set; }
-
-        [Display(Name = "Szczegóły")]
-        public int? ProductId { get; set; }
 
         [Display(Name = "Cena razem")]
         public decimal TotalPrice { get; set; }
@@ -38,7 +38,7 @@ namespace LabSystem2.Models
         
         public OrderState OrderState { get; set; }
 
-        public List<OrderItem> OrderItems { get; set; }
+        public List<OrderItem> OrderItems { get; set; } //klekcja rodzaji badań skaładająca się na zamówienie
 
         [Display(Name = "Wprowadził zlecenie")]
         public int? EmployeeId { get; set; }

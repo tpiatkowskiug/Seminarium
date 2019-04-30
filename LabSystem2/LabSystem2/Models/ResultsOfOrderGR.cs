@@ -6,10 +6,10 @@ using System.Web;
 
 namespace LabSystem2.Models
 {
-    public class ResultsOfOrder
+    public class ResultsOfOrderGR
     {
         [ScaffoldColumn(false)]
-        public int ResultsOfOrderId { get; set; }
+        public int ResultsOfOrderGRId { get; set; }
 
         [Display(Name = "Dotyczy zlecenia")]
         public int OrderId { get; set; }
@@ -39,9 +39,33 @@ namespace LabSystem2.Models
         [DataType(DataType.MultilineText)]
         public string WynikiBadanMagnez { get; set; }
 
+        [Display(Name = "Dodatkowe badania")]
+        public bool AddOrder { get; set; }
+
+        [Display(Name = "Miedź")]
+        [DataType(DataType.MultilineText)]
+        public string Cu { get; set; }
+
+        [Display(Name = "Żelazo")]
+        [DataType(DataType.MultilineText)]
+        public string Fe { get; set; }
+
+        [Display(Name = "Mangan")]
+        [DataType(DataType.MultilineText)]
+        public string Mn { get; set; }
+
+        [Display(Name = "Cynk")]
+        [DataType(DataType.MultilineText)]
+        public string Zn { get; set; }
+
+        [Display(Name = "Bor")]
+        [DataType(DataType.MultilineText)]
+        public string Bor { get; set; }
+
         [Display(Name = "Inne badania")]
         [DataType(DataType.MultilineText)]
         public string InneBadania { get; set; }
+
 
         [Display(Name = "Data wykonania zlecenia")]
         [UIHint("DataTimePicker")]
