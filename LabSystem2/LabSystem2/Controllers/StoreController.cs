@@ -18,7 +18,9 @@ namespace LabSystem2.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var product = db.Productus.Find(id);
+                        
+            return View(product);
         }
 
         public ActionResult List(string genrename)

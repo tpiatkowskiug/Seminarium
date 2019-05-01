@@ -370,6 +370,7 @@
     <Content Include="Views\Store\GenresMenu.cshtml" />
     <Content Include="Views\Store\List.cshtml" />
     <Content Include="Views\Store\_ProductList.cshtml" />
+    <Content Include="Views\Store\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

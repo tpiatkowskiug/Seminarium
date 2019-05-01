@@ -5,7 +5,7 @@
         @foreach (var genre in Model)
         {
             <li>
-                @Html.ActionLink(genre.Name, "List", "Store", new { genrename = genre.Name.ToLower() }, new { style = "background-image: url(../Content/Genre-icons/" + genre.IconFilename + ");" })
+                @Html.ActionLink(genre.Name, "List", "Store", new { genrename = genre.Name.ToString() }, new { style = "background-image: url(../Content/Genre-icons/" + genre.IconFilename + ");" })
             </li>
         }
     </ul>

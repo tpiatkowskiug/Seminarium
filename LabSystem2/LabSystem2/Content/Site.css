@@ -149,7 +149,7 @@ nav.genres-horizontal ul {
 
 
 nav.genres-vertical {
-    width: 202px;
+    width: 215px;
     font-size: 18px;
     font-family: 'Segoe UI Semibold', 'Segoe WP', 'Segoe UI';
     border-right: 1px solid #E5E5E5;
@@ -157,8 +157,8 @@ nav.genres-vertical {
 }
 
     nav.genres-vertical ul li {
-        height: 50px;
-        line-height: 50px;
+        height: 60px;
+        line-height: 30px;
     }
 
         nav.genres-vertical ul li:hover {
