@@ -15,7 +15,7 @@ namespace LabSystem2
 
             routes.MapRoute(
                 name: "ProductDetails",
-                url: "album-{id}.html",
+                url: "product-{id}.html",
                 defaults: new { controller = "Store", action = "Details" }
 );
 
@@ -28,7 +28,7 @@ namespace LabSystem2
 
             routes.MapRoute(
                 name: "ProductList",
-                url: "gatunki/{genrename}",
+                url: "rodzajebadan/{genrename}",
                 defaults: new { controller = "Store", action = "List" },
                 constraints: new { genrename = @"[\w& ]+" }
             );

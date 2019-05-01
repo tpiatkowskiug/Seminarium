@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LabSystem2.Models;
+using LabSystem2.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,19 @@ namespace LabSystem2.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
-            return View();
+            var genres = db.Genres.ToList();
+
+            var newArrivals = db.Productus.Where(a => !a.IsHidden).OrderByDescending(a => a.DateAdded).Take(3).ToList();
+
+            var bestsellers = db.Productus.Where(a => a.IsBestseller && !a.IsHidden).OrderBy(g => Guid.NewGuid()).Take(3);
+
+            var vm = new HomeViewModel() { Genres = genres, Bestsellers = bestsellers, NewArrivals = newArrivals };
+
+            return View(vm);
         }
 
         public ActionResult About()

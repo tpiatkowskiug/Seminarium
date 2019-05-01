@@ -1,118 +1,66 @@
-﻿@{
+﻿@model LabSystem2.ViewModels.HomeViewModel
+@using LabSystem2.Infrastructure
+@{
     ViewBag.Title = "Strona główna";
 }
 
 <div>
     <nav class="genres-horizontal">
         <ul>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/rock.png); ">
-                    Badania rolnicze
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/rnb.png); ">
-                    Badania ogrodnicze
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/electro.png); ">
-                    Badania Sadownicze
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/metal.png); ">
-                    Nawozy mineralne
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/pop.png); ">
-                    Nawozy organiczne
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/classics.png); ">
-                    Badadania inne
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/jazz.png); ">
-                    Jazz
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/reagge.png); ">
-                    Reagge
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/other.png); ">
-                    Inne
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/hiphop.png); ">
-                    Hip Hop
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/alternative.png); ">
-                    Alternative
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/promos.png); ">
-                    Promocje
-                </a>
-            </li>
+            @foreach (var genre in Model.Genres)
+            {
+                <li>
+                    <a href="@Url.Action("List", "Store", new { genrename = genre.Name.ToLower() })" style="background-image: url(@Url.GenreIconPath(genre.IconFilename))">
+                        @genre.Name
+                    </a>
+                </li>
+            }
         </ul>
     </nav>
 </div>
 
 <section>
     <ul class="ThreeColumnsCoversList large-cover-list">
-        <li>
-            <article>
-                <a class="addtocartlink" href="aaaa">
-                    <img src="../Content/Images/cart.png" />
-                </a>
-                <a class="productdetailslink" href="asd">
-                    <div class="newFlag"></div>
-                    <img class="album-cover" src="../Content/Covers/1.png" />
-                    <h1>
-                        Testowy obrazek
-                    </h1>
-                </a>
-            </article>
-        </li>
-        <li>
-            <article>
-                <a class="addtocartlink" href="aaaa">
-                    <img src="../Content/Images/cart.png" />
-                </a>
-                <a class="productdetailslink" href="asd">
-                    <div class="newFlag"></div>
-                    <img class="album-cover" src="../Content/Covers/2.png" />
-                    <h1>
-                        Testowy obrazek
-                    </h1>
-                </a>
-            </article>
-        </li>
-        <li>
-            <article>
-                <a class="addtocartlink" href="aaaa">
-                    <img src="../Content/Images/cart.png" />
-                </a>
-                <a class="productdetailslink" href="asd">
-                    <div class="newFlag"></div>
-                    <img class="album-cover" src="../Content/Covers/3.png" />
-                    <h1>
-                        Testowy obrazek
-                    </h1>
-                </a>
-            </article>
-        </li>
+        @foreach (var newArrival in Model.NewArrivals)
+        {
+            <li>
+                <article>
+                    <a class="addtocartlink" href="@Url.Action("AddToCart", "Cart", new { id = newArrival.ProductId })">
+                        <img src="../Content/Images/cart.png" />
+                    </a>
+                    <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = newArrival.ProductId })">
+                        <div class="newFlag"></div>
+                        <img class="album-cover" src="@Url.Content("~/Content/Covers/" + newArrival.CoverFileName)" />
+                        <h1>
+                            @newArrival.ProductTitle
+                        </h1>
+                    </a>
+                </article>
+            </li>
+        }
+    </ul>
+</section>
+
+<section>
+    <ul class="ThreeColumnsCoversList large-cover-list">
+        @foreach (var bestseller in Model.Bestsellers)
+        {
+            <li>
+                <article>
+                    <a class="addtocartlink" href="@Url.Action("AddToCart", "Cart", new { id = bestseller.ProductId })">
+                        <img src="../Content/Images/cart.png" />
+                    </a>
+                    <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = bestseller.ProductId })">
+                        <div class="bestsellerFlag"></div>
+                        <img class="album-cover" src="../Content/Covers/2.png" />
+                        <h1>
+                            @bestseller.ProductTitle
+                        </h1>
+                    </a>
+                </article>
+            </li>
+        }
+
     </ul>
 </section>
 

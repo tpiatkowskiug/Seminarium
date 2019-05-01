@@ -21,6 +21,8 @@ namespace LabSystem2.Models
         public string PriceNetto { get; set; }
         public string PriceBrutto { get; set; }
         public bool IsHidden { get; set; }
+        public bool IsBestseller { get; set; }
+        public string CoverFileName { get; set; }
 
         public virtual Genre Genre { get; set; } //właściwość nawigacyjna
         
