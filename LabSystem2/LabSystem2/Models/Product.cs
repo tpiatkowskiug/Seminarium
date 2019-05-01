@@ -10,7 +10,7 @@ namespace LabSystem2.Models
     {
         [ScaffoldColumn(false)]
         public int ProductId { get; set; }
-        [ScaffoldColumn(false)]
+        
         public int GenreId { get; set; }
 
         [Display(Name = "Nazwa")]

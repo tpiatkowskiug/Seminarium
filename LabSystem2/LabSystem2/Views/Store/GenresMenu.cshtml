@@ -1,0 +1,12 @@
+﻿@model IEnumerable<LabSystem2.Models.Genre>
+
+<nav class="genres-vertical">
+    <ul>
+        @foreach (var genre in Model)
+        {
+            <li>
+                @Html.ActionLink(genre.Name, "List", "Store", new { genrename = genre.Name.ToLower() }, new { style = "background-image: url(../Content/Genre-icons/" + genre.IconFilename + ");" })
+            </li>
+        }
+    </ul>
+</nav>
