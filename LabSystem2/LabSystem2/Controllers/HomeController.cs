@@ -1,4 +1,5 @@
-﻿using LabSystem2.Models;
+﻿using LabSystem2.Infrastructure;
+using LabSystem2.Models;
 using LabSystem2.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,18 +12,46 @@ namespace LabSystem2.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ICacheProvider cache;
 
         public ActionResult Index()
         {
-            var genres = db.Genres.ToList();
 
-            var newArrivals = db.Productus.Where(a => !a.IsHidden).OrderByDescending(a => a.DateAdded).Take(3).ToList();
+            //logger.Info("Visited main page");
 
             var bestsellers = db.Productus.Where(a => a.IsBestseller && !a.IsHidden).OrderBy(g => Guid.NewGuid()).Take(3);
+
+            List<Product> newArrivals;
+
+            //ICacheProvider cache = new DefaultCacheProvider();
+            if (cache.IsSet(Consts.NewItemsCacheKey))
+            {
+                newArrivals = cache.Get(Consts.NewItemsCacheKey) as List<Product>;
+            }
+            else
+            {
+                newArrivals = db.Productus.Where(a => !a.IsHidden).OrderByDescending(a => a.DateAdded).Take(3).ToList();
+                cache.Set(Consts.NewItemsCacheKey, newArrivals, 30);
+            }
+
+            //var newArrivals = db.Albums.Where(a => !a.IsHidden).OrderByDescending(a => a.DateAdded).Take(3).ToList();
+
+            var genres = db.Genres;
 
             var vm = new HomeViewModel() { Genres = genres, Bestsellers = bestsellers, NewArrivals = newArrivals };
 
             return View(vm);
+            //var genres = db.Genres;
+
+
+
+            //var newArrivals = db.Productus.Where(a => !a.IsHidden).OrderByDescending(a => a.DateAdded).Take(3).ToList();
+
+            //var bestsellers = db.Productus.Where(a => a.IsBestseller && !a.IsHidden).OrderBy(g => Guid.NewGuid()).Take(3);
+
+            //var vm = new HomeViewModel() { Genres = genres, Bestsellers = bestsellers, NewArrivals = newArrivals };
+
+            //return View(vm);
         }
 
         public ActionResult About()
