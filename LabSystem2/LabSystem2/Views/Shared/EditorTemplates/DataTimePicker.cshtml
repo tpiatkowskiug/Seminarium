@@ -1,0 +1,15 @@
+﻿@model DateTime?
+
+@{
+    var uid = Guid.NewGuid();   //unikalny identyfikator przypisywany do atrybutu id naszego pola input w którym pobieramy date od użytkownika  
+}
+
+@Html.TextBox(                          //formatowanie sposób zapisu daty // dynamiczny helper
+    string.Empty,
+    Model.HasValue ? Model.Value.ToString("MMM d, yyy") : string.Empty,
+    new { @id = uid}
+    )
+
+<script type="text/javascript"> //wybór kalendarz do wyświetlenia dodane skrypty w Order view
+        $("#@uid").datepicker({dateFormat: 'M d, yy'});
+</script>

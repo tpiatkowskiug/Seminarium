@@ -16,6 +16,7 @@ namespace LabSystem2.Models
         [Display(Name = "Nazwa")]
         [Required]
         public string ProductTitle { get; set; }
+        [UIHint("DataTimePicker")]
         public DateTime DateAdded { get; set; }
         public string Description { get; set; }
         public string PriceNetto { get; set; }

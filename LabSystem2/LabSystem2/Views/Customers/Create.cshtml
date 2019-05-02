@@ -5,13 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        .field-validation-error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .input-validation-error {
+            background: pink;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Customer</h4>
         <hr />
@@ -84,7 +100,7 @@
             @Html.LabelFor(model => model.PhonePreferred, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.PhonePreferred)
+                    @Html.EditorFor(model => model.PhonePreferred, new { @id = "phonePrefferedCheckbox" })
                     @Html.ValidationMessageFor(model => model.PhonePreferred, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -113,6 +129,19 @@
         </div>
     </div>
 }
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/RequiredIfTrue.js"></script>
+
+<script type="text/javascript">
+    $('#phonerow').toggle($($(
+        '#phonePrefferedCheckbox')).is(':checked'));
+    $('#phonePrefferedCheckbox').click(function () {
+        $('#phonerow').toggle(this.checked);
+    });
+</script>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

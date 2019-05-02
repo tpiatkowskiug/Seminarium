@@ -15,10 +15,34 @@ namespace LabSystem2.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Customers
-        public ActionResult Index()
+        public ActionResult Index(string searchQuery = null)
         {
             var customers = db.Customers.Include(c => c.Employee);
-            return View(customers.ToList());
+
+            IEnumerable<Customer> personList;
+
+            if (searchQuery != null)
+                personList = db.Customers.ToList().Where(p => p.Name.Contains(searchQuery) || p.NameAndSurname.Contains(searchQuery) || searchQuery == p.Name + " " + p.NameAndSurname).ToArray();
+            else
+            {
+                personList = db.Customers.ToList().ToArray();
+            }
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_PersonList", personList);
+            }
+            return View(personList);
+
+            //var customers = db.Customers.Include(c => c.Employee);
+            //return View(customers.ToList());
+        }
+
+        public ActionResult PersonSuggestions(string term)
+        {
+            var personList = db.Customers.ToList().Where(p => p.Name.Contains(term) || p.NameAndSurname.Contains(term)).Take(5).Select(p => new { label = p.Name + " " + p.NameAndSurname });
+
+            return Json(personList, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Customers/Details/5

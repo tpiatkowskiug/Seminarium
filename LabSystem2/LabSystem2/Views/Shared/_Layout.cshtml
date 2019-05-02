@@ -24,6 +24,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Zlecenia", "Index", "Orders")</li>
+                    <li>@Html.ActionLink("Prcownicy", "Index", "Employees")</li>
+                    <li>@Html.ActionLink("Strefa klienta", "About", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -37,7 +40,7 @@
 
     <div class="container body-content">
         @RenderBody()
-        
+
     </div>
 
     <div class="navbar-inverse">
@@ -58,5 +61,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("ScriptsBottom", required: false)
 </body>
 </html>
