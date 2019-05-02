@@ -1,93 +1,90 @@
 ﻿@model IEnumerable<LabSystem2.Models.Customer>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Baza klientów";
 }
 
-<h2>Index</h2>
+<h2>Baza Klientów</h2>
 
-<body>
-    <h2>Baza Klientów</h2>
-    <div>
-        <form id="search-form" method="get" data-ajax="true" data-ajax-target="#personlist-section" data-ajax-update="#personlist-section">
-            <input id="SearchQuery" name="searchQuery" data-autocomplete-source="@Url.Action("PersonSuggestions")" placeholder="Wprowadź" />
-            <input type="submit" value="Filtruj" />
-        </form>
+<div id="breadcrumb-section">
 
-        <br />
+    <form id="search-form" method="get" data-ajax="true" data-ajax-target="#personlist-section" data-ajax-update="#personlist-section">
+        <input id="SearchQuery" name="searchQuery" data-autocomplete-source="@Url.Action("PersonSuggestions")" placeholder="Wprowadź tekst aby wyfiltrować..." />
+        <input type="submit" value=""/>
+    </form>
+</div>
+<br />
 
-        @Html.Partial("_PersonList")
-        <script src="~/Scripts/jquery-3.3.1.js"></script>
-        <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
-        
-        <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+@Html.Partial("_PersonList")
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
 
-        <script>
-            //var setupAutoComplete = function () {
-            //    var $input = $("#SearchQuery");
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
-            //    var options = {
-            //        source: $input.attr("data-autocomplete-source"),
-            //        select: function (evet, ui) {
-            //            var $input = $("#SearchQuery")
-            //            $input.val(ui.item.label);
-            //            var $form = $input.parents("form:first");
-            //            $form.submit();
-            //        }
-            //    };
-            //    $input.autocomplete(options)
-            //};
-            //setupAutoComplete();
+<script>
+    //var setupAutoComplete = function () {
+    //    var $input = $("#SearchQuery");
 
-            $(function () {
+    //    var options = {
+    //        source: $input.attr("data-autocomplete-source"),
+    //        select: function (evet, ui) {
+    //            var $input = $("#SearchQuery")
+    //            $input.val(ui.item.label);
+    //            var $form = $input.parents("form:first");
+    //            $form.submit();
+    //        }
+    //    };
+    //    $input.autocomplete(options)
+    //};
+    //setupAutoComplete();
 
-                var ajaxSubmit = function () {
+    $(function () {
 
-                    var $form = $(this);
+        var ajaxSubmit = function () {
 
-                    var settings = {
-                        data: $(this).serialize(),
-                        url: $(this).attr("action"),
-                        type: $(this).attr("method")
-                    };
+            var $form = $(this);
 
-                    $.ajax(settings).done(function (result) {
-                        var $targetElement = $($form.data("ajax-target"));
-                        var $newContent = $(result);
-                        $($targetElement).replaceWith($newContent);
-                        $newContent.effect("slide");
-                    });
+            var settings = {
+                data: $(this).serialize(),
+                url: $(this).attr("action"),
+                type: $(this).attr("method")
+            };
 
-                    return false;
-                };
-
-
-                var setupAutoComplete = function () {
-                    var $input = $(this);
-
-                    var options = {
-                        source: $input.attr("data-autocomplete-source"),
-                        select: function (event, ui) {
-                            $input = $(this);
-                            $input.val(ui.item.label);
-                            var $form = $input.parents("form:first");
-                            $form.submit();
-                        }
-                    };
-
-                    $input.autocomplete(options);
-                };
-
-                $("#search-form").submit(ajaxSubmit);
-                $("#search-filter").each(setupAutoComplete);
-
+            $.ajax(settings).done(function (result) {
+                var $targetElement = $($form.data("ajax-target"));
+                var $newContent = $(result);
+                $($targetElement).replaceWith($newContent);
+                $newContent.effect("slide");
             });
 
-        </script>
+            return false;
+        };
 
-    </div>
-</body>
+
+        var setupAutoComplete = function () {
+            var $input = $(this);
+
+            var options = {
+                source: $input.attr("data-autocomplete-source"),
+                select: function (event, ui) {
+                    $input = $(this);
+                    $input.val(ui.item.label);
+                    var $form = $input.parents("form:first");
+                    $form.submit();
+                }
+            };
+
+            $input.autocomplete(options);
+        };
+
+        $("#search-form").submit(ajaxSubmit);
+        $("#search-filter").each(setupAutoComplete);
+
+    });
+
+</script>
+
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
