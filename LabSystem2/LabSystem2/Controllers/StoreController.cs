@@ -23,10 +23,19 @@ namespace LabSystem2.Controllers
             return View(product);
         }
 
-        public ActionResult List(string genrename)
+        public ActionResult List(string genrename, string searchQuery = null)
         {
             var genre = db.Genres.Include("Products").Where(g => g.Name.ToUpper() == genrename.ToUpper()).Single();
-            var products = genre.Products.ToList();
+            var products = genre.Products.Where(a => (searchQuery == null ||
+                                                a.ProductTitle.ToLower().Contains(searchQuery.ToLower()) ||
+                                                a.ProductTitle.ToLower().Contains(searchQuery.ToLower())) &&
+                                                !a.IsHidden);
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_ProductList", products);
+            }
+
             return View(products);
         }
 
@@ -37,6 +46,13 @@ namespace LabSystem2.Controllers
             var genres = db.Genres;
 
             return PartialView(genres);
+        }
+
+        public ActionResult ProductSuggestions(string term)
+        {
+            var products = this.db.Productus.Where(a => a.ProductTitle.ToLower().Contains(term.ToLower()) && !a.IsHidden).Take(3).Select(a => new { label = a.ProductTitle });
+
+            return Json(products, JsonRequestBehavior.AllowGet);
         }
     }
 }

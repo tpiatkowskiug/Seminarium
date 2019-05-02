@@ -12,7 +12,7 @@ namespace LabSystem2.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private ICacheProvider cache;
+        private ICacheProvider cache = new DefaultCacheProvider();
 
         public ActionResult Index()
         {
