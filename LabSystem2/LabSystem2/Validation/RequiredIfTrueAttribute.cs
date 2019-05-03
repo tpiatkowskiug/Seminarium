@@ -11,7 +11,8 @@ namespace LabSystem2.Validation
     {
         public string BooleanPropertyName { get; set; } //własciwość PhonePreferred
 
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        protected override ValidationResult IsValid(object value,
+                  ValidationContext validationContext)
         {
             if (GetValue<bool>(validationContext.ObjectInstance, BooleanPropertyName))
             {
@@ -21,38 +22,28 @@ namespace LabSystem2.Validation
             }
             return ValidationResult.Success;
         }
+
         private static T GetValue<T>(object objectInstance, string propertyName)
         {
-            if (objectInstance == null) throw new ArgumentException("objectInstance");
+            if (objectInstance == null) throw new ArgumentNullException("objectInstance");
             if (string.IsNullOrWhiteSpace(propertyName))
                 throw new ArgumentNullException("propertyName");
 
             var propertyInfo = objectInstance.GetType().GetProperty(propertyName);
             return (T)propertyInfo.GetValue(objectInstance);
-
         }
 
         public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
         {
             var modelClientValidationRule = new ModelClientValidationRule
             {
-                ValidationType = "requirediftrue",
+                ValidationType = "requirediftrue", //metoda validacyjna po stronie javascriptu
                 ErrorMessage = FormatErrorMessage(metadata.DisplayName)
             };
             modelClientValidationRule.ValidationParameters.Add("boolprop", BooleanPropertyName);
             yield return modelClientValidationRule;
         }
 
-        //public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
-        //{
-        //    var modelClientValidationRule = new ModelClientValidationRule
-        //    {
-        //        ValidationType = "requirediftrue", //nazwa validatora używana w javascripcie, a także w specjalnych atrubutach date
-        //        ErrorMessage = FormatErrorMessage(metadata.DisplayName)
-        //    };
-        //    modelClientValidationRule.ValidationParameters.Add("boolprop", BooleanPropertyName);
-        //    yield return modelClientValidationRule; //validacja po stronie skryptu
-        //}
-    }
 
+    }
 }

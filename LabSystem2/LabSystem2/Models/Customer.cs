@@ -50,8 +50,9 @@ namespace LabSystem2.Models
 
         [Display(Name = "Numer telefonu:")]
         [RequiredIfTrue(BooleanPropertyName = "PhonePreferred", ErrorMessage = "Skoro preferujesz kontakt telefoniczny, musisz podać numer.")]
+        [Phone]
         [RegularExpression(@"([\+]){0,1}([0-9]{2})?[\-\s]?[-]?([0-9]{3})\-?[-\s]?([0-9]{3})[-\s]\-?([0-9]{3})$",
-            ErrorMessage = "Numer musi być zapisany w formacie 123-123-123")]
+            ErrorMessage = "Numer musi być zapisany w formacie 000-000-000")]
         public string Phone { get; set; }
 
         [Display(Name = "Wprowadził klienta:")]
