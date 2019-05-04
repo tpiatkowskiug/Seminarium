@@ -60,6 +60,25 @@ namespace LabSystem2.Controllers
             return View(customer);
         }
 
+        //[HttpPost]
+        //public ActionResult AddQuestion(Customer customer)
+        //{
+
+        //    if (customer.NameAndSurname == "?")
+        //        ModelState.AddModelError("QuestionText", "Komunikat dodany manualnie. Nie może być samego znaku zapytania...");
+
+
+
+        //    if (!ModelState.IsValid)
+        //        return View("Create", customer);
+        //    else
+        //    {
+        //        // Kod zapisujący lub wysyłający pytanie do właściciela strony
+
+        //        return View("Create");
+        //    }
+        //}
+
         // GET: Customers/Create
         public ActionResult Create()
         {
@@ -74,7 +93,14 @@ namespace LabSystem2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CustomerId,Name,NameAndSurname,Email,Voivodeship,Commune,City,PostalCode,Street,PhonePreferred,Phone,EmployeeId")] Customer customer)
         {
-            if (ModelState.IsValid)
+            if (customer.NameAndSurname == "?")
+                ModelState.AddModelError("QuestionText", "Komunikat dodany manualnie. Nie może być samego znaku zapytania...");
+
+
+
+            if (!ModelState.IsValid)
+                return View("Create", customer);
+            else if (ModelState.IsValid)
             {
                 db.Customers.Add(customer);
                 db.SaveChanges();
@@ -83,6 +109,9 @@ namespace LabSystem2.Controllers
 
             ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname", customer.EmployeeId);
             return View(customer);
+
+            //ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname", customer.EmployeeId);
+            // return View(customer);
         }
 
         // GET: Customers/Edit/5

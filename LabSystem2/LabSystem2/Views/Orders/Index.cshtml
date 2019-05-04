@@ -1,11 +1,41 @@
 ﻿@model IEnumerable<LabSystem2.Models.Order>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Zlecenia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div style="float:left;">
+    <p class="btn btn-default">
+        @Html.ActionLink("Baza klientów", "Index", "Customers")
+    </p>
+    <br />
+    <br />
+</div>
+<div style="float:left;">
+    <p class="btn btn-default">
+        @Html.ActionLink("Dodaj Klienta", "Create", "Customers")
+    </p>
+    <br />
+    <br />
+</div>
+<div style="float:left;">
+    <p class="btn btn-default">
+        @Html.ActionLink("Dodaj Zlecenie", "Create")
+    </p>
+    <br />
+    <br />
+</div>
+<div style="float:left;">
+    <p class="btn btn-default">
+        @Html.ActionLink("Dodaj wyniki badań", "Create", "ResultsOfOrderGRs")
+    </p>
+    <br />
+    <br />
+</div>
+<div style="clear:both;"></div>
+<br />
+<br />
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -45,44 +75,45 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Employee.NameAndSurname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.ProductTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuantitySample)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MarkingSample)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderCreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderState)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.NameAndSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantitySample)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarkingSample)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderCreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderState)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+            </td>
+        </tr>
+    }
 
 </table>

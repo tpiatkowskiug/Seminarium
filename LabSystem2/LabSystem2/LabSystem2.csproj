@@ -214,17 +214,9 @@
     <Compile Include="Infrastructure\ProductDetailsDynamicNodeProvider.cs" />
     <Compile Include="Infrastructure\ProductListDynamicNodeProvider.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
-    <Compile Include="Migrations\201904302142210_InitialCreate.cs" />
-    <Compile Include="Migrations\201904302142210_InitialCreate.Designer.cs">
-      <DependentUpon>201904302142210_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905010936001_addIsBestsellerToProduct.cs" />
-    <Compile Include="Migrations\201905010936001_addIsBestsellerToProduct.Designer.cs">
-      <DependentUpon>201905010936001_addIsBestsellerToProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905011058064_CoverFileNametoProduct.cs" />
-    <Compile Include="Migrations\201905011058064_CoverFileNametoProduct.Designer.cs">
-      <DependentUpon>201905011058064_CoverFileNametoProduct.cs</DependentUpon>
+    <Compile Include="Migrations\201905041400447_InitialCreate.cs" />
+    <Compile Include="Migrations\201905041400447_InitialCreate.Designer.cs">
+      <DependentUpon>201905041400447_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -464,14 +456,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904302142210_InitialCreate.resx">
-      <DependentUpon>201904302142210_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905010936001_addIsBestsellerToProduct.resx">
-      <DependentUpon>201905010936001_addIsBestsellerToProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905011058064_CoverFileNametoProduct.resx">
-      <DependentUpon>201905011058064_CoverFileNametoProduct.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905041400447_InitialCreate.resx">
+      <DependentUpon>201905041400447_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -86,9 +86,11 @@ namespace LabSystem2.Migrations
                         ProductTitle = c.String(nullable: false),
                         DateAdded = c.DateTime(nullable: false),
                         Description = c.String(),
-                        PriceNetto = c.String(),
-                        PriceBrutto = c.String(),
+                        PriceNetto = c.Single(nullable: false),
+                        PriceBrutto = c.Single(nullable: false),
                         IsHidden = c.Boolean(nullable: false),
+                        IsBestseller = c.Boolean(nullable: false),
+                        CoverFileName = c.String(),
                     })
                 .PrimaryKey(t => t.ProductId)
                 .ForeignKey("dbo.Genres", t => t.GenreId, cascadeDelete: true)

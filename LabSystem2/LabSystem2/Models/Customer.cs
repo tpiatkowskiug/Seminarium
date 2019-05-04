@@ -7,7 +7,7 @@ using System.Web;
 
 namespace LabSystem2.Models
 {
-    public class Customer
+    public class Customer : IValidatableObject
     {
         [ScaffoldColumn(false)]
         public int CustomerId { get; set; }
@@ -60,5 +60,11 @@ namespace LabSystem2.Models
 
         public virtual Employee Employee { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (this.Email.Contains("spam"))
+                yield return new ValidationResult("Podany e-mail nie wygląda na prawidłowy.", new string[] { "Email" });
+        }
     }
 }

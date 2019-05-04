@@ -39,7 +39,7 @@ namespace LabSystem2.Controllers
         // GET: Orders/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name");
+            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "NameAndSurname");
             ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname");
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name");
             ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle");
@@ -60,11 +60,27 @@ namespace LabSystem2.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", order.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "NameAndSurname", order.CustomerId);
             ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname", order.EmployeeId);
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", order.GenreId);
             ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle", order.ProductId);
             return View(order);
+        }
+
+        [HttpPost]
+        public JsonResult GetProductPrice(int ProductId)
+        {
+            // var Productlist = GetProducts(); //query database and get the Product.
+            //based on IDProduct to get the product.
+            var query = db.Productus.ToList().Where(c => c.ProductId == ProductId).FirstOrDefault();
+            return Json(query.PriceBrutto, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GetGenreProduct(int GenreId)
+        {
+            var query = db.Genres.ToList().Where(c => c.GenreId == GenreId).FirstOrDefault();
+            return Json(query.Products, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Orders/Edit/5
@@ -79,7 +95,7 @@ namespace LabSystem2.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", order.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "NameAndSurname", order.CustomerId);
             ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname", order.EmployeeId);
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", order.GenreId);
             ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle", order.ProductId);
@@ -99,7 +115,7 @@ namespace LabSystem2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", order.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "NameAndSurname", order.CustomerId);
             ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname", order.EmployeeId);
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", order.GenreId);
             ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle", order.ProductId);

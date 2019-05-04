@@ -7,13 +7,13 @@ namespace LabSystem2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addIsBestsellerToProduct : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addIsBestsellerToProduct));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905010936001_addIsBestsellerToProduct"; }
+            get { return "201905041400447_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

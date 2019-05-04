@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<LabSystem2.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Produkty";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -42,41 +42,42 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateAdded)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PriceNetto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PriceBrutto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsHidden)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsBestseller)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CoverFileName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceNetto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceBrutto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsHidden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsBestseller)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoverFileName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+            </td>
+        </tr>
+    }
 
 </table>
