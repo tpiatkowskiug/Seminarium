@@ -28,7 +28,7 @@ namespace LabSystem2.Models
         public string MarkingSample { get; set; }
 
         [Display(Name = "Cena razem")]
-        public string TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
 
         [Display(Name = "Data zlecenia")]
         [UIHint("DataTimePicker")]            //dynamiczny helper

@@ -7,7 +7,7 @@
     <mvcSiteMapNode title="Gatunek" controller="Store" action="List" dynamicNodeProvider="LabSystem2.Infrastructure.ProductListDynamicNodeProvider, LabSystem2">
       <mvcSiteMapNode title="Album" controller="Store" action="Details" dynamicNodeProvider="LabSystem2.Infrastructure.ProductDetailsDynamicNodeProvider, LabSystem2" />      
     </mvcSiteMapNode>
-    <mvcSiteMapNode title="Koszyk" controller="Cart" action="Index">
+    <mvcSiteMapNode title="Zlecenie" controller="Cart" action="Index">
       <mvcSiteMapNode title="Dane zamówienia" controller="Cart" action="Checkout" />
       <mvcSiteMapNode title="Potwierdzenie zamówienia" controller="Cart" action="OrderConfirmation" />
     </mvcSiteMapNode>        

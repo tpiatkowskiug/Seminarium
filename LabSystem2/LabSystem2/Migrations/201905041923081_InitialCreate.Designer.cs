@@ -13,7 +13,7 @@ namespace LabSystem2.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201905041400447_InitialCreate"; }
+            get { return "201905041923081_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

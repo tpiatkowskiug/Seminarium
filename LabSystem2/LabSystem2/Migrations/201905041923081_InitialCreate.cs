@@ -50,7 +50,7 @@ namespace LabSystem2.Migrations
                         ProductId = c.Int(),
                         QuantitySample = c.Int(nullable: false),
                         MarkingSample = c.String(),
-                        TotalPrice = c.String(),
+                        TotalPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                         OrderCreationDate = c.DateTime(nullable: false),
                         Comment = c.String(),
                         OrderState = c.Int(nullable: false),
@@ -86,8 +86,8 @@ namespace LabSystem2.Migrations
                         ProductTitle = c.String(nullable: false),
                         DateAdded = c.DateTime(nullable: false),
                         Description = c.String(),
-                        PriceNetto = c.Single(nullable: false),
-                        PriceBrutto = c.Single(nullable: false),
+                        PriceNetto = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        PriceBrutto = c.Decimal(nullable: false, precision: 18, scale: 2),
                         IsHidden = c.Boolean(nullable: false),
                         IsBestseller = c.Boolean(nullable: false),
                         CoverFileName = c.String(),
@@ -104,7 +104,7 @@ namespace LabSystem2.Migrations
                         OrderId = c.Int(nullable: false),
                         ProductId = c.Int(nullable: false),
                         Quantity = c.Int(nullable: false),
-                        UnitPrice = c.String(),
+                        UnitPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.OrderItemId)
                 .ForeignKey("dbo.Orders", t => t.OrderId, cascadeDelete: true)

@@ -19,8 +19,8 @@ namespace LabSystem2.Models
         [UIHint("DataTimePicker")]
         public DateTime DateAdded { get; set; }
         public string Description { get; set; }
-        public float PriceNetto { get; set; }
-        public float PriceBrutto { get; set; }
+        public decimal PriceNetto { get; set; }
+        public decimal PriceBrutto { get; set; }
         public bool IsHidden { get; set; }
         public bool IsBestseller { get; set; }
         public string CoverFileName { get; set; }
