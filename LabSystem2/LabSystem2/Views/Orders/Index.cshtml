@@ -1,0 +1,168 @@
+﻿@model IEnumerable<LabSystem2.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Baza Zleceń</h2>
+
+<div id="breadcrumb-section">
+
+    <form id="search-form" method="get" data-ajax="true" data-ajax-target="#personlist-section" data-ajax-update="#personlist-section">
+        <input id="SearchQuery" name="searchQuery" data-autocomplete-source="@Url.Action("PersonSuggestions")" placeholder="Wprowadź tekst aby wyfiltrować..." />
+        <input type="submit" value="" />
+    </form>
+</div>
+<br />
+
+@Html.Partial("_PersonList")
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script>
+    $(function () {
+
+        var ajaxSubmit = function () {
+
+            var $form = $(this);
+
+            var settings = {
+                data: $(this).serialize(),
+                url: $(this).attr("action"),
+                type: $(this).attr("method")
+            };
+
+            $.ajax(settings).done(function (result) {
+                var $targetElement = $($form.data("ajax-target"));
+                var $newContent = $(result);
+                $($targetElement).replaceWith($newContent);
+                $newContent.effect("slide");
+            });
+
+            return false;
+        };
+
+
+        var setupAutoComplete = function () {
+            var $input = $(this);
+
+            var options = {
+                source: $input.attr("data-autocomplete-source"),
+                select: function (event, ui) {
+                    $input = $(this);
+                    $input.val(ui.item.label);
+                    var $form = $input.parents("form:first");
+                    $form.submit();
+                }
+            };
+
+            $input.autocomplete(options);
+        };
+
+        $("#search-form").submit(ajaxSubmit);
+        $("#search-filter").each(setupAutoComplete);
+
+    });
+
+</script>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.NameAndSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameAndSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhonePreferred)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.NameAndSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NIP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameAndSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhonePreferred)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+            </td>
+        </tr>
+    }
+
+</table>
