@@ -28,6 +28,6 @@ namespace LabSystem2.Models
 
 
         public virtual ICollection<Order> Orders { get; set; } //  ile zleceń wprwadził pracwonik
-        public virtual ICollection<Customer> Customers { get; set; } //ilu klientów wprowadził praconwików
+      
     }
 }
