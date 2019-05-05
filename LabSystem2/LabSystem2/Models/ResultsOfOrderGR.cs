@@ -14,9 +14,6 @@ namespace LabSystem2.Models
         [Display(Name = "Dotyczy zlecenia")]
         public int OrderId { get; set; }
 
-        [Display(Name = "Zleceniodawca")]
-        public int? CustomerId { get; set; }
-
         [Display(Name = "Oznakowanie prób")]
         public string OrderMarkingSample { get; set; }
 
@@ -66,7 +63,6 @@ namespace LabSystem2.Models
         [DataType(DataType.MultilineText)]
         public string InneBadania { get; set; }
 
-
         [Display(Name = "Data wykonania zlecenia")]
         [UIHint("DataTimePicker")]
         public DateTime ResultsCreationDate { get; set; }
@@ -76,6 +72,6 @@ namespace LabSystem2.Models
 
         public virtual Employee Employee { get; set; }
         public virtual Order Order { get; set; }
-        public virtual Customer Customer { get; set; }
+        
     }
 }

@@ -194,12 +194,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\CustomersControllerxxx.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\OrdersControllerxxxxxxxxxxxxx.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\ViewSwitcherController.cs" />
@@ -218,14 +218,9 @@
     <Compile Include="Infrastructure\SessionManager.cs" />
     <Compile Include="Infrastructure\ShoppingCartManager.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
-    <Compile Include="Migrations\201905041923081_InitialCreate.cs" />
-    <Compile Include="Migrations\201905041923081_InitialCreate.Designer.cs">
-      <DependentUpon>201905041923081_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartItem.cs" />
-    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -409,16 +404,16 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\Customers\Create.cshtml" />
-    <Content Include="Views\Customers\Delete.cshtml" />
-    <Content Include="Views\Customers\Details.cshtml" />
-    <Content Include="Views\Customers\Edit.cshtml" />
-    <Content Include="Views\Customers\Index.cshtml" />
-    <Content Include="Views\Orders\Create.cshtml" />
-    <Content Include="Views\Orders\Delete.cshtml" />
-    <Content Include="Views\Orders\Details.cshtml" />
-    <Content Include="Views\Orders\Edit.cshtml" />
-    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Customersxxx\Create.cshtml" />
+    <Content Include="Views\Customersxxx\Delete.cshtml" />
+    <Content Include="Views\Customersxxx\Details.cshtml" />
+    <Content Include="Views\Customersxxx\Edit.cshtml" />
+    <Content Include="Views\Customersxxx\Index.cshtml" />
+    <Content Include="Views\Ordersxxx\Create.cshtml" />
+    <Content Include="Views\Ordersxxx\Delete.cshtml" />
+    <Content Include="Views\Ordersxxx\Details.cshtml" />
+    <Content Include="Views\Ordersxxx\Edit.cshtml" />
+    <Content Include="Views\Ordersxxx\Index.cshtml" />
     <Content Include="Views\Genres\Create.cshtml" />
     <Content Include="Views\Genres\Delete.cshtml" />
     <Content Include="Views\Genres\Details.cshtml" />
@@ -444,7 +439,7 @@
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DataTimePicker.cshtml" />
-    <Content Include="Views\Customers\_PersonList.cshtml" />
+    <Content Include="Views\Customersxxx\_PersonList.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\OrderConfirmation.cshtml" />
@@ -465,11 +460,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905041923081_InitialCreate.resx">
-      <DependentUpon>201905041923081_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

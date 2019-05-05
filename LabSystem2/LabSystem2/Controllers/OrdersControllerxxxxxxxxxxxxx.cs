@@ -10,7 +10,7 @@ using LabSystem2.Models;
 
 namespace LabSystem2.Controllers
 {
-    public class OrdersController : Controller
+    public class OrdersControllerxxxxxxxxxxxxx : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 

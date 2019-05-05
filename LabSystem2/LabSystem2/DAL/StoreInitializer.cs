@@ -54,6 +54,18 @@ namespace LabSystem2.DAL
 
             albums.ForEach(a => context.Productus.AddOrUpdate(a));
             context.SaveChanges();
+
+            var employee = new List<Employee>
+            {
+                new Employee() { EmployeeId = 1, NameAndSurname = "Jan Kowalski", Email = "jkowalski@oschr.pl", PhoneNumber = "609-257-047", Region = "Płońsk" },
+                new Employee() { EmployeeId = 2, NameAndSurname = "Jan Nowak", Email = "jnowak@oschr.pl", PhoneNumber = "609-257-048", Region = "Warmia" },
+                new Employee() { EmployeeId = 3, NameAndSurname = "Bogdan Smela",  Email = "bsmela@oschr.pl", PhoneNumber = "609-257-049", Region = "Kutno" },
+                new Employee() { EmployeeId = 4, NameAndSurname = "Łukasz Załuski",  Email = "lzaluski@oschr.pl", PhoneNumber = "609-257-040", Region = "Żuromin" },
+
+            };
+
+            employee.ForEach(b => context.Employees.AddOrUpdate(b));
+            context.SaveChanges();
         }
 
         public static void InitializeIdentityForEF(ApplicationDbContext db)
