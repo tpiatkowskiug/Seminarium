@@ -19,6 +19,9 @@
         }
     </style>
 </head>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
 
 <h2>Create</h2>
 
@@ -90,8 +93,8 @@
             @Html.LabelFor(model => model.PhonePreferred, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.PhonePreferred)
-                    @Html.ValidationMessageFor(model => model.PhonePreferred, "", new { @id = "phonePrefferedCheckbox", @class = "text-danger" })
+                    @Html.CheckBoxFor(model => model.PhonePreferred, new { @id = "phonePrefferedCheckbox" })
+                    @Html.ValidationMessageFor(model => model.PhonePreferred, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
@@ -99,7 +102,7 @@
         <div class="form-group" id="phonerow">
             @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Phone, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox", @class = "form-control" })
+                @Html.TextBoxFor(model => model.Phone, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -161,4 +164,5 @@
             $('#phonerow').toggle(this.checked);
         });
     </script>
+
 }

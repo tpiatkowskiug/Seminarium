@@ -59,6 +59,7 @@ namespace LabSystem2.Models
         [Display(Name = "Data zlecenia")]
         [UIHint("DataTimePicker")]                       //dynamiczny helper
         public DateTime DateCreated { get; set; }
+
         public OrderState OrderState { get; set; }
 
         public decimal TotalPrice { get; set; }
