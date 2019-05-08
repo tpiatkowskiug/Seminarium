@@ -23,6 +23,13 @@ namespace LabSystem2.Controllers
             return View(product);
         }
 
+        public ActionResult DetailsGenre(int id)
+        {
+            var genre = db.Genres.Find(id);
+
+            return View(genre);
+        }
+
         public ActionResult List(string genrename, string searchQuery = null)
         {
             var genre = db.Genres.Include("Products").Where(g => g.Name.ToUpper() == genrename.ToUpper()).Single();

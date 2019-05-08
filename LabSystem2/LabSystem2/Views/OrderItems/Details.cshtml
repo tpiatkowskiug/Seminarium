@@ -1,0 +1,67 @@
+﻿@model LabSystem2.Models.OrderItem
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrderItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.NIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.NIP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.ProductTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarkingSample)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarkingSample)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderItemId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

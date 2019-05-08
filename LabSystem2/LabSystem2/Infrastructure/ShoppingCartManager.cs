@@ -33,14 +33,16 @@ namespace LabSystem2.Infrastructure
             else
             {
                 // Find product and add it to cart
-                var albumToAdd = db.Productus.Where(a => a.ProductId == productid).SingleOrDefault();
-                if (albumToAdd != null)
+               // var genreToAdd = db.Genres.Where(a => a.GenreId == genreid).SingleOrDefault();
+                var productToAdd = db.Productus.Where(a => a.ProductId == productid).SingleOrDefault();
+                if (productToAdd != null)
                 {
                     var newCartItem = new CartItem()
                         {
-                            Product = albumToAdd,
+                           // Genre = genreToAdd,
+                            Product = productToAdd,
                             Quantity = 1,
-                            TotalPrice = albumToAdd.PriceBrutto
+                            TotalPrice = productToAdd.PriceBrutto
                         };
 
                     cart.Add(newCartItem);
@@ -120,7 +122,9 @@ namespace LabSystem2.Infrastructure
             {                
                 var newOrderItem = new OrderItem()
                 {
-                    ProductId = cartItem.Product.ProductId,                    
+                    GenreId = cartItem.Genre.GenreId,
+                    ProductId = cartItem.Product.ProductId,  
+                    MarkingSample = cartItem.MarkingSample,
                     Quantity = cartItem.Quantity,
                     UnitPrice = cartItem.Product.PriceBrutto
                 };

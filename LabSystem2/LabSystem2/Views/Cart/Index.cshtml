@@ -1,4 +1,5 @@
 ﻿@model LabSystem2.ViewModels.CartViewModel
+@using LabSystem2.Infrastructure
 
 
 @{
@@ -18,17 +19,22 @@
             <table id="cart-table">
                 @foreach (var cartItem in Model.CartItems)
                 {
-                    <tr id="cart-row-@cartItem.Product.ProductId">
-                        <td>
-                            <a href="@Url.Action("Details", "Store", new { id = cartItem.Product.ProductId})">
-                                <img src="@Url.Content("~/Content/Covers/" + cartItem.Product.CoverFileName)" />
-                            </a>
-                        </td>
-                        <td><a href="@Url.Action("Details", "Store", new { id = cartItem.Product.ProductId })">@cartItem.Product.ProductTitle</a></td>
-                        <td>Ilość: <span id="cart-item-count-@cartItem.Product.ProductId">@cartItem.Quantity</span></td>
-                        <td>@String.Format("{0:0.##}", cartItem.TotalPrice) zł</td>
-                        <td><a class="removeProduct" data-id="@cartItem.Product.ProductId" href="#">Usuń</a></td>
-                    </tr>
+                <tr id="cart-row-@cartItem.Product.ProductId">
+
+
+                    @*
+        <td><a href="@Url.Action("Create", "Cart", new { id = cartItem.Genre.GenreId })"> @Html.DropDownList("GenreId", null, "-- Wybierz rodzaj badania --", htmlAttributes: new { @class = "form-control" })</a></td>
+        <td><a href="@Url.Action("Create", "Cart", new { id = cartItem.Product.ProductId })"> @Html.DropDownList("ProductId", null, "-- szczegóły badania --", htmlAttributes: new { @class = "form-control" })</a></td>
+        <td><a href="@Url.Action("Create", "Cart", new { id = cartItem.MarkingSample })">@Html.EditorFor(model => model.MarkingSample, new { htmlAttributes = new { @class = "form-control" } })</a></td>
+        <td><a href="@Url.Action("Create", "Cart", new { id = cartItem.Quantity })">@Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })</a></td>
+        <td><a href="@Url.Action("Create", "Cart", new { id = cartItem.Product.PriceBrutto })">@Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })</a></td>
+                    *@
+                    <td><a href="@Url.Action("DetailsGenre", "Store", new { id = cartItem.Genre.GenreId })">@cartItem.Genre.Name</a></td>
+                    <td><a href="@Url.Action("Details", "Store", new { id = cartItem.Product.ProductId })">@cartItem.Product.ProductTitle</a></td>
+                    <td>Ilość: <span id="cart-item-count-@cartItem.Product.ProductId">@cartItem.Quantity</span></td>
+                    <td>@String.Format("{0:0.##}", cartItem.TotalPrice) zł</td>
+                    <td><a class="removeProduct" data-id="@cartItem.Product.ProductId" href="#">Usuń</a></td>
+                </tr>
                 }
 
                 <tr id="cart-empty-message" @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="hidden" </text> }>
@@ -45,7 +51,7 @@
                 <a class="button-link" href="">Dodaj kolejne badania</a>
                 @if (Model.TotalPrice > 0)
                 {
-                    <a class="button-link" id="cart-button-checkout" href="@Url.Action("Create", "Customers", new { viewname = "Create" })">Dodaj Klienta</a>
+                    <a class="button-link" id="cart-button-checkout" href="@Url.Action("Create", "Orders", new { viewname = "Create" })">Dodaj Klienta</a>
                 }
             </div>
         </section>

@@ -103,6 +103,35 @@ namespace SpodIglyMVC.Controllers
             return Json(result);
         }
 
+
+        public ActionResult Create()
+        {
+            ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname");
+            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name");
+            ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle");
+            return View();
+        }
+
+        // POST: OrdersItem/Create
+        // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
+        // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "OrderId,GenreId,ProductId,Quantity,MarkingSample,UnitPrice")] OrderItem orderitem)
+        {
+            if (ModelState.IsValid)
+            {
+                db.OrderItems.Add(orderitem);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Cart");
+            }
+
+            //ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname", orderitem.EmployeeId);
+            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", orderitem.GenreId);
+            ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle", orderitem.ProductId);
+            return View(orderitem);
+        }
+
         public async Task<ActionResult> Checkout()
         {
             if (Request.IsAuthenticated)
