@@ -71,7 +71,7 @@ namespace LabSystem2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,EmployeeId,NIP,FirstName,NameAndSurname,City,PostalCode,Email,PhonePreferred,Phone,Comment,DateCreated,OrderState,TotalPrice")] Order order)
+        public ActionResult Create([Bind(Include = "OrderId,EmployeeId,NIP,NameAndSurname,City,PostalCode,Email,PhonePreferred,Phone,Comment,DateCreated,OrderState,TotalPrice")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -105,7 +105,7 @@ namespace LabSystem2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderId,EmployeeId,NIP,FirstName,NameAndSurname,City,PostalCode,Email,PhonePreferred,Phone,Comment,DateCreated,OrderState,TotalPrice")] Order order)
+        public ActionResult Edit([Bind(Include = "OrderId,EmployeeId,NIP,NameAndSurname,City,PostalCode,Email,PhonePreferred,Phone,Comment,DateCreated,OrderState,TotalPrice")] Order order)
         {
             if (ModelState.IsValid)
             {

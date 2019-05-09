@@ -29,7 +29,9 @@ namespace LabSystem2.Infrastructure
             var cartItem = cart.Find(c => c.Product.ProductId == productid);
 
             if (cartItem != null)
+            {
                 cartItem.Quantity++;
+            }  
             else
             {
                 // Find product and add it to cart
@@ -122,9 +124,9 @@ namespace LabSystem2.Infrastructure
             {                
                 var newOrderItem = new OrderItem()
                 {
-                    GenreId = cartItem.Genre.GenreId,
+                  //  GenreId = cartItem.Genre.GenreId,
                     ProductId = cartItem.Product.ProductId,  
-                    MarkingSample = cartItem.MarkingSample,
+                 //   MarkingSample = cartItem.MarkingSample,
                     Quantity = cartItem.Quantity,
                     UnitPrice = cartItem.Product.PriceBrutto
                 };

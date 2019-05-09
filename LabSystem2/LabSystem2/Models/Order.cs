@@ -21,8 +21,6 @@ namespace LabSystem2.Models
             ErrorMessage = "Nip zapisany w formacie 000-000-000")]
         public string NIP { get; set; }
 
-        [Required(ErrorMessage = "Musisz wprowadzić imię")]
-        [StringLength(100)]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Musisz wprowadzć nazwisko")]
