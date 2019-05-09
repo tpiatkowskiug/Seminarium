@@ -16,7 +16,7 @@ using System.Net;
 using NLog;
 using LabSystem2;
 
-namespace SpodIglyMVC.Controllers
+namespace LabSystem2.Controllers
 {
     public class CartController : Controller
     {
@@ -71,9 +71,9 @@ namespace SpodIglyMVC.Controllers
             ShoppingCartManager shoppingCart = new ShoppingCartManager(this.sessionManager, this.db);
             shoppingCart.AddToCart(id);
 
-           // logger.Info("Added product {0} to cart", id);
+            // logger.Info("Added product {0} to cart", id);
 
-            return RedirectToAction("Index", "Cart");
+             return RedirectToAction("Index");
         }
 
 
@@ -83,18 +83,18 @@ namespace SpodIglyMVC.Controllers
             return shoppingCartManager.GetCartItemsCount();
         }
 
-        public ActionResult RemoveFromCart(int albumID)
+        public ActionResult RemoveFromCart(int productID)
         {
             ShoppingCartManager shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
 
-            int itemCount = shoppingCartManager.RemoveFromCart(albumID);
+            int itemCount = shoppingCartManager.RemoveFromCart(productID);
             int cartItemsCount = shoppingCartManager.GetCartItemsCount();
             decimal cartTotal = shoppingCartManager.GetCartTotalPrice();
 
             // Return JSON to process it in JavaScript
             var result = new CartRemoveViewModel
             {
-                RemoveItemId = albumID,
+                RemoveItemId = productID,
                 RemovedItemCount = itemCount,
                 CartTotal = cartTotal,
                 CartItemsCount = cartItemsCount
@@ -103,34 +103,6 @@ namespace SpodIglyMVC.Controllers
             return Json(result);
         }
 
-
-        public ActionResult Create()
-        {
-            ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname");
-            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name");
-            ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle");
-            return View();
-        }
-
-        // POST: OrdersItem/Create
-        // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
-        // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,GenreId,ProductId,Quantity,MarkingSample,UnitPrice")] OrderItem orderitem)
-        {
-            if (ModelState.IsValid)
-            {
-                db.OrderItems.Add(orderitem);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Cart");
-            }
-
-            //ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname", orderitem.EmployeeId);
-            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", orderitem.GenreId);
-            ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle", orderitem.ProductId);
-            return View(orderitem);
-        }
 
         public async Task<ActionResult> Checkout()
         {
@@ -166,7 +138,7 @@ namespace SpodIglyMVC.Controllers
 
                 // Save Order
                 ShoppingCartManager shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
-                var newOrder = shoppingCartManager.CreateOrder(orderdetails, userId);
+                //var newOrder = shoppingCartManager.CreateOrder(orderdetails, userId);
 
                 // Update profile information
                 var user = await UserManager.FindByIdAsync(userId);
@@ -179,7 +151,7 @@ namespace SpodIglyMVC.Controllers
                 // Send mail confirmation
                 // Refetch - need also albums details
                 //var order = db.Orders.Include("OrderItems").SingleOrDefault(o => o.OrderId == newOrder.OrderId);            
-                var order = db.Orders.Include("OrderItems").Include("OrderItems.Album").SingleOrDefault(o => o.OrderId == newOrder.OrderId);
+                //var order = db.Orders.Include("OrderItems").Include("OrderItems.Album").SingleOrDefault(o => o.OrderId == newOrder.OrderId);
 
 
                 //IMailService mailService = new HangFirePostalMailService();

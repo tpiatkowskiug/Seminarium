@@ -23,11 +23,11 @@ namespace LabSystem2.Controllers
             return View(product);
         }
 
-        public ActionResult DetailsGenre(int id)
+        public ActionResult DetailsOrderItem(int id)
         {
-            var genre = db.Genres.Find(id);
+            var orderItem = db.OrderItems.Find(id);
 
-            return View(genre);
+            return View(orderItem);
         }
 
         public ActionResult List(string genrename, string searchQuery = null)

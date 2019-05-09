@@ -19,17 +19,20 @@
             <table id="cart-table">
                 @foreach (var cartItem in Model.CartItems)
                 {
-                <tr id="cart-row-@cartItem.Product.ProductId">
-
-                    <td><a href="@Url.Action("Details", "Store", new { id = cartItem.Product.ProductId })">@cartItem.Product.ProductTitle</a></td>
-                    <td>Ilość: <span id="cart-item-count-@cartItem.Product.ProductId">@cartItem.Quantity</span></td>
+                <tr id="cart-row-@cartItem.OrderItem.OrderItemId">
+                    @* <td><a href="@Url.Action("DetailsGenre", "Store", new { id = cartItem.Genre.GenreId})">@cartItem.Genre.Name</a></td>*@
+                    <td><a href="@Url.Action("DetailsOrderItem", "Store", new { id = cartItem.OrderItem.OrderItemId })">@cartItem.OrderItem.GenreId</a></td>
+                    <td><a href="@Url.Action("DetailsOrderItem", "Store", new { id = cartItem.OrderItem.OrderItemId })">@cartItem.OrderItem.ProductId</a></td>
+                    <td><a href="@Url.Action("DetailsOrderItem", "Store", new { id = cartItem.OrderItem.OrderItemId })">@cartItem.OrderItem.Quantity</a></td>
+                    <td><a href="@Url.Action("DetailsOrderItem", "Store", new { id = cartItem.OrderItem.OrderItemId })">@cartItem.OrderItem.UnitPrice</a></td>
+                    <td>Ilość: <span id="cart-item-count-@cartItem.OrderItem.OrderItemId">@cartItem.Quantity</span></td>
                     <td>@String.Format("{0:0.##}", cartItem.TotalPrice) zł</td>
-                    <td><a class="removeProduct" data-id="@cartItem.Product.ProductId" href="#">Usuń</a></td>
+                    <td><a class="removeProduct" data-id="@cartItem.OrderItem.OrderItemId" href="#">Usuń</a></td>
                 </tr>
                 }
 
                 <tr id="cart-empty-message" @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="hidden" </text> }>
-                    <td>Dodaj zlecenie</td>
+                    <td>Brak dodanych produktów</td>
                 </tr>
 
             </table>
@@ -39,10 +42,10 @@
             </div>
 
             <div class="section-button-container">
-                <a class="button-link" href="">Dodaj ko lejne badania</a>
+                <p class="btn btn-default">@Html.ActionLink("Dodaj Zlecenie", "Create", "OrderItems")"</p>
                 @if (Model.TotalPrice > 0)
                 {
-                    <a class="button-link" id="cart-button-checkout" href="@Url.Action("Create", "Orders", new { viewname = "Create" })">Dodaj Klienta</a>
+                    <a class="btn btn-default" id="cart-button-checkout" href="@Url.Action("Create", "Orders", new { viewname = "Create" })">Dodaj Klienta</a>
                 }
             </div>
         </section>
@@ -61,7 +64,7 @@
             if (recordToDelete != '') {
 
                 // Send post request with AJAX
-                $.post("/Cart/RemoveFromCart", { "albumID": recordToDelete },
+                $.post("/Cart/RemoveFromCart", { "productID": recordToDelete },
                     function (response) {
                         // Success
                         if (response.RemovedItemCount == 0) {

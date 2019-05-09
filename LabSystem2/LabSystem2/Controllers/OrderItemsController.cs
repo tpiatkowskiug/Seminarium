@@ -43,8 +43,9 @@ namespace LabSystem2.Controllers
             List<Genre> GenreList = db.Genres.ToList();
             ViewBag.GenreList = new SelectList(GenreList, "GenreId", "Name");
             ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "NameAndSurname");
-            //ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle");
+            ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle");
             return View();
+            //return RedirectToAction("Index", "Cart");
         }
 
         // POST: OrderItems/Create

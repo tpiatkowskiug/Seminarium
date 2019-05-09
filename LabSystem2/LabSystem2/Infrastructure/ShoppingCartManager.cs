@@ -22,29 +22,27 @@ namespace LabSystem2.Infrastructure
             this.db = db;
         }
 
-        public void AddToCart(int productid)
+        public void AddToCart(int orderitemid)
         {
             var cart = this.GetCart();
 
-            var cartItem = cart.Find(c => c.Product.ProductId == productid);
+            //var cartItem = cart.Find(c => c.Product.ProductId == productid);
 
+            var cartItem = cart.Find(c => c.OrderItem.OrderItemId == orderitemid);
             if (cartItem != null)
-            {
                 cartItem.Quantity++;
-            }  
             else
             {
                 // Find product and add it to cart
-               // var genreToAdd = db.Genres.Where(a => a.GenreId == genreid).SingleOrDefault();
-                var productToAdd = db.Productus.Where(a => a.ProductId == productid).SingleOrDefault();
-                if (productToAdd != null)
+                var orderToAdd = db.OrderItems.Where(a => a.OrderItemId == orderitemid).SingleOrDefault();
+                //var productToAdd = db.Productus.Where(a => a.ProductId == orderitemid).SingleOrDefault();
+                if (orderToAdd != null)
                 {
                     var newCartItem = new CartItem()
-                        {
-                           // Genre = genreToAdd,
-                            Product = productToAdd,
+                        { 
+                            OrderItem = orderToAdd,
                             Quantity = 1,
-                            TotalPrice = productToAdd.PriceBrutto
+                            TotalPrice = orderToAdd.UnitPrice
                         };
 
                     cart.Add(newCartItem);
@@ -54,11 +52,11 @@ namespace LabSystem2.Infrastructure
             session.Set(CartSessionKey, cart);
         }
 
-        public int RemoveFromCart(int productid)
+        public int RemoveFromCart(int orderitemid)
         {
             var cart = this.GetCart();
 
-            var cartItem = cart.Find(c => c.Product.ProductId == productid);
+            var cartItem = cart.Find(c => c.OrderItem.OrderItemId == orderitemid);
 
             if (cartItem != null)
             {
@@ -95,7 +93,7 @@ namespace LabSystem2.Infrastructure
         public decimal GetCartTotalPrice()
         {
             var cart = this.GetCart();
-            return cart.Sum(c => (c.Quantity * c.Product.PriceBrutto));
+            return cart.Sum(c => (c.Quantity * c.OrderItem.UnitPrice));
         }
 
         public int GetCartItemsCount()
@@ -106,42 +104,42 @@ namespace LabSystem2.Infrastructure
             return count;
         }
 
-        public Order CreateOrder(Order newOrder, string userId)
-        {
-            var cart = this.GetCart();
+        //public Order CreateOrder(Order newOrder, string userId)
+        //{
+        //    var cart = this.GetCart();
 
-            newOrder.DateCreated = DateTime.Now;
-            //newOrder.UserId = userId;
+        //    newOrder.DateCreated = DateTime.Now;
+        //    //newOrder.UserId = userId;
 
-            this.db.Orders.Add(newOrder);
+        //    this.db.Orders.Add(newOrder);
 
-            if (newOrder.OrderItems == null)
-                newOrder.OrderItems = new List<OrderItem>();
+        //    if (newOrder.OrderItems == null)
+        //        newOrder.OrderItems = new List<OrderItem>();
 
-            decimal cartTotal = 0;
+        //    decimal cartTotal = 0;
 
-            foreach (var cartItem in cart)
-            {                
-                var newOrderItem = new OrderItem()
-                {
-                  //  GenreId = cartItem.Genre.GenreId,
-                    ProductId = cartItem.Product.ProductId,  
-                 //   MarkingSample = cartItem.MarkingSample,
-                    Quantity = cartItem.Quantity,
-                    UnitPrice = cartItem.Product.PriceBrutto
-                };
+        //    foreach (var cartItem in cart)
+        //    {                
+        //        var newOrderItem = new OrderItem()
+        //        {
+        //            GenreId = cartItem.OrderItem.GenreId,
+        //            ProductId = cartItem.OrderItem.ProductId,  
+        //            MarkingSample = cartItem.OrderItem.MarkingSample,
+        //            Quantity = cartItem.OrderItem.Quantity,
+        //            UnitPrice = cartItem.OrderItem.UnitPrice
+        //        };
 
-                cartTotal += (cartItem.Quantity * cartItem.Product.PriceBrutto);
+        //        cartTotal += (cartItem.OrderItem.Quantity * cartItem.OrderItem.UnitPrice);
 
-                newOrder.OrderItems.Add(newOrderItem);                
-            }
+        //        newOrder.OrderItems.Add(newOrderItem);                
+        //    }
 
-            newOrder.TotalPrice = cartTotal;
+        //    newOrder.TotalPrice = cartTotal;
 
-            this.db.SaveChanges();
+        //    this.db.SaveChanges();
 
-            return newOrder;
-        }
+        //    return newOrder;
+        //}
 
         public void EmptyCart()
         {
