@@ -110,6 +110,7 @@ namespace LabSystem2.Infrastructure
 
            // newOrder.DateCreated = DateTime.Now;
             newOrder.EmployeeId = userId;
+          //  newOrder.OrderId = orderId;
 
             this.db.Orders.Add(newOrder);
 
@@ -123,7 +124,10 @@ namespace LabSystem2.Infrastructure
                 var newOrderItem = new OrderItem()
                 {
                     OrderItemId = cartItem.OrderItem.OrderItemId,
+                    GenreId = cartItem.OrderItem.GenreId,
+                    ProductId = cartItem.OrderItem.ProductId,
                     Quantity = cartItem.OrderItem.Quantity,
+                    MarkingSample = cartItem.OrderItem.MarkingSample,
                     UnitPrice = cartItem.OrderItem.UnitPrice
                 };
 
