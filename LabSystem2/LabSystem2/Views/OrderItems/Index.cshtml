@@ -54,9 +54,10 @@
             @Html.DisplayFor(modelItem => item.UnitPrice)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderItemId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderItemId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderItemId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.OrderItemId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.OrderItemId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.OrderItemId })  |
+            <a href="@Url.Action("AddToCart", "Cart", new { id = item.OrderItemId })">Dodaj</a>
         </td>
     </tr>
 }
