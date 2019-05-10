@@ -112,18 +112,21 @@ namespace LabSystem2.Controllers
 
                 var order = new Order
                 {
-                    //FirstName = user.UserData.FirstName,
-                    //LastName = user.UserData.LastName,
-                    //Address = user.UserData.Address,
-                    //CodeAndCity = user.UserData.CodeAndCity,
-                    //Email = user.UserData.Email,
-                    //PhoneNumber = user.UserData.PhoneNumber
+                    NIP = user.UserData.NIP,
+                    NameAndSurname = user.UserData.NameAndSurname,
+                    City = user.UserData.City,
+                    PostalCode = user.UserData.PostalCode,
+                    Email = user.UserData.Email,
+                    PhonePreferred = user.UserData.PhonePreferred,
+                    Phone = user.UserData.Email,
+                    Comment = user.UserData.Comment,
+                    DateCreated = user.UserData.DateCreated
                 };
 
                 return View(order);
             }
             else
-                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("Checkout", "Cart") });
+                return RedirectToAction("Checkout", "Cart", new { returnUrl = Url.Action("Checkout", "Cart") });
         }
 
         [HttpPost]
@@ -134,15 +137,15 @@ namespace LabSystem2.Controllers
                // logger.Info("Checking out");
 
                 // Get user
-                var userId = User.Identity.GetUserId();
+                var userId = User.Identity.GetUserId();   //identyfiaktor pracownika wprowadzającego zlecenie
 
                 // Save Order
                 ShoppingCartManager shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
-                //var newOrder = shoppingCartManager.CreateOrder(orderdetails, userId);
+                var newOrder = shoppingCartManager.CreateOrder(orderdetails, userId);
 
                 // Update profile information
                 var user = await UserManager.FindByIdAsync(userId);
-                ////TryUpdateModel(user.UserData);
+                TryUpdateModel(user.UserData);
                 await UserManager.UpdateAsync(user);
 
                 // Empty cart
@@ -157,7 +160,7 @@ namespace LabSystem2.Controllers
                 //IMailService mailService = new HangFirePostalMailService();
                 //mailService.SendOrderConfirmationEmail(order);
 
-               /// this.mailService.SendOrderConfirmationEmail(order);
+                // this.mailService.SendOrderConfirmationEmail(order);
 
                 //string url = Url.Action("SendConfirmationEmail", "Cart", new { orderid = newOrder.OrderId, lastname = newOrder.LastName }, Request.Url.Scheme);
 

@@ -126,7 +126,9 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Dodaj zlecenie" class="btn btn-default" />
+                <a href="@Url.Action("AddToCart", "Cart", new { id = Model.OrderItemId })">
+                    <input type="submit" value="Dodaj zlecenie" class="btn btn-default" />
+                </a>
             </div>
         </div>
     </div>

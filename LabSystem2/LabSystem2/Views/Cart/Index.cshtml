@@ -17,14 +17,14 @@
         </div>
         <section class="content-section">
             <table class="table">
-                    <tr>
-                        <th>Przedmiot badań</th>
-                        <th>Zakres Badań</th>
-                        <th>Ilość prób</th>
-                        <th>Cena brutto</th>
-                        <th>Wartość brutto</th>
-                        <th></th>
-                    </tr>
+                <tr>
+                    <th>Przedmiot badań</th>
+                    <th>Zakres Badań</th>
+                    <th>Ilość prób</th>
+                    <th>Cena brutto</th>
+                    <th>Wartość brutto</th>
+                    <th></th>
+                </tr>
                 @foreach (var cartItem in Model.CartItems)
                 {
                     <tr id="cart-row-@cartItem.OrderItem.OrderItemId">
@@ -52,7 +52,7 @@
                 <p class="btn btn-default">@Html.ActionLink("Dodaj Zlecenie", "Create", "OrderItems")</p>
                 @if (Model.TotalPrice > 0)
                 {
-                    <a class="btn btn-default" id="cart-button-checkout" href="@Url.Action("Create", "Orders", new { viewname = "Create" })">Dodaj Klienta</a>
+                    <a class="button-link" id="cart-button-checkout" href="@Url.Action("Checkout", "Cart")">Dodaj Klienta</a>
                 }
             </div>
         </section>

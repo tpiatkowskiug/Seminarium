@@ -104,42 +104,40 @@ namespace LabSystem2.Infrastructure
             return count;
         }
 
-        //public Order CreateOrder(Order newOrder, string userId)
-        //{
-        //    var cart = this.GetCart();
+        public Order CreateOrder(Order newOrder, string userId)
+        {
+            var cart = this.GetCart();
 
-        //    newOrder.DateCreated = DateTime.Now;
-        //    //newOrder.UserId = userId;
+           // newOrder.DateCreated = DateTime.Now;
+            newOrder.EmployeeId = userId;
 
-        //    this.db.Orders.Add(newOrder);
+            this.db.Orders.Add(newOrder);
 
-        //    if (newOrder.OrderItems == null)
-        //        newOrder.OrderItems = new List<OrderItem>();
+            if (newOrder.OrderItems == null)
+                newOrder.OrderItems = new List<OrderItem>();
 
-        //    decimal cartTotal = 0;
+            decimal cartTotal = 0;
 
-        //    foreach (var cartItem in cart)
-        //    {                
-        //        var newOrderItem = new OrderItem()
-        //        {
-        //            GenreId = cartItem.OrderItem.GenreId,
-        //            ProductId = cartItem.OrderItem.ProductId,  
-        //            MarkingSample = cartItem.OrderItem.MarkingSample,
-        //            Quantity = cartItem.OrderItem.Quantity,
-        //            UnitPrice = cartItem.OrderItem.UnitPrice
-        //        };
+            foreach (var cartItem in cart)
+            {
+                var newOrderItem = new OrderItem()
+                {
+                    OrderItemId = cartItem.OrderItem.OrderItemId,
+                    Quantity = cartItem.OrderItem.Quantity,
+                    UnitPrice = cartItem.OrderItem.UnitPrice
+                };
 
-        //        cartTotal += (cartItem.OrderItem.Quantity * cartItem.OrderItem.UnitPrice);
+                cartTotal += (cartItem.Quantity * cartItem.OrderItem.UnitPrice);
 
-        //        newOrder.OrderItems.Add(newOrderItem);                
-        //    }
+                newOrder.OrderItems.Add(newOrderItem);
+            }
 
-        //    newOrder.TotalPrice = cartTotal;
+            newOrder.TotalPrice = cartTotal;
 
-        //    this.db.SaveChanges();
+            this.db.SaveChanges();
 
-        //    return newOrder;
-        //}
+            return newOrder;
+        }
 
         public void EmptyCart()
         {

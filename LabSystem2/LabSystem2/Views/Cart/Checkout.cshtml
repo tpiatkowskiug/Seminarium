@@ -2,13 +2,27 @@
 
 @{
     ViewBag.Title = "Checkout";
-    Layout = "~/Views/Shared/_StoreLayout.cshtml";
 }
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        .field-validation-error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .input-validation-error {
+            background: pink;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
 
 
 <div id="productlist-content">
-
-    @Html.Action("GenresMenu", "Store")
 
     <div id="productlist-rightsection">
         <div id="breadcrumb-section">
@@ -25,52 +39,94 @@
 
             @using (@Html.BeginForm("Checkout", "Cart"))
             {
-                <table id="checkout-address-table">
-                    <tr>
-                        <td>@Html.LabelFor(o => o.FirstName, "Imię:")</td>
-                        <td>@Html.TextBoxFor(o => o.FirstName)</td>
-                        <td>@Html.ValidationMessageFor(o => o.FirstName)</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(o => o.LastName, "Nazwisko")</td>
-                        <td>@Html.TextBoxFor(o => o.LastName)</td>
-                        <td>@Html.ValidationMessageFor(o => o.LastName)</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(o => o.Address, "Adres")</td>
-                        <td>@Html.TextBoxFor(o => o.Address)</td>
-                        <td>@Html.ValidationMessageFor(o => o.Address)</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(o => o.CodeAndCity, "Kod i miasto")</td>
-                        <td>@Html.TextBoxFor(o => o.CodeAndCity)</td>
-                        <td>@Html.ValidationMessageFor(o => o.CodeAndCity)</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(o => o.PhoneNumber, "Numer telefonu")</td>
-                        <td>@Html.TextBoxFor(o => o.PhoneNumber)</td>
-                        <td>@Html.ValidationMessageFor(o => o.PhoneNumber)</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(o => o.Email, "Adres e-mail")</td>
-                        <td>@Html.TextBoxFor(o => o.Email)</td>
-                        <td>@Html.ValidationMessageFor(o => o.Email)</td>
-                    </tr>
-                    <tr>
-                        <td><label for="comment">Uwagi</label></td>
-                        <td>
-                            <textarea cols="40" rows="3" name="comment">@Model.Comment</textarea>
-                        </td>
-                    </tr>
-                </table>
+                @Html.AntiForgeryToken()
 
-                @Html.ValidationSummary()
+                <div class="form-horizontal">
+                    <h4>Dodaj Zlecenie</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                <hr style="margin-bottom: 50px;" />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NIP, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NIP, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NIP, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-                <div class="section-button-container">
-                    <a class="button-link" href="">Wróć</a>
-                    <input type="submit" class="button-link" style="" value="Potwierdź" />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NameAndSurname, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NameAndSurname, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NameAndSurname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PhonePreferred, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.PhonePreferred, new { @id = "phonePrefferedCheckbox" })
+                                @Html.ValidationMessageFor(model => model.PhonePreferred, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="phonerow">
+                        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Phone, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @Html.ValidationSummary()
+
+                    <hr style="margin-bottom: 50px;" />
+
+                    <div class="section-button-container">
+                        <a class="button-link" href="">Wróć</a>
+                        <input type="submit" class="button-link" style="" value="Potwierdź" /> @*wysyła dane do akcji checkout kontrolera cart*@
+                    </div>
                 </div>
             }
 
@@ -79,10 +135,20 @@
     </div>
 </div>
 
-@section ScriptsBottom
-{
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-}
+    <script src="~/Scripts/RequiredIfTrue.js"></script>
 
+    <script type="text/javascript">
+        $('#phonerow').toggle($($(
+            '#phonePrefferedCheckbox')).is(':checked'));
+        $('#phonePrefferedCheckbox').click(function () {
+            $('#phonerow').toggle(this.checked);
+        });
+    </script>
+
+}

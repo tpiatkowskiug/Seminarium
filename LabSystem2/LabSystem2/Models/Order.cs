@@ -13,22 +13,20 @@ namespace LabSystem2.Models
         public int OrderId { get; set; }
 
         [Display(Name = "Wprowadził zlecenie")]
-        public int? EmployeeId { get; set; }
-        public virtual ApplicationUser User { get; set; }
+        public string EmployeeId { get; set; }
+        public virtual ApplicationUser UserEmployee { get; set; }
 
         [Display(Name = "NIP")]
         [RegularExpression(@"([0-9]{3})\-?[-\s]?([0-9]{3})\-?[-\s]?([0-9]{3})$",
             ErrorMessage = "Nip zapisany w formacie 000-000-000")]
         public string NIP { get; set; }
 
-        public string FirstName { get; set; }
-
         [Required(ErrorMessage = "Musisz wprowadzć nazwisko")]
         [StringLength(150)]
         [Display(Name = "Imię i Nazwisko zleceniodawcy")]
         public string NameAndSurname { get; set; }
 
-        [Required(ErrorMessage = "Wprowadź kod pocztowy i miasto")]
+        [Required(ErrorMessage = "Wprowadź ulice i miasto")]
         [StringLength(50)]
         [Display(Name = "Miasto/Wieś")]
         public string City { get; set; }
