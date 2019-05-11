@@ -1,0 +1,53 @@
+﻿@model IEnumerable<LabSystem2.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+</head>
+<body>
+    <h2>Baza Klientów</h2>
+    <div>
+        <form id="search-form" method="get" data-ajax="true" data-ajax-target="#personlist-section" data-ajax-update="#personlist-section">
+            <input id="SearchQuery" name="searchQuery" data-autocomplete-source="@Url.Action("PersonSuggestions")" placeholder="Wprowadź" />
+            <input type="submit" value="Filtruj" />
+        </form>
+
+        <br />
+
+        @Html.Partial("_PersonList")
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
+        <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+        <script>
+            var setupAutoComplete = function () {
+                var $input = $("#SearchQuery");
+
+                var options = {
+                    source: $input.attr("data-autocomplete-source"),
+                    select: function (evet, ui) {
+                        var $input = $("#SearchQuery")
+                        $input.val(ui.item.label);
+                        var $form = $input.parents("form:first");
+                        $form.submit();
+                    }
+                };
+                $input.autocomplete(options)
+            };
+            setupAutoComplete();
+        </script>
+
+    </div>
+</body>
+</html>

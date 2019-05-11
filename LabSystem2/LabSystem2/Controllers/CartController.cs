@@ -112,13 +112,6 @@ namespace LabSystem2.Controllers
 
                 var order = new Order
                 {
-                    NIP = user.UserData.NIP,
-                    NameAndSurname = user.UserData.NameAndSurname,
-                    City = user.UserData.City,
-                    PostalCode = user.UserData.PostalCode,
-                    Email = user.UserData.Email,
-                    PhonePreferred = user.UserData.PhonePreferred,
-                    Phone = user.UserData.Email,
                     Comment = user.UserData.Comment,
                     DateCreated = user.UserData.DateCreated
                 };

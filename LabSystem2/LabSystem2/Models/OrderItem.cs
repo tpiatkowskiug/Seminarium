@@ -13,7 +13,6 @@ namespace LabSystem2.Models
         /// składająca się na zamówienie
         /// </summary>
         public int OrderItemId { get; set; } 
-        public int OrderId { get; set; }
 
         [Display(Name = "Rodzaj badań")]
         public int? GenreId { get; set; }
@@ -32,6 +31,5 @@ namespace LabSystem2.Models
 
         public virtual Genre Genre { get; set; }
         public virtual Product Product { get; set; }
-        public virtual Order Order { get; set; }
     }
 }

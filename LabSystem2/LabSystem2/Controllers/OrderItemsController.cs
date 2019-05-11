@@ -17,7 +17,7 @@ namespace LabSystem2.Controllers
         // GET: OrderItems
         public ActionResult Index()
         {
-            var orderItems = db.OrderItems.Include(o => o.Genre).Include(o => o.Order).Include(o => o.Product);
+            var orderItems = db.OrderItems.Include(o => o.Genre).Include(o => o.Product);
             return View(orderItems.ToList());
         }
 
@@ -42,7 +42,6 @@ namespace LabSystem2.Controllers
 
             List<Genre> GenreList = db.Genres.ToList();
             ViewBag.GenreList = new SelectList(GenreList, "GenreId", "Name");
-            ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "NameAndSurname");
             ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle");
             return View();
             //return RedirectToAction("Index", "Cart");
@@ -53,7 +52,7 @@ namespace LabSystem2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderItemId,OrderId,GenreId,ProductId,Quantity,MarkingSample,UnitPrice")] OrderItem orderItem)
+        public ActionResult Create([Bind(Include = "OrderItemId,GenreId,ProductId,Quantity,MarkingSample,UnitPrice")] OrderItem orderItem)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +62,6 @@ namespace LabSystem2.Controllers
             }
 
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", orderItem.GenreId);
-            ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "NameAndSurname", orderItem.OrderId);
             ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle", orderItem.ProductId);
             return View(orderItem);
         }
@@ -99,7 +97,6 @@ namespace LabSystem2.Controllers
                 return HttpNotFound();
             }
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", orderItem.GenreId);
-            ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "NameAndSurname", orderItem.OrderId);
             ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle", orderItem.ProductId);
             return View(orderItem);
         }
@@ -109,7 +106,7 @@ namespace LabSystem2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderItemId,OrderId,GenreId,ProductId,Quantity,MarkingSample,UnitPrice")] OrderItem orderItem)
+        public ActionResult Edit([Bind(Include = "OrderItemId,GenreId,ProductId,Quantity,MarkingSample,UnitPrice")] OrderItem orderItem)
         {
             if (ModelState.IsValid)
             {
@@ -118,7 +115,6 @@ namespace LabSystem2.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", orderItem.GenreId);
-            ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "NameAndSurname", orderItem.OrderId);
             ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle", orderItem.ProductId);
             return View(orderItem);
         }

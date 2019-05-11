@@ -28,8 +28,8 @@ namespace LabSystem2.Infrastructure
 
             //var cartItem = cart.Find(c => c.Product.ProductId == productid);
 
-            var cartItem = cart.Find(c => c.OrderItem.OrderItemId == orderitemid);
-            if (cartItem != null)
+            var cartItem = cart.Find(c => c.OrderItem.OrderItemId == orderitemid); //szukamy czy dany produktów jest już dodany
+            if (cartItem != null)                                                  //jeśli jest zwiększamy liczbę
                 cartItem.Quantity++;
             else
             {
@@ -45,7 +45,7 @@ namespace LabSystem2.Infrastructure
                             TotalPrice = orderToAdd.UnitPrice
                         };
 
-                    cart.Add(newCartItem);
+                    cart.Add(newCartItem);  //dodajemy do listy sesji
                 }
             }
 
@@ -108,7 +108,7 @@ namespace LabSystem2.Infrastructure
         {
             var cart = this.GetCart();
 
-           // newOrder.DateCreated = DateTime.Now;
+            newOrder.DateCreated = DateTime.Now;
             newOrder.EmployeeId = userId;
           //  newOrder.OrderId = orderId;
 
