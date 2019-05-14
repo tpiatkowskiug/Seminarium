@@ -108,18 +108,21 @@ namespace LabSystem2.Controllers
         {
             if (Request.IsAuthenticated)
             {
+
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+                ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "NameAndSurname");
+                ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle");
 
                 var order = new Order
                 {
-                    Comment = user.UserData.Comment,
-                    DateCreated = user.UserData.DateCreated
+
                 };
 
                 return View(order);
             }
             else
-                return RedirectToAction("Checkout", "Cart", new { returnUrl = Url.Action("Checkout", "Cart") });
+                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("Checkout", "Cart") });
         }
 
         [HttpPost]
@@ -136,9 +139,12 @@ namespace LabSystem2.Controllers
                 ShoppingCartManager shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
                 var newOrder = shoppingCartManager.CreateOrder(orderdetails, userId);
 
-                // Update profile information
+
+                ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "NameAndSurname", orderdetails.CustomerId);
+                ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle", orderdetails.EmployeeId);
+
                 var user = await UserManager.FindByIdAsync(userId);
-                TryUpdateModel(user.UserData);
+                //TryUpdateModel(user.UserData);
                 await UserManager.UpdateAsync(user);
 
                 // Empty cart

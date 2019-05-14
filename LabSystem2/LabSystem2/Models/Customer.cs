@@ -48,6 +48,7 @@ namespace LabSystem2.Models
             ErrorMessage = "Numer musi być zapisany w formacie 000-000-000")]
         public string Phone { get; set; }
 
+        public virtual ICollection<Order> Orders { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

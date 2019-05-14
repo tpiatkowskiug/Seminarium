@@ -45,7 +45,7 @@ namespace LabSystem2.DAL
 
             var albums = new List<Product>
             {
-                new Product() { ProductId = 1, ProductTitle = "ph, P2O5, K2O, Mg", PriceNetto = 13, PriceBrutto = 20, CoverFileName = "1.png", IsBestseller = true, DateAdded = new DateTime(2019, 02, 1), GenreId = 1 },
+                new Product() { ProductId = 1, ProductTitle = "ph, P2O5, K2O, Mg", PriceNetto = 13, PriceBrutto = 13, CoverFileName = "1.png", IsBestseller = true, DateAdded = new DateTime(2019, 02, 1), GenreId = 1 },
                 new Product() { ProductId = 2, ProductTitle = "Cu, Fe, Mn, Zn, B", PriceNetto = 14, PriceBrutto = 50, CoverFileName = "2.png", IsBestseller = true, DateAdded = new DateTime(2019, 02, 1), GenreId = 1 },
                 new Product() { ProductId = 3, ProductTitle = "Oznaczenie Corg.", PriceNetto = 15, PriceBrutto = 30, CoverFileName = "3.png", IsBestseller = true, DateAdded = new DateTime(2019, 02, 1), GenreId = 1 },
                 new Product() { ProductId = 4, ProductTitle = "ph, P2O5, K2O, Mg", PriceNetto = 20, PriceBrutto = 40, CoverFileName = "4.png", IsBestseller = true, DateAdded = new DateTime(2016, 02, 1), GenreId = 2 },

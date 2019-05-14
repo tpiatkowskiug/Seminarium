@@ -16,6 +16,15 @@
 </head>
 <body>
     <h2>Baza Klientów</h2>
+
+    <div style="float:left;">
+        <p class="btn btn-default">
+            @Html.ActionLink("Dodaj zlecenie", "Create", "Orders")
+        </p>
+        <br />
+        <br />
+    </div>
+
     <div>
         <form id="search-form" method="get" data-ajax="true" data-ajax-target="#personlist-section" data-ajax-update="#personlist-section">
             <input id="SearchQuery" name="searchQuery" data-autocomplete-source="@Url.Action("PersonSuggestions")" placeholder="Wprowadź" />

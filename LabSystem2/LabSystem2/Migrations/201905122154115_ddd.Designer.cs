@@ -7,13 +7,13 @@ namespace LabSystem2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class UserEmployeRelation : IMigrationMetadata
+    public sealed partial class ddd : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UserEmployeRelation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ddd));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905101345135_UserEmployeRelation"; }
+            get { return "201905122154115_ddd"; }
         }
         
         string IMigrationMetadata.Source

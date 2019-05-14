@@ -12,9 +12,8 @@ namespace LabSystem2.Models
         [ScaffoldColumn(false)]
         public int OrderId { get; set; }
 
-        public int OrderItemId { get; set; }
-
-        public int CustomerId { get; set; }
+        [Display(Name = "Zleceniodawca")]
+        public int? CustomerId { get; set; }
 
         [Display(Name = "Wprowadził zlecenie")]
         public string EmployeeId { get; set; }
@@ -33,7 +32,6 @@ namespace LabSystem2.Models
         public List<OrderItem> OrderItems { get; set; }  //informacja o kolekcji elemtnów, które składają się 
                                                          //na zlecenie badań
         public virtual Employee Employee { get; set; }
-        public virtual OrderItem OrderItem { get; set; }
         public virtual Customer Customer { get; set; }
 
     }

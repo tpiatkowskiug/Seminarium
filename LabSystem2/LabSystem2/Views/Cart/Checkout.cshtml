@@ -1,7 +1,7 @@
 ﻿@model LabSystem2.Models.Order
 
 @{
-    ViewBag.Title = "Checkout";
+    ViewBag.Title = "Zlecenie cz.2";
 }
 
 <head>
@@ -22,76 +22,65 @@
 <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
 
 
-<div id="productlist-content">
+@{ Html.EnableClientValidation(); }
 
-    <div id="productlist-rightsection">
-        <div id="breadcrumb-section">
-            <img src="../Content/Images/home-small.png" />
-            @Html.MvcSiteMap().SiteMapPath()
+@using (@Html.BeginForm("Checkout", "Cart"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Dodaj Zlecenie</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerId, "CustomerId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CustomerId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <section class="content-section">
-            <div class="section-header" style="margin-bottom: 0px;">
-                <h1>Uzupełnij dane zamówienia</h1>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
             </div>
+        </div>
 
-            @{ Html.EnableClientValidation(); }
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-            @using (@Html.BeginForm("Checkout", "Cart"))
-            {
-                @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrderState, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.OrderState, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OrderState, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-                <div class="form-horizontal">
-                    <h4>Dodaj Zlecenie</h4>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+     
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+        @Html.ValidationSummary()
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+        <hr style="margin-bottom: 50px;" />
 
-                    @Html.ValidationSummary()
-
-                    <hr style="margin-bottom: 50px;" />
-
-                    <div class="section-button-container">
-                        <a class="button-link" href="">Wróć</a>
-                        <input type="submit" class="button-link" style="" value="Potwierdź" /> @*wysyła dane do akcji checkout kontrolera cart*@
-                    </div>
-                </div>
-            }
-
-        </section>
-
+        <div class="section-button-container">
+            <a class="button-link" href="">Wróć</a>
+            <input type="submit" class="button-link" style="" value="Potwierdź" /> @*wysyła dane do akcji checkout kontrolera cart*@
+        </div>
     </div>
-</div>
+}
+
 
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script src="~/Scripts/RequiredIfTrue.js"></script>
-
-    <script type="text/javascript">
-        $('#phonerow').toggle($($(
-            '#phonePrefferedCheckbox')).is(':checked'));
-        $('#phonePrefferedCheckbox').click(function () {
-            $('#phonerow').toggle(this.checked);
-        });
-    </script>
 
 }

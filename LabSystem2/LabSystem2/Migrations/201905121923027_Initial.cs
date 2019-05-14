@@ -3,10 +3,26 @@ namespace LabSystem2.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Customers",
+                c => new
+                    {
+                        CustomerId = c.Int(nullable: false, identity: true),
+                        NIP = c.String(),
+                        NameAndSurname = c.String(nullable: false, maxLength: 150),
+                        Address = c.String(),
+                        PostalCode = c.String(),
+                        City = c.String(nullable: false, maxLength: 50),
+                        Email = c.String(nullable: false),
+                        PhonePreferred = c.Boolean(nullable: false),
+                        Phone = c.String(),
+                    })
+                .PrimaryKey(t => t.CustomerId);
+            
             CreateTable(
                 "dbo.Employees",
                 c => new
@@ -24,26 +40,22 @@ namespace LabSystem2.Migrations
                 c => new
                     {
                         OrderId = c.Int(nullable: false, identity: true),
-                        EmployeeId = c.Int(),
-                        NIP = c.String(),
-                        FirstName = c.String(nullable: false, maxLength: 100),
-                        NameAndSurname = c.String(nullable: false, maxLength: 150),
-                        City = c.String(nullable: false, maxLength: 50),
-                        PostalCode = c.String(),
-                        Email = c.String(nullable: false),
-                        PhonePreferred = c.Boolean(nullable: false),
-                        Phone = c.String(),
-                        Comment = c.String(),
+                        CustomerId = c.Int(nullable: false),
+                        EmployeeId = c.String(),
                         DateCreated = c.DateTime(nullable: false),
+                        Comment = c.String(),
                         OrderState = c.Int(nullable: false),
                         TotalPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        User_Id = c.String(maxLength: 128),
+                        Employee_EmployeeId = c.Int(),
+                        UserEmployee_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.OrderId)
-                .ForeignKey("dbo.Employees", t => t.EmployeeId)
-                .ForeignKey("dbo.AspNetUsers", t => t.User_Id)
-                .Index(t => t.EmployeeId)
-                .Index(t => t.User_Id);
+                .ForeignKey("dbo.Customers", t => t.CustomerId, cascadeDelete: true)
+                .ForeignKey("dbo.Employees", t => t.Employee_EmployeeId)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserEmployee_Id)
+                .Index(t => t.CustomerId)
+                .Index(t => t.Employee_EmployeeId)
+                .Index(t => t.UserEmployee_Id);
             
             CreateTable(
                 "dbo.OrderItems",
@@ -100,6 +112,8 @@ namespace LabSystem2.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        UserData_Comment = c.String(),
+                        UserData_DateCreated = c.DateTime(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -198,15 +212,16 @@ namespace LabSystem2.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.ResultsOfOrderGRs", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.ResultsOfOrderGRs", "EmployeeId", "dbo.Employees");
-            DropForeignKey("dbo.Orders", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Orders", "UserEmployee_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.OrderItems", "ProductId", "dbo.Products");
             DropForeignKey("dbo.OrderItems", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.OrderItems", "GenreId", "dbo.Genres");
             DropForeignKey("dbo.Products", "GenreId", "dbo.Genres");
-            DropForeignKey("dbo.Orders", "EmployeeId", "dbo.Employees");
+            DropForeignKey("dbo.Orders", "Employee_EmployeeId", "dbo.Employees");
+            DropForeignKey("dbo.Orders", "CustomerId", "dbo.Customers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.ResultsOfOrderGRs", new[] { "EmployeeId" });
             DropIndex("dbo.ResultsOfOrderGRs", new[] { "OrderId" });
@@ -219,8 +234,9 @@ namespace LabSystem2.Migrations
             DropIndex("dbo.OrderItems", new[] { "ProductId" });
             DropIndex("dbo.OrderItems", new[] { "GenreId" });
             DropIndex("dbo.OrderItems", new[] { "OrderId" });
-            DropIndex("dbo.Orders", new[] { "User_Id" });
-            DropIndex("dbo.Orders", new[] { "EmployeeId" });
+            DropIndex("dbo.Orders", new[] { "UserEmployee_Id" });
+            DropIndex("dbo.Orders", new[] { "Employee_EmployeeId" });
+            DropIndex("dbo.Orders", new[] { "CustomerId" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.ResultsOfOrderGRs");
             DropTable("dbo.AspNetUserRoles");
@@ -232,6 +248,7 @@ namespace LabSystem2.Migrations
             DropTable("dbo.OrderItems");
             DropTable("dbo.Orders");
             DropTable("dbo.Employees");
+            DropTable("dbo.Customers");
         }
     }
 }

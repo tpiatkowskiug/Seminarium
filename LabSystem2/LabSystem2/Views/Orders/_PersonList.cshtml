@@ -15,19 +15,10 @@
                 @Html.DisplayNameFor(model => model.OrderId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee.NameAndSurname)
+                @Html.DisplayNameFor(model => model.Customer.NameAndSurname)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OrderItem.Genre.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderItem.Product.ProductTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderItem.Product.PriceBrutto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderItem.UnitPrice)
+                @Html.DisplayNameFor(model => model.OrderItems)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Customer.Email)
@@ -54,19 +45,10 @@
                     @Html.DisplayFor(modelItem => item.OrderId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Employee.NameAndSurname)
+                    @Html.DisplayFor(modelItem => item.Customer.NameAndSurname)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.OrderItem.Genre.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderItem.Product.ProductTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderItem.Product.PriceBrutto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderItem.UnitPrice)
+                    @Html.DisplayFor(modelItem => item.OrderItems)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Customer.Email)

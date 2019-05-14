@@ -22,27 +22,25 @@ namespace LabSystem2.Infrastructure
             this.db = db;
         }
 
-        public void AddToCart(int orderitemid)
+        public void AddToCart(int productid)
         {
             var cart = this.GetCart();
 
-            //var cartItem = cart.Find(c => c.Product.ProductId == productid);
-
-            var cartItem = cart.Find(c => c.OrderItem.OrderItemId == orderitemid); //szukamy czy dany produktów jest już dodany
+            var cartItem = cart.Find(c => c.Product.ProductId == productid); //szukamy czy dany produktów jest już dodany
             if (cartItem != null)                                                  //jeśli jest zwiększamy liczbę
                 cartItem.Quantity++;
             else
             {
                 // Find product and add it to cart
-                var orderToAdd = db.OrderItems.Where(a => a.OrderItemId == orderitemid).SingleOrDefault();
+                var productToAdd = db.Productus.Where(a => a.ProductId == productid).SingleOrDefault();
                 //var productToAdd = db.Productus.Where(a => a.ProductId == orderitemid).SingleOrDefault();
-                if (orderToAdd != null)
+                if (productToAdd != null)
                 {
                     var newCartItem = new CartItem()
                         { 
-                            OrderItem = orderToAdd,
+                            Product = productToAdd,
                             Quantity = 1,
-                            TotalPrice = orderToAdd.UnitPrice
+                            TotalPrice = productToAdd.PriceBrutto
                         };
 
                     cart.Add(newCartItem);  //dodajemy do listy sesji
@@ -52,11 +50,11 @@ namespace LabSystem2.Infrastructure
             session.Set(CartSessionKey, cart);
         }
 
-        public int RemoveFromCart(int orderitemid)
+        public int RemoveFromCart(int productid)
         {
             var cart = this.GetCart();
 
-            var cartItem = cart.Find(c => c.OrderItem.OrderItemId == orderitemid);
+            var cartItem = cart.Find(c => c.Product.ProductId == productid);
 
             if (cartItem != null)
             {
@@ -93,7 +91,7 @@ namespace LabSystem2.Infrastructure
         public decimal GetCartTotalPrice()
         {
             var cart = this.GetCart();
-            return cart.Sum(c => (c.Quantity * c.OrderItem.UnitPrice));
+            return cart.Sum(c => (c.Quantity * c.Product.PriceBrutto));
         }
 
         public int GetCartItemsCount()
@@ -108,7 +106,7 @@ namespace LabSystem2.Infrastructure
         {
             var cart = this.GetCart();
 
-            newOrder.DateCreated = DateTime.Now;
+           // newOrder.DateCreated = DateTime.Now;
             newOrder.EmployeeId = userId;
           //  newOrder.OrderId = orderId;
 
@@ -123,15 +121,12 @@ namespace LabSystem2.Infrastructure
             {
                 var newOrderItem = new OrderItem()
                 {
-                    OrderItemId = cartItem.OrderItem.OrderItemId,
-                    GenreId = cartItem.OrderItem.GenreId,
-                    ProductId = cartItem.OrderItem.ProductId,
-                    Quantity = cartItem.OrderItem.Quantity,
-                    MarkingSample = cartItem.OrderItem.MarkingSample,
-                    UnitPrice = cartItem.OrderItem.UnitPrice
+                    ProductId = cartItem.Product.ProductId,
+                    Quantity = cartItem.Quantity,
+                    UnitPrice = cartItem.Product.PriceBrutto
                 };
 
-                cartTotal += (cartItem.Quantity * cartItem.OrderItem.UnitPrice);
+                cartTotal += (cartItem.Quantity * cartItem.Product.PriceBrutto);
 
                 newOrder.OrderItems.Add(newOrderItem);
             }

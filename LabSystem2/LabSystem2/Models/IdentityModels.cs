@@ -12,7 +12,7 @@ namespace LabSystem2.Models
     public class ApplicationUser : IdentityUser
     {
         public virtual ICollection<Order> Orders { get; set; }
-        public UserData UserData { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Element authenticationType musi pasować do elementu zdefiniowanego w elemencie CookieAuthenticationOptions.AuthenticationType

@@ -7,13 +7,13 @@ namespace LabSystem2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class changeUserDate : IMigrationMetadata
+    public sealed partial class customer : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changeUserDate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(customer));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905101931367_changeUserDate"; }
+            get { return "201905140649103_customer"; }
         }
         
         string IMigrationMetadata.Source

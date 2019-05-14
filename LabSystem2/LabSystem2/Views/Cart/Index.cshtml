@@ -3,8 +3,9 @@
 
 
 @{
-    ViewBag.Title = "Zlecenie badań";
+    ViewBag.Title = "Zlecenie cz.1";
 }
+
 
 
 
@@ -15,28 +16,20 @@
             <img src="../Content/Images/home-small.png" />
             @Html.MvcSiteMap().SiteMapPath()
         </div>
+
         <section class="content-section">
             <table class="table">
-                <tr>
-                    <th>Przedmiot badań</th>
-                    <th>Zakres Badań</th>
-                    <th>Ilość prób</th>
-                    <th>Cena brutto</th>
-                    <th>Wartość brutto</th>
-                    <th></th>
-                </tr>
                 @foreach (var cartItem in Model.CartItems)
                 {
-                    <tr id="cart-row-@cartItem.OrderItem.OrderItemId">
-                        <td><a href="@Url.Action("Details", "OrderItems", new { id = cartItem.OrderItem.OrderItemId })">@cartItem.OrderItem.Genre.Name</a></td>
-                        <td><a href="@Url.Action("Details", "OrderItems", new { id = cartItem.OrderItem.OrderItemId })">@cartItem.OrderItem.Product.ProductTitle</a></td>
-                        <td><a href="@Url.Action("Details", "OrderItems", new { id = cartItem.OrderItem.OrderItemId })">@cartItem.OrderItem.Quantity</a></td>
-                        <td><a href="@Url.Action("Details", "OrderItems", new { id = cartItem.OrderItem.OrderItemId })">@cartItem.OrderItem.Product.PriceBrutto</a></td>
+                    <tr id="cart-row-@cartItem.Product.ProductId">
+                        <td><a href="@Url.Action("Details", "Products", new { id = cartItem.Product.ProductId })">@cartItem.Product.ProductTitle</a></td>
+                        <td><a href="@Url.Action("Details", "OrderItems", new { id = cartItem.Product.ProductId })">@cartItem.Product.PriceBrutto</a></td>
                         <td>@String.Format("{0:0.##}", cartItem.TotalPrice) zł</td>
-                        <td><span id="cart-item-count-@cartItem.OrderItem.OrderItemId"></span></td>
-                        <td><a class="removeProduct" data-id="@cartItem.OrderItem.OrderItemId" href="#">Usuń</a></td>
-                        <td><a href="@Url.Action("Edit", "OrderItems", new { id = cartItem.OrderItem.OrderItemId })">Edytuj</a></td>
+                        <td><span id="cart-item-count-@cartItem.Product.ProductId"></span></td>
+                        <td><a class="removeProduct" data-id="@cartItem.Product.ProductId" href="#">Usuń</a></td>
+
                     </tr>
+
                 }
 
                 <tr id="cart-empty-message" @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="hidden" </text> }>

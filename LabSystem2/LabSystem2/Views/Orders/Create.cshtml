@@ -48,16 +48,6 @@
         </div>
     </div>
 
-    @Html.Partial("_CartOrderItems")
-
-    <div style="float:left;">
-        <p class="btn btn-default">
-            @Html.ActionLink("Dodaj przedmiot badań", "Create", "OrderItems")
-        </p>
-        <br />
-        <br />
-    </div>
-
     <div class="form-group">
         @Html.LabelFor(model => model.TotalPrice, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -102,5 +92,6 @@
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/jquery-3.3.1.js"></script>
 
 }

@@ -17,7 +17,7 @@ namespace LabSystem2.Controllers
         // GET: Customers
         public ActionResult Index(string searchQuery = null)
         {
-            var customers = db.Customers.Include(c => c.CustomerId);
+          //  var customers = db.Customers.Include(c => c.Orders);
 
             IEnumerable<Customer> personList;
 
@@ -60,7 +60,7 @@ namespace LabSystem2.Controllers
         }
 
         // GET: Customers/Create
-        [Authorize(Roles = "Employee")]
+        //[Authorize(Roles = "Employee")]
         public ActionResult Create()
         {
             return View();
@@ -70,7 +70,7 @@ namespace LabSystem2.Controllers
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Employee")]
+      //  [Authorize(Roles = "Employee")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CustomerId,NIP,NameAndSurname,Address,PostalCode,City,Email,PhonePreferred,Phone")] Customer customer)
         {
@@ -85,7 +85,7 @@ namespace LabSystem2.Controllers
         }
 
         // GET: Customers/Edit/5
-        [Authorize(Roles = "Employee")]
+       // [Authorize(Roles = "Employee")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace LabSystem2.Controllers
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Employee")]
+       // [Authorize(Roles = "Employee")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CustomerId,NIP,NameAndSurname,Address,PostalCode,City,Email,PhonePreferred,Phone")] Customer customer)
         {
@@ -118,7 +118,7 @@ namespace LabSystem2.Controllers
         }
 
         // GET: Customers/Delete/5
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -135,7 +135,7 @@ namespace LabSystem2.Controllers
 
         // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

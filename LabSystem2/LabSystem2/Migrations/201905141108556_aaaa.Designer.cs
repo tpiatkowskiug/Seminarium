@@ -7,13 +7,13 @@ namespace LabSystem2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class sesja : IMigrationMetadata
+    public sealed partial class aaaa : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(sesja));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(aaaa));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905090755530_sesja"; }
+            get { return "201905141108556_aaaa"; }
         }
         
         string IMigrationMetadata.Source

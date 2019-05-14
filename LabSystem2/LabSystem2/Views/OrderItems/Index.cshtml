@@ -5,8 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
 <p>
     @Html.ActionLink("Dodaj zlecenie", "Create")
 </p>
@@ -57,7 +55,7 @@
             @Html.ActionLink("Edit", "Edit", new { id = item.OrderItemId }) |
             @Html.ActionLink("Details", "Details", new { id = item.OrderItemId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.OrderItemId })  |
-            <a href="@Url.Action("AddToCart", "Cart", new { id = item.OrderItemId })">Dodaj</a>
+            <a href="@Url.Action("AddToCart", "Cart", new { id = item.OrderItemId })">Dodaj do zlecenia</a>
         </td>
     </tr>
 }

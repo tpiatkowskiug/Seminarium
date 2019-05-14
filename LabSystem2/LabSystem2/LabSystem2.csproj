@@ -219,25 +219,21 @@
     <Compile Include="Infrastructure\SessionManager.cs" />
     <Compile Include="Infrastructure\ShoppingCartManager.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
-    <Compile Include="Migrations\201905052204187_InitialCreate.cs" />
-    <Compile Include="Migrations\201905052204187_InitialCreate.Designer.cs">
-      <DependentUpon>201905052204187_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201905121923027_Initial.cs" />
+    <Compile Include="Migrations\201905121923027_Initial.Designer.cs">
+      <DependentUpon>201905121923027_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905090755530_sesja.cs" />
-    <Compile Include="Migrations\201905090755530_sesja.Designer.cs">
-      <DependentUpon>201905090755530_sesja.cs</DependentUpon>
+    <Compile Include="Migrations\201905122154115_ddd.cs" />
+    <Compile Include="Migrations\201905122154115_ddd.Designer.cs">
+      <DependentUpon>201905122154115_ddd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905101248451_migracja3.cs" />
-    <Compile Include="Migrations\201905101248451_migracja3.Designer.cs">
-      <DependentUpon>201905101248451_migracja3.cs</DependentUpon>
+    <Compile Include="Migrations\201905140649103_customer.cs" />
+    <Compile Include="Migrations\201905140649103_customer.Designer.cs">
+      <DependentUpon>201905140649103_customer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905101345135_UserEmployeRelation.cs" />
-    <Compile Include="Migrations\201905101345135_UserEmployeRelation.Designer.cs">
-      <DependentUpon>201905101345135_UserEmployeRelation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905101931367_changeUserDate.cs" />
-    <Compile Include="Migrations\201905101931367_changeUserDate.Designer.cs">
-      <DependentUpon>201905101931367_changeUserDate.cs</DependentUpon>
+    <Compile Include="Migrations\201905141108556_aaaa.cs" />
+    <Compile Include="Migrations\201905141108556_aaaa.Designer.cs">
+      <DependentUpon>201905141108556_aaaa.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -251,7 +247,6 @@
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ResultsOfOrderGR.cs" />
-    <Compile Include="Models\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CartRemoveViewModel.cs" />
@@ -466,10 +461,6 @@
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DataTimePicker.cshtml" />
-    <Content Include="Views\Cart\Checkout.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Cart\OrderConfirmation.cshtml" />
-    <Content Include="Views\Cart\UserData.cshtml" />
     <Content Include="Views\Orders\Create.cshtml" />
     <Content Include="Views\Orders\Delete.cshtml" />
     <Content Include="Views\Orders\Details.cshtml" />
@@ -487,8 +478,9 @@
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\_PersonList.cshtml" />
-    <Content Include="Views\Orders\_CartOrderItems.cshtml" />
-    <Content Include="Views\Orders\OrderConfirmation.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\OrderConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -507,20 +499,17 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905052204187_InitialCreate.resx">
-      <DependentUpon>201905052204187_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905121923027_Initial.resx">
+      <DependentUpon>201905121923027_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905090755530_sesja.resx">
-      <DependentUpon>201905090755530_sesja.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905122154115_ddd.resx">
+      <DependentUpon>201905122154115_ddd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905101248451_migracja3.resx">
-      <DependentUpon>201905101248451_migracja3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905140649103_customer.resx">
+      <DependentUpon>201905140649103_customer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905101345135_UserEmployeRelation.resx">
-      <DependentUpon>201905101345135_UserEmployeRelation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905101931367_changeUserDate.resx">
-      <DependentUpon>201905101931367_changeUserDate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905141108556_aaaa.resx">
+      <DependentUpon>201905141108556_aaaa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
