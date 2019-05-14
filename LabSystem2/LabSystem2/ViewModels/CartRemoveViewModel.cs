@@ -7,6 +7,12 @@ namespace LabSystem2.ViewModels
 {
     public class CartRemoveViewModel
     {
+        public string Message
+        {
+            get;
+            set;
+        }
+
         public decimal CartTotal
         {
             get;

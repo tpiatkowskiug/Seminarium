@@ -103,6 +103,50 @@ namespace LabSystem2.Controllers
             return Json(result);
         }
 
+        [HttpPost]
+        public ActionResult UpdateCartCount(int id, int cartCount)
+        {
+            CartRemoveViewModel results = null;
+            try
+            {
+                ShoppingCartManager shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
+
+                int itemCount = shoppingCartManager.UpdateCartCount(id, cartCount);
+                int cartItemsCount = shoppingCartManager.GetCartItemsCount();
+                decimal cartTotal = shoppingCartManager.GetCartTotalPrice();
+
+                // Get the name of the album to display confirmation 
+                string productName = db.Productus
+                    .Single(item => item.ProductId == id).ProductTitle;
+
+                //Prepare messages
+                string msg = "The quantity of " + Server.HtmlEncode(productName) +
+                        " has been refreshed in your shopping cart.";
+                if (itemCount == 0) msg = Server.HtmlEncode(productName) +
+                        " has been removed from your shopping cart.";
+                // Display the confirmation message 
+                results = new CartRemoveViewModel
+                {
+                    Message = msg,
+                    RemoveItemId = id,
+                    RemovedItemCount = itemCount,
+                    CartTotal = cartTotal,
+                    CartItemsCount = cartItemsCount
+                };
+            }
+            catch
+            {
+                results = new CartRemoveViewModel
+                {
+                    Message = "Error occurred or invalid input...",
+                    CartTotal = -1,
+                    CartItemsCount = -1,
+                    RemovedItemCount = -1,
+                    RemoveItemId = id
+                };
+            }
+            return Json(results);
+        }
 
         public async Task<ActionResult> Checkout()
         {

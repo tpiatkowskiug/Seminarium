@@ -22,6 +22,7 @@ namespace LabSystem2.Infrastructure
             this.db = db;
         }
 
+
         public void AddToCart(int productid)
         {
             var cart = this.GetCart();
@@ -33,11 +34,12 @@ namespace LabSystem2.Infrastructure
             {
                 // Find product and add it to cart
                 var productToAdd = db.Productus.Where(a => a.ProductId == productid).SingleOrDefault();
-                //var productToAdd = db.Productus.Where(a => a.ProductId == orderitemid).SingleOrDefault();
+
                 if (productToAdd != null)
                 {
                     var newCartItem = new CartItem()
-                        { 
+                        {
+                          //  Genre = genretToAdd,
                             Product = productToAdd,
                             Quantity = 1,
                             TotalPrice = productToAdd.PriceBrutto
@@ -58,12 +60,12 @@ namespace LabSystem2.Infrastructure
 
             if (cartItem != null)
             {
-                if (cartItem.Quantity > 1)
-                {
-                    cartItem.Quantity--;
-                    return cartItem.Quantity;
-                }
-                else
+                //if (cartItem.Quantity > 1)
+                //{
+                //    cartItem.Quantity--;
+                //    return cartItem.Quantity;
+                //}
+                //else
                     cart.Remove(cartItem);
             }
 
@@ -71,6 +73,29 @@ namespace LabSystem2.Infrastructure
             return 0;
         }
 
+        public int UpdateCartCount(int id, int cartCount)
+        {
+            var cart = this.GetCart();
+
+            var cartItem = cart.Find(c => c.Product.ProductId == id);
+
+            int itemCount = 0;
+
+            if (cartItem != null)
+            {
+                if (cartCount > 0)
+                {
+                    cartItem.Quantity = cartCount;
+                    itemCount = cartItem.Quantity;
+                }
+                else
+                {
+                    cart.Remove(cartItem);
+                }
+       
+            }
+            return 0;
+        }
 
         public List<CartItem> GetCart()
         {
