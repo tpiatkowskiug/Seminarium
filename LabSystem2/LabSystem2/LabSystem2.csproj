@@ -270,18 +270,13 @@
     <Content Include="Content\Covers\8.png" />
     <Content Include="Content\Covers\9.png" />
     <Content Include="Content\Covers\aa9760ef-b6dc-4242-a788-2573cfc4732d.jpg" />
-    <Content Include="Content\Genre-icons\alternative.png" />
-    <Content Include="Content\Genre-icons\classics.png" />
-    <Content Include="Content\Genre-icons\electro.png" />
-    <Content Include="Content\Genre-icons\hiphop.png" />
-    <Content Include="Content\Genre-icons\jazz.png" />
-    <Content Include="Content\Genre-icons\metal.png" />
-    <Content Include="Content\Genre-icons\other.png" />
+    <Content Include="Content\Genre-icons\naw.jpg" />
+    <Content Include="Content\Genre-icons\no.jpg" />
+    <Content Include="Content\Genre-icons\ogr.jpg" />
     <Content Include="Content\Genre-icons\pop.png" />
     <Content Include="Content\Genre-icons\promos.png" />
-    <Content Include="Content\Genre-icons\reagge.png" />
-    <Content Include="Content\Genre-icons\rnb.png" />
-    <Content Include="Content\Genre-icons\rock.png" />
+    <Content Include="Content\Genre-icons\rol.jpg" />
+    <Content Include="Content\Genre-icons\sad.jpg" />
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\ajax-loader.png" />
     <Content Include="Content\Images\baner-main.png" />
@@ -481,6 +476,8 @@
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\OrderConfirmation.cshtml" />
+    <Content Include="Views\Manage\OrdersList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -68,6 +68,7 @@ namespace LabSystem2.Controllers
         }
 
         // GET: Orders/Create
+        [Authorize(Roles = "Employee")]
         public ActionResult Create()
         {
             ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname");
@@ -79,6 +80,7 @@ namespace LabSystem2.Controllers
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "OrderId,CustomerId,EmployeeId,DateCreated,Comment,OrderState,TotalPrice")] Order order)
         {
@@ -95,6 +97,7 @@ namespace LabSystem2.Controllers
         }
 
         // GET: Orders/Edit/5
+        [Authorize(Roles = "Employee")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -115,6 +118,7 @@ namespace LabSystem2.Controllers
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OrderId,CustomerId,EmployeeId,DateCreated,Comment,OrderState,TotalPrice")] Order order)
         {
@@ -130,6 +134,7 @@ namespace LabSystem2.Controllers
         }
 
         // GET: Orders/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

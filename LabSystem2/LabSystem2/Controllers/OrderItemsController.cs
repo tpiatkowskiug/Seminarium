@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using LabSystem2.Infrastructure;
 using LabSystem2.Models;
 
 namespace LabSystem2.Controllers
@@ -65,6 +66,7 @@ namespace LabSystem2.Controllers
             ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle", orderItem.ProductId);
             return View(orderItem);
         }
+
 
         [HttpPost]
         public JsonResult GetProductPrice(int ProductId)

@@ -37,6 +37,7 @@ namespace LabSystem2.Controllers
         }
 
         // GET: Products/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name");
@@ -47,6 +48,7 @@ namespace LabSystem2.Controllers
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductId,GenreId,ProductTitle,DateAdded,Description,PriceNetto,PriceBrutto,IsHidden,IsBestseller,CoverFileName")] Product product)
         {
@@ -62,6 +64,7 @@ namespace LabSystem2.Controllers
         }
 
         // GET: Products/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,6 +84,7 @@ namespace LabSystem2.Controllers
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProductId,GenreId,ProductTitle,DateAdded,Description,PriceNetto,PriceBrutto,IsHidden,IsBestseller,CoverFileName")] Product product)
         {
@@ -95,6 +99,7 @@ namespace LabSystem2.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,6 +116,7 @@ namespace LabSystem2.Controllers
 
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

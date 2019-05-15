@@ -1,6 +1,9 @@
 namespace LabSystem2.Migrations
 {
     using LabSystem2.DAL;
+    using LabSystem2.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -16,10 +19,26 @@ namespace LabSystem2.Migrations
         protected override void Seed(LabSystem2.Models.ApplicationDbContext context)
         {
             StoreInitializer.SeedStoreData(context);
-            //  This method will be called after migrating to the latest version.
+            StoreInitializer.InitializeIdentityForEF(context);
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+
+            context.Roles.AddOrUpdate(r => r.Name,
+                new IdentityRole { Name = "Employee" },
+                new IdentityRole { Name = "Customer" },
+                new IdentityRole { Name = "Lab" }
+                );
+
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            UserManager.AddToRole("0f89670c-a738-4283-858a-d7ac2919143b", "Employee"); //piatkowski
+            UserManager.AddToRole("3ade4ae3-6aae-48c2-a295-2f783ebd19b3", "Employee"); //smela
+            UserManager.AddToRole("e927760d-1f10-4008-82fd-55f337cab8b7", "Employee"); //zaluski
+            UserManager.AddToRole("c85cad58-aa35-45fe-a067-cd98cd404870", "Lab");
         }
+
+        //  This method will be called after migrating to the latest version.
+
+        //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+        //  to avoid creating duplicate seed data.
     }
+    
 }

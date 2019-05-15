@@ -16,7 +16,8 @@ namespace LabSystem2.Models
         [Range(0, 100, ErrorMessage = "Quantity must be between 0 and 100")]
         [DisplayName("Quantity")]
         public int Quantity { get; set; }
-        public decimal TotalPrice { get; set; }
 
+        public decimal UnitPrice { get; set; }
+        public decimal TotalPrice { get; set; }
     }
 }

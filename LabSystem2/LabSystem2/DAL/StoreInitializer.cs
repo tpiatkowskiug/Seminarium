@@ -30,13 +30,13 @@ namespace LabSystem2.DAL
         {
             var genres = new List<Genre>
             {
-                new Genre() { GenreId = 1, Name = "Badania Rolnicze", IconFilename = "rock.png" },
-                new Genre() { GenreId = 2, Name = "Badania Ogrodnicze", IconFilename = "metal.png" },
-                new Genre() { GenreId = 3, Name = "Badania Sadownicze", IconFilename = "jazz.png" },
-                new Genre() { GenreId = 4, Name = "Badania Inne", IconFilename = "hiphop.png" },
-                new Genre() { GenreId = 5, Name = "Nawozy Organiczne", IconFilename = "rnb.png" },
-                new Genre() { GenreId = 6, Name = "Nawozy Mineralne", IconFilename = "pop.png" },
-                new Genre() { GenreId = 7, Name = "Nawozy wapniowe", IconFilename = "reagge.png" },
+                new Genre() { GenreId = 1, Name = "Badania Rolnicze", IconFilename = "rol.jpg" },
+                new Genre() { GenreId = 2, Name = "Badania Ogrodnicze", IconFilename = "ogr.jpg" },
+                new Genre() { GenreId = 3, Name = "Badania Sadownicze", IconFilename = "sad.jpg" },
+                new Genre() { GenreId = 4, Name = "Badania Inne", IconFilename = "pop.png" },
+                new Genre() { GenreId = 5, Name = "Nawozy Organiczne", IconFilename = "no.jpg" },
+                new Genre() { GenreId = 6, Name = "Nawozy Mineralne", IconFilename = "naw.jpg" },
+                new Genre() { GenreId = 7, Name = "Nawozy wapniowe", IconFilename = "naw.jpg" },
                 new Genre() { GenreId = 8, Name = "Promocje", IconFilename = "promos.png" }
             };
 
@@ -55,46 +55,35 @@ namespace LabSystem2.DAL
             albums.ForEach(a => context.Productus.AddOrUpdate(a));
             context.SaveChanges();
 
-            var employee = new List<Employee>
-            {
-                new Employee() { EmployeeId = 1, NameAndSurname = "Jan Kowalski", Email = "jkowalski@oschr.pl", PhoneNumber = "609-257-047", Region = "Płońsk" },
-                new Employee() { EmployeeId = 2, NameAndSurname = "Jan Nowak", Email = "jnowak@oschr.pl", PhoneNumber = "609-257-048", Region = "Warmia" },
-                new Employee() { EmployeeId = 3, NameAndSurname = "Bogdan Smela",  Email = "bsmela@oschr.pl", PhoneNumber = "609-257-049", Region = "Kutno" },
-                new Employee() { EmployeeId = 4, NameAndSurname = "Łukasz Załuski",  Email = "lzaluski@oschr.pl", PhoneNumber = "609-257-040", Region = "Żuromin" },
 
-            };
-
-            employee.ForEach(b => context.Employees.AddOrUpdate(b));
-            context.SaveChanges();
         }
 
         public static void InitializeIdentityForEF(ApplicationDbContext db)
         {
-            ////var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-            ////var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
             //var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             //var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
-            ////const string name = "admin@spodigly.pl";
-            ////const string password = "P@ssw0rd";
-            ////const string roleName = "Admin";
+            const string name = "admin@oschr.pl";
+            const string password = "P@ssw0rd";
+            const string roleName = "Admin";
 
-
-            ////var user = userManager.FindByName(name);
-            ////if (user == null)
-            ////{
-            ////    user = new ApplicationUser { UserName = name, Email = name, UserData = new UserData() };
-            ////    var result = userManager.Create(user, password);
-            ////    result = userManager.SetLockoutEnabled(user.Id, false);
-            ////}
+            var user = userManager.FindByName(name);
+            if (user == null)
+            {
+                user = new ApplicationUser { UserName = name, Email = name };
+                var result = userManager.Create(user, password);
+                result = userManager.SetLockoutEnabled(user.Id, false);
+            }
 
             //Create Role Admin if it does not exist
-            ////var role = roleManager.FindByName(roleName);
-            ////if (role == null)
-            ////{
-            ////    role = new IdentityRole(roleName);
-            ////    var roleresult = roleManager.Create(role);
-            ////}
+            var role = roleManager.FindByName(roleName);
+            if (role == null)
+            {
+                role = new IdentityRole(roleName);
+                var roleresult = roleManager.Create(role);
+            }
 
             //var user = userManager.FindByName(name);
             //if (user == null)
@@ -104,12 +93,12 @@ namespace LabSystem2.DAL
             //    result = userManager.SetLockoutEnabled(user.Id, false);
             //}
 
-            // Add user admin to Role Admin if not already added
-            ////var rolesForUser = userManager.GetRoles(user.Id);
-            ////if (!rolesForUser.Contains(role.Name))
-            ////{
-            ////    var result = userManager.AddToRole(user.Id, role.Name);
-            ////}
+            //Add user admin to Role Admin if not already added
+            //var rolesForUser = userManager.GetRoles(user.Id);
+            //if (!rolesForUser.Contains(role.Name))
+            //{
+            //    var result = userManager.AddToRole(user.Id, role.Name);
+            //}
         }
     }
 }

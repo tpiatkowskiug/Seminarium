@@ -22,7 +22,6 @@ namespace LabSystem2.Infrastructure
             this.db = db;
         }
 
-
         public void AddToCart(int productid)
         {
             var cart = this.GetCart();
@@ -42,8 +41,9 @@ namespace LabSystem2.Infrastructure
                           //  Genre = genretToAdd,
                             Product = productToAdd,
                             Quantity = 1,
-                            TotalPrice = productToAdd.PriceBrutto
-                        };
+                            TotalPrice = productToAdd.PriceBrutto,
+                            UnitPrice = productToAdd.PriceBrutto
+                    };
 
                     cart.Add(newCartItem);  //dodajemy do listy sesji
                 }
@@ -113,10 +113,18 @@ namespace LabSystem2.Infrastructure
             return cart;
         }
 
+
         public decimal GetCartTotalPrice()
         {
             var cart = this.GetCart();
-            return cart.Sum(c => (c.Quantity * c.Product.PriceBrutto));
+            return cart.Sum(c => (c.Quantity * c.Product.PriceBrutto));         //CartItem model
+        }
+
+
+        public decimal GetCartItemPrice()
+        {
+            var cart = this.GetCart();
+            return cart.Sum(c => (c.Quantity * c.Product.PriceBrutto));         //CartItem model
         }
 
         public int GetCartItemsCount()
@@ -147,12 +155,13 @@ namespace LabSystem2.Infrastructure
                 var newOrderItem = new OrderItem()
                 {
                     ProductId = cartItem.Product.ProductId,
-                    Quantity = cartItem.Quantity,
-                    UnitPrice = cartItem.Product.PriceBrutto
+                    OrderId = newOrder.OrderId,
+                    UnitPrice = (cartItem.Quantity * cartItem.Product.PriceBrutto),
+                    Quantity = cartItem.Quantity
                 };
 
                 cartTotal += (cartItem.Quantity * cartItem.Product.PriceBrutto);
-
+                //cartTotal += cartItem.UnitPrice;
                 newOrder.OrderItems.Add(newOrderItem);
             }
 

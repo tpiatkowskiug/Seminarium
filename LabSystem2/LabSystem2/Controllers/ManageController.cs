@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using LabSystem2.Models;
+using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace LabSystem2.Controllers
 {
@@ -332,8 +334,62 @@ namespace LabSystem2.Controllers
 
             base.Dispose(disposing);
         }
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-#region Pomocnicy
+        public ActionResult OrdersList()
+        {
+            bool isAdmin = User.IsInRole("Admin");
+            ViewBag.UserIsAdmin = isAdmin;
+
+            IEnumerable<Order> userOrders;
+
+            // For admin users - return all orders
+            if (isAdmin)
+            {
+                userOrders = db.Orders.Include("OrderItems").
+                    OrderByDescending(o => o.DateCreated).ToArray();
+            }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                userOrders = db.Orders.Where(o => o.EmployeeId == userId).Include("OrderItems").
+                    OrderByDescending(o => o.DateCreated).ToArray();
+            }
+
+            return View(userOrders);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public OrderState ChangeOrderState(Order order)
+        {
+            Order orderToModify = db.Orders.Find(order.OrderId);
+            orderToModify.OrderState = order.OrderState;
+            db.SaveChanges();
+
+            if (orderToModify.OrderState == OrderState.Shipped)
+            {
+                // Schedule confirmation
+                //string url = Url.Action("SendStatusEmail", "Manage", new { orderid = orderToModify.OrderId, lastname = orderToModify.LastName }, Request.Url.Scheme);
+
+                //BackgroundJob.Enqueue(() => Helpers.CallUrl(url));
+
+                //IMailService mailService = new HangFirePostalMailService();
+                //mailService.SendOrderShippedEmail(orderToModify);
+
+                //mailService.SendOrderShippedEmail(orderToModify);
+
+                //dynamic email = new Postal.Email("OrderShipped");
+                //email.To = orderToModify.Email;
+                //email.OrderId = orderToModify.OrderId;
+                //email.FullAddress = string.Format("{0} {1}, {2}, {3}", orderToModify.FirstName, orderToModify.LastName, orderToModify.Address, orderToModify.CodeAndCity);
+                //email.Send();
+            }
+
+            return order.OrderState;
+        }
+
+        #region Pomocnicy
         // Służy do ochrony XSRF podczas dodawania logowań zewnętrznych
         private const string XsrfKey = "XsrfId";
 

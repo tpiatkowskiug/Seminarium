@@ -65,7 +65,7 @@ namespace LabSystem2.Controllers
 
             return View(cartVM);
         }
-
+        [Authorize(Roles = "Employee")]
         public ActionResult AddToCart(int id)
         {
             ShoppingCartManager shoppingCart = new ShoppingCartManager(this.sessionManager, this.db);
@@ -89,15 +89,21 @@ namespace LabSystem2.Controllers
 
             int itemCount = shoppingCartManager.RemoveFromCart(productID);
             int cartItemsCount = shoppingCartManager.GetCartItemsCount();
+            decimal cartItemTotal = shoppingCartManager.GetCartItemPrice();
             decimal cartTotal = shoppingCartManager.GetCartTotalPrice();
-
+            string productName = db.Productus
+                    .Single(item => item.ProductId == productID).ProductTitle;
             // Return JSON to process it in JavaScript
             var result = new CartRemoveViewModel
             {
+                Message = Server.HtmlEncode(productName) +
+                    " has been removed from your shopping cart.",
+          
                 RemoveItemId = productID,
                 RemovedItemCount = itemCount,
                 CartTotal = cartTotal,
-                CartItemsCount = cartItemsCount
+                CartItemsCount = cartItemsCount,
+                CartItemUnitPrice = cartItemTotal
             };
 
             return Json(result);
@@ -113,8 +119,8 @@ namespace LabSystem2.Controllers
 
                 int itemCount = shoppingCartManager.UpdateCartCount(id, cartCount);
                 int cartItemsCount = shoppingCartManager.GetCartItemsCount();
+                decimal cartItemTotal = shoppingCartManager.GetCartItemPrice();
                 decimal cartTotal = shoppingCartManager.GetCartTotalPrice();
-
                 // Get the name of the album to display confirmation 
                 string productName = db.Productus
                     .Single(item => item.ProductId == id).ProductTitle;
@@ -131,7 +137,7 @@ namespace LabSystem2.Controllers
                     RemoveItemId = id,
                     RemovedItemCount = itemCount,
                     CartTotal = cartTotal,
-                    CartItemsCount = cartItemsCount
+                    CartItemUnitPrice = cartItemTotal
                 };
             }
             catch
@@ -139,15 +145,15 @@ namespace LabSystem2.Controllers
                 results = new CartRemoveViewModel
                 {
                     Message = "Error occurred or invalid input...",
-                    CartTotal = -1,
-                    CartItemsCount = -1,
                     RemovedItemCount = -1,
-                    RemoveItemId = id
+                    RemoveItemId = id,
+                    CartTotal = -1,
+                    CartItemUnitPrice = -1
                 };
             }
             return Json(results);
         }
-
+        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> Checkout()
         {
             if (Request.IsAuthenticated)
@@ -156,7 +162,7 @@ namespace LabSystem2.Controllers
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
                 ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "NameAndSurname");
-                ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle");
+                ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname");
 
                 var order = new Order
                 {
@@ -170,6 +176,7 @@ namespace LabSystem2.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> Checkout(Order orderdetails)
         {
             if (ModelState.IsValid)
@@ -183,9 +190,8 @@ namespace LabSystem2.Controllers
                 ShoppingCartManager shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
                 var newOrder = shoppingCartManager.CreateOrder(orderdetails, userId);
 
-
                 ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "NameAndSurname", orderdetails.CustomerId);
-                ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle", orderdetails.EmployeeId);
+                ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "NameAndSurname", orderdetails.EmployeeId);
 
                 var user = await UserManager.FindByIdAsync(userId);
                 //TryUpdateModel(user.UserData);

@@ -13,69 +13,67 @@
 @using (Html.BeginForm())
 {
     @*All lines from <h3> tag to end are inside here*@
-}
 
-<div id="productlist-content">
+    <div id="productlist-content">
 
-    <div id="productlist-rightsection">
-        <div id="breadcrumb-section">
-            <img src="../Content/Images/home-small.png" />
-            @Html.MvcSiteMap().SiteMapPath()
-        </div>
-        <div id="update-message"></div>
-        <div>
-            @for (int i = 0; i < Model.Quantity; i++)
-            {
-                <p>
-                    @Html.ValidationMessageFor(model => model.CartItems[i].Quantity)
-                </p>
-            }
-        </div>
-        <section class="content-section">
-            <table class="table">
-                @{int ix = 0;}
-                @foreach (var cartItem in Model.CartItems)
+        <div id="productlist-rightsection">
+            <div id="breadcrumb-section">
+                <img src="../Content/Images/home-small.png" />
+                @Html.MvcSiteMap().SiteMapPath()
+            </div>
+            <div id="update-message"></div>
+            <div>
+                @for (int i = 0; i < Model.Quantity; i++)
                 {
-                    <tr id="cart-row-@cartItem.Product.ProductId">
-                        <td><a href="@Url.Action("Details", "Products", new { id = cartItem.Product.ProductId })">@cartItem.Product.ProductTitle</a></td>
-                        <td><a href="@Url.Action("Details", "Products", new { id = cartItem.Product.ProductId })">@cartItem.Product.PriceBrutto</a></td>
-                        <td>Ilość prób <span id="cart-item-count-@cartItem.Product.ProductId"></span></td>
-                        <td>
-                            @Html.TextBoxFor(model => model.CartItems[ix].Quantity,
-                                  new { style = "width:25px; text-align:right;",
-                                      onkeyup = "clearUpdateMessage();",
-                                      onchange = "clearUpdateMessage();"
-                                  })
-                        </td>
-                        <td>@String.Format("{0:0.##}", cartItem.TotalPrice) zł</td>
-                        <td><a class="RefreshQuantity" data-id="@cartItem.Product.ProductId" href="#" txt-id="CartItems_@(ix)__Quantity">Odśwież</a> &nbsp;|&nbsp;</td>
-                        <td><a class="removeProduct" data-id="@cartItem.Product.ProductId" href="#">Usuń</a></td>
+                    <p>
+                        @Html.ValidationMessageFor(model => model.CartItems[i].Quantity)
+                    </p>
+                }
+            </div>
+            <section class="content-section">
+                <table class="table">
+                    @{int ix = 0;}
+                    @foreach (var cartItem in Model.CartItems)
+                    {
+                        <tr id="cart-row-@cartItem.Product.ProductId">
+                            <td><a href="@Url.Action("Details", "Products", new { id = cartItem.Product.ProductId })">@cartItem.Product.ProductTitle</a></td>
+                            <td>@String.Format("{0:0.##}", cartItem.TotalPrice) zł</td>
+                            <td>Ilość prób: <span id="cart-item-count-@cartItem.Product.ProductId"></span></td>
+                            <td>
+                                @Html.TextBoxFor(model => model.CartItems[ix].Quantity,
+                                      new { style = "width:25px; text-align:right;",
+                                          onkeyup = "clearUpdateMessage();",
+                                          onchange = "clearUpdateMessage();"
+                                      })
+                            </td>
+                            <td>@String.Format("{0:0.##}", cartItem.UnitPrice) zł</td>
+                            <td><a class="RefreshQuantity" data-id="@cartItem.Product.ProductId" href="#" txt-id="CartItems_@(ix)__Quantity">Odśwież</a>&nbsp;|&nbsp;</td>
+                            <td><a class="removeProduct" data-id="@cartItem.Product.ProductId" href="#">Usuń</a></td>
 
+                        </tr>
+
+                    }
+                    <tr id="cart-empty-message" @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="hidden" </text> }>
+                        <td>Brak dodanych produktów</td>
                     </tr>
+                </table>
 
-                }
+                <div id="total-price">
+                    Razem: <span id="total-price-value">@String.Format("{0:0.##}", Model.TotalPrice)</span> zł
+                </div>
 
-                <tr id="cart-empty-message" @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="hidden" </text> }>
-                    <td>Brak dodanych produktów</td>
-                </tr>
-            </table>
+                <div class="section-button-container">
+                    <p class="btn btn-default">@Html.ActionLink("Dodaj Zlecenie", "Create", "OrderItems")</p>
+                    @if (Model.TotalPrice > 0)
+                    {
+                        <a class="btn btn-default" id="cart-button-checkout" href="@Url.Action("Checkout", "Cart")">Dodaj Klienta</a>
+                    }
+                </div>
+            </section>
 
-            <div id="total-price">
-                Razem: <span id="total-price-value">@String.Format("{0:0.##}", Model.TotalPrice)</span> zł
-            </div>
-
-            <div class="section-button-container">
-                <p class="btn btn-default">@Html.ActionLink("Dodaj Zlecenie", "Create", "OrderItems")</p>
-                @if (Model.TotalPrice > 0)
-                {
-                    <a class="btn btn-default" id="cart-button-checkout" href="@Url.Action("Checkout", "Cart")">Dodaj Klienta</a>
-                }
-            </div>
-        </section>
-
+        </div>
     </div>
-</div>
-
+}
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 
@@ -107,7 +105,7 @@
 
                         $('#total-price-value').text(response.CartTotal);
                         $('#cart-header-items-count').text(response.CartItemsCount);
-                       
+
 
                     });
 
@@ -123,17 +121,17 @@
         // Get the id from the link
         var recordToUpdate = $(this).attr("data-id");
 
-        //if (typeof String.prototype.trim !== 'function') {
-        //    String.prototype.trim = function () {
-        //        return this.replace(/^\s+|\s+$/g, '');
-        //    }
-        //}
+        if (typeof String.prototype.trim !== 'function') {
+            String.prototype.trim = function () {
+                return this.replace(/^\s+|\s+$/g, '');
+            }
+        }
         //Set quantity number to 0 if input value is empty
         var countToUpdate = 0;
-        //if ($("#" + $(this).attr("txt-id")).val().trim() !== '') {
-        //    countToUpdate = $("#" + $(this).attr("txt-id")).val();
-        //}
-        var countToUpdate = $("#" + $(this).attr("txt-id")).val();
+        if ($("#" + $(this).attr("txt-id")).val().trim() !== '') {
+            countToUpdate = $("#" + $(this).attr("txt-id")).val();
+        }
+        //var countToUpdate = $("#" + $(this).attr("txt-id")).val();
         if (recordToUpdate != '') {
             // Perform the ajax post
             $.post("/Cart/UpdateCartCount", { "id": recordToUpdate, "cartCount": countToUpdate },
@@ -143,31 +141,20 @@
                     if (data.ItemCount == 0) {
                         $('#cart-row-' + data.RemoveItemId).fadeOut('slow');
                     }
-
-                    $('#total-price-value').text(data.CartTotal);
-                    //$('#cart-header-items-count').text(data.CartItemsCount);
                     $('#update-message').text(data.Message);
-                    $('#ccart-header-items-count').text('Cart (' + data.CartItemsCount + ')');  
+                    //Only process the callback data when no server error occurs
+                    if (data.ItemCount != -1) {
+                        $('#total-price-value').text(data.CartTotal);
+                        $('#cart-header-items-count').text('Cart (' + data.CartItemsCount + ')');
+                    }
                 });
 
-            //function (data) {
-            //    // Successful requests get here 
-            //    // Update the page elements                        
-            //    if (data.ItemCount == 0) {
-            //        $('#cart-row-' + data.RemoveItemId).fadeOut('slow');
-            //    }
-            //    $('#update-message').text(data.Message);
-
-            //    //Only process the callback data when no server error occurs
-            //    if (data.ItemCount != -1) {
-            //        $('#total-price-value').text(data.CartTotal);
-            //        $('#cart-header-items-count').text(response.CartItemsCount);
-            //    }
-            //}
+            return false;
             //function clearUpdateMessage() {
             //    // Reset update-message area
             //    $('#update-message').text('');
             //}
         }
+    });
 </script>
 

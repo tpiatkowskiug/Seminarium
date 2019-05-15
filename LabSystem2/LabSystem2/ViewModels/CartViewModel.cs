@@ -10,6 +10,7 @@ namespace LabSystem2.ViewModels
     {
         public List<CartItem> CartItems { get; set; }
         public int Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
         public decimal TotalPrice { get; set; }
     }
 }

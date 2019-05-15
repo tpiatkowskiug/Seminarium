@@ -19,11 +19,6 @@ namespace LabSystem2.ViewModels
             set;
         }
 
-        public int CartItemsCount
-        {
-            get;
-            set;
-        }
 
         public int RemovedItemCount
         {
@@ -36,5 +31,18 @@ namespace LabSystem2.ViewModels
             get;
             set;
         }
+
+        public int CartItemsCount
+        {
+            get;
+            set;
+        }
+
+        public decimal CartItemUnitPrice
+        {
+            get;
+            set;
+        }
+
     }
 }
