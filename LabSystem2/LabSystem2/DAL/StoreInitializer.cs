@@ -30,14 +30,14 @@ namespace LabSystem2.DAL
         {
             var genres = new List<Genre>
             {
-                new Genre() { GenreId = 1, Name = "Badania Rolnicze", IconFilename = "rol.jpg" },
-                new Genre() { GenreId = 2, Name = "Badania Ogrodnicze", IconFilename = "ogr.jpg" },
-                new Genre() { GenreId = 3, Name = "Badania Sadownicze", IconFilename = "sad.jpg" },
-                new Genre() { GenreId = 4, Name = "Badania Inne", IconFilename = "pop.png" },
-                new Genre() { GenreId = 5, Name = "Nawozy Organiczne", IconFilename = "no.jpg" },
-                new Genre() { GenreId = 6, Name = "Nawozy Mineralne", IconFilename = "naw.jpg" },
-                new Genre() { GenreId = 7, Name = "Nawozy wapniowe", IconFilename = "naw.jpg" },
-                new Genre() { GenreId = 8, Name = "Promocje", IconFilename = "promos.png" }
+                new Genre() { GenreId = 1, Name = "Badania Rolnicze", IconFilename = "beaker.png" },
+                new Genre() { GenreId = 2, Name = "Badania Ogrodnicze", IconFilename = "flask.png" },
+                new Genre() { GenreId = 3, Name = "Badania Sadownicze", IconFilename = "laboratory.png" },
+                new Genre() { GenreId = 4, Name = "Badania Inne", IconFilename = "atom.png" },
+                new Genre() { GenreId = 5, Name = "Nawozy Organiczne", IconFilename = "pipette.png" },
+                new Genre() { GenreId = 6, Name = "Nawozy Mineralne", IconFilename = "three-test-tubes.png" },
+                new Genre() { GenreId = 7, Name = "Nawozy wapniowe", IconFilename = "experimentation.png" },
+                new Genre() { GenreId = 8, Name = "Promocje", IconFilename = "loupe.png" }
             };
 
             genres.ForEach(g => context.Genres.AddOrUpdate(g));

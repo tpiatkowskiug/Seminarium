@@ -72,7 +72,7 @@
                                                 <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = orderItem.ProductId })">
 
                                                     <h1>
-                                                        @orderItem.Genre.Name - @orderItem.Product.ProductTitle<br />
+                                                       @orderItem.Product.ProductTitle<br />
                                                         <strong>sztuk: @orderItem.Quantity, łącznie: @(orderItem.Quantity * @orderItem.UnitPrice)  zł</strong>
                                                     </h1>
                                                 </a>
