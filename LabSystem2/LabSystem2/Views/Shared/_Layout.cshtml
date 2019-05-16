@@ -24,7 +24,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Rodzaje badań", "Details", "Store")</li>
+                    <li>@Html.ActionLink("Rodzaje badań", "List", "Store")</li>
                     @if (User.IsInRole("Employee"))
                     {
                         <li>@Html.ActionLink("Zlecenia", "Index", "Orders")</li>
@@ -33,13 +33,18 @@
                     }
                     @if (User.IsInRole("Customer"))
                     {
-                        <li>@Html.ActionLink("Strefa klienta", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Strefa klienta", "Index", "ResultsOfOrderGRs")</li>
                     }
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Dodaj produkt", "Create", "Products")</li>
                         <li>@Html.ActionLink("Prcownicy", "Create", "Employees")</li>
                         <li>@Html.ActionLink("Zamówienia", "OrdersList", "Manage")</li>
+                    }
+                    @if (User.IsInRole("Lab"))
+                    {
+                        <li>@Html.ActionLink("Dodaj wyniki", "Create", "ResultsOfOrderGRs")</li>
+                        <li>@Html.ActionLink("Wyniki", "OrdersList", "Manage")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

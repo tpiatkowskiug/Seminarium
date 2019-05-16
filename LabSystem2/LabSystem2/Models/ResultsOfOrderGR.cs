@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LabSystem2.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,11 +17,6 @@ namespace LabSystem2.Models
 
         [Display(Name = "Przedmiot badań")]
         public List<OrderItem> OrderItems { get; set; }
-
-        public int OrderItemId { get; set; }
-
-        public string UserId { get; set; }
-        public virtual ApplicationUser User { get; set; }
 
         [Display(Name = "Oznakowanie prób")]
         public string OrderMarkingSample { get; set; }
@@ -47,22 +43,27 @@ namespace LabSystem2.Models
         [Display(Name = "Dodatkowe badania")]
         public bool AddOrder { get; set; }
 
+        [RequiredIfTrue(BooleanPropertyName = "AddOrder", ErrorMessage = "Dodatkowe badania")]
         [Display(Name = "Miedź")]
         [DataType(DataType.MultilineText)]
         public string Cu { get; set; }
 
+        [RequiredIfTrue(BooleanPropertyName = "AddOrder", ErrorMessage = "Dodatkowe badania")]
         [Display(Name = "Żelazo")]
         [DataType(DataType.MultilineText)]
         public string Fe { get; set; }
 
+        [RequiredIfTrue(BooleanPropertyName = "AddOrder", ErrorMessage = "Dodatkowe badania")]
         [Display(Name = "Mangan")]
         [DataType(DataType.MultilineText)]
         public string Mn { get; set; }
 
+        [RequiredIfTrue(BooleanPropertyName = "AddOrder", ErrorMessage = "Dodatkowe badania")]
         [Display(Name = "Cynk")]
         [DataType(DataType.MultilineText)]
         public string Zn { get; set; }
 
+        [RequiredIfTrue(BooleanPropertyName = "AddOrder", ErrorMessage = "Dodatkowe badania")]
         [Display(Name = "Bor")]
         [DataType(DataType.MultilineText)]
         public string Bor { get; set; }
@@ -82,7 +83,7 @@ namespace LabSystem2.Models
 
         public virtual Employee Employee { get; set; }
         public virtual Order Order { get; set; }
-        public virtual OrderItem OrderItem { get; set; }
+
 
     }
 

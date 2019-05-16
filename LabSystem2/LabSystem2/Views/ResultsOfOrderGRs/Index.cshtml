@@ -1,0 +1,129 @@
+﻿@model IEnumerable<LabSystem2.Models.ResultsOfOrderGR>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.NameAndSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderMarkingSample)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderPriceList)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WynikiBadanpH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WynikiBadanFosfor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WynikiBadanPotas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WynikiBadanMagnez)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InneBadania)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResultsCreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStateRusalt)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.NameAndSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.EmployeeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderMarkingSample)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderPriceList)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WynikiBadanpH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WynikiBadanFosfor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WynikiBadanPotas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WynikiBadanMagnez)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InneBadania)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResultsCreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStateRusalt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ResultsOfOrderGRId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ResultsOfOrderGRId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ResultsOfOrderGRId })
+            </td>
+        </tr>
+    }
+
+</table>

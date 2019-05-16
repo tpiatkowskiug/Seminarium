@@ -1,0 +1,226 @@
+﻿@model LabSystem2.Models.ResultsOfOrderGR
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        .field-validation-error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .input-validation-error {
+            background: pink;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Wyniki badań</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrderId, "OrderId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("OrderId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OrderId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrderMarkingSample, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OrderMarkingSample, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OrderMarkingSample, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrderPriceList, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OrderPriceList, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OrderPriceList, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WynikiBadanpH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WynikiBadanpH, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WynikiBadanpH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WynikiBadanFosfor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WynikiBadanFosfor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WynikiBadanFosfor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WynikiBadanPotas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WynikiBadanPotas, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WynikiBadanPotas, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WynikiBadanMagnez, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WynikiBadanMagnez, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WynikiBadanMagnez, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddOrder, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(model => model.AddOrder, new { @id = "phonePrefferedCheckbox" })
+                    @Html.ValidationMessageFor(model => model.AddOrder, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" id="phonerow">
+            @Html.LabelFor(model => model.Cu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Cu, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Cu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="phonerow1">
+            @Html.LabelFor(model => model.Fe, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Fe, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Fe, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="phonerow2">
+            @Html.LabelFor(model => model.Mn, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Mn, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Mn, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="phonerow3">
+            @Html.LabelFor(model => model.Zn, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Zn, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Zn, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="phonerow4">
+            @Html.LabelFor(model => model.Bor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Bor, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Bor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InneBadania, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InneBadania, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InneBadania, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ResultsCreationDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ResultsCreationDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ResultsCreationDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeId, "EmployeeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("EmployeeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrderStateRusalt, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.OrderStateRusalt, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OrderStateRusalt, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/RequiredIfTrue.js"></script>
+
+    <script type="text/javascript">
+        $('#phonerow').toggle($($(
+            '#phonePrefferedCheckbox')).is(':checked'));
+        $('#phonePrefferedCheckbox').click(function () {
+            $('#phonerow').toggle(this.checked);
+        });
+    </script>
+    <script type="text/javascript">
+        $('#phonerow1').toggle($($(
+            '#phonePrefferedCheckbox')).is(':checked'));
+        $('#phonePrefferedCheckbox').click(function () {
+            $('#phonerow1').toggle(this.checked);
+        });
+    </script>
+    <script type="text/javascript">
+        $('#phonerow2').toggle($($(
+            '#phonePrefferedCheckbox')).is(':checked'));
+        $('#phonePrefferedCheckbox').click(function () {
+            $('#phonerow2').toggle(this.checked);
+        });
+    </script>
+    <script type="text/javascript">
+        $('#phonerow3').toggle($($(
+            '#phonePrefferedCheckbox')).is(':checked'));
+        $('#phonePrefferedCheckbox').click(function () {
+            $('#phonerow3').toggle(this.checked);
+        });
+    </script>
+    <script type="text/javascript">
+        $('#phonerow4').toggle($($(
+            '#phonePrefferedCheckbox')).is(':checked'));
+        $('#phonePrefferedCheckbox').click(function () {
+            $('#phonerow4').toggle(this.checked);
+        });
+    </script>
+}

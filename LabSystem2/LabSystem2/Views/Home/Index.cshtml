@@ -29,7 +29,6 @@
             <img src="../Content/Images/cart.png" />
         </a>*@
                     <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = newArrival.ProductId })">
-                        <div class="newFlag"></div>
                         <img class="album-cover" src="@Url.Content("~/Content/Covers/" + newArrival.CoverFileName)" />
                         <h1>
                             @newArrival.ProductTitle
@@ -51,8 +50,7 @@
             <img src="../Content/Images/cart.png" />
         </a>*@
                     <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = bestseller.ProductId })">
-                        <div class="bestsellerFlag"></div>
-                        <img class="album-cover" src="../Content/Covers/2.png" />
+                        <img class="album-cover" src="@Url.Content("~/Content/Covers/" + bestseller.CoverFileName)" />
                         <h1>
                             @bestseller.ProductTitle
                         </h1>
