@@ -5,11 +5,8 @@
 
 
 <div>
-
     <hr />
-
     <h2 class="manageHeader">Twoje zamówienia</h2>
-
     <div>
 
         @if (Model.Any())
@@ -63,24 +60,33 @@
                     <tr>
                         <td colspan="6">
                             <section>
-                                <ul class="ThreeColumnsStaticCoversList large-cover-list-bottom">
-
+                                <table class="table">
+                                    <tr>
+                                        <th>
+                                            Przedmiot badań
+                                        </th>
+                                        <th>
+                                            Ilość prób
+                                        </th>
+                                        <th>
+                                            Cena jednostkowa
+                                        </th>
+                                    </tr>
                                     @foreach (var orderItem in order.OrderItems)
                                     {
-                                        <li>
-                                            <article>
-                                                <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = orderItem.ProductId })">
-                                                    <h1>
-                                                       @orderItem.Product.ProductTitle<br />
-                                                        <strong>sztuk: @orderItem.Quantity, łącznie: @(@orderItem.UnitPrice)  zł</strong>
-                                                    </h1>
-                                                </a>
-                                            </article>
-                                        </li>
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => orderItem.Product.ProductTitle)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => orderItem.Quantity)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => orderItem.UnitPrice)
+                                            </td>
+                                        </tr>
                                     }
-
-                                </ul>
-
+                                </table>
                             </section>
                         </td>
                     </tr>

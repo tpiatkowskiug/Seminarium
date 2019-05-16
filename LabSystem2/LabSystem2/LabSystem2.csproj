@@ -235,6 +235,10 @@
     <Compile Include="Migrations\201905141108556_aaaa.Designer.cs">
       <DependentUpon>201905141108556_aaaa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905161833266_ChangeResultofOrder.cs" />
+    <Compile Include="Migrations\201905161833266_ChangeResultofOrder.Designer.cs">
+      <DependentUpon>201905161833266_ChangeResultofOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -259,17 +263,13 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Covers\1.png" />
-    <Content Include="Content\Covers\2.png" />
-    <Content Include="Content\Covers\3.png" />
+    <Content Include="Content\Covers\1.jpg" />
+    <Content Include="Content\Covers\2.jpg" />
+    <Content Include="Content\Covers\3.jpg" />
     <Content Include="Content\Covers\4.jpg" />
-    <Content Include="Content\Covers\5.png" />
-    <Content Include="Content\Covers\594358f0-3ef5-4920-b7c0-6d86c282df20.jpg" />
-    <Content Include="Content\Covers\6.png" />
-    <Content Include="Content\Covers\7.png" />
-    <Content Include="Content\Covers\8.png" />
-    <Content Include="Content\Covers\9.png" />
-    <Content Include="Content\Covers\aa9760ef-b6dc-4242-a788-2573cfc4732d.jpg" />
+    <Content Include="Content\Covers\5.jpg" />
+    <Content Include="Content\Covers\6.jpg" />
+    <Content Include="Content\Covers\8.jpg" />
     <Content Include="Content\Genre-icons\atom.png" />
     <Content Include="Content\Genre-icons\beaker.png" />
     <Content Include="Content\Genre-icons\experimentation.png" />
@@ -509,6 +509,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905141108556_aaaa.resx">
       <DependentUpon>201905141108556_aaaa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905161833266_ChangeResultofOrder.resx">
+      <DependentUpon>201905161833266_ChangeResultofOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

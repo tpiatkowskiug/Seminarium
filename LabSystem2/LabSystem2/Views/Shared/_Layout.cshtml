@@ -29,6 +29,7 @@
                     {
                         <li>@Html.ActionLink("Zlecenia", "Index", "Orders")</li>
                         <li>@Html.ActionLink("Zleceniodawca", "Create", "Customer")</li>
+                        <li>@Html.ActionLink("Zamówienia", "OrdersList", "Manage")</li>
                     }
                     @if (User.IsInRole("Customer"))
                     {
@@ -36,10 +37,10 @@
                     }
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Prcownicy", "Create", "Products")</li>
+                        <li>@Html.ActionLink("Dodaj produkt", "Create", "Products")</li>
                         <li>@Html.ActionLink("Prcownicy", "Create", "Employees")</li>
+                        <li>@Html.ActionLink("Zamówienia", "OrdersList", "Manage")</li>
                     }
-                    <li>@Html.ActionLink("Zamówienia", "OrdersList", "Manage")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using LabSystem2.Infrastructure;
 using LabSystem2.Models;
 
 namespace LabSystem2.Controllers
@@ -52,15 +54,33 @@ namespace LabSystem2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductId,GenreId,ProductTitle,DateAdded,Description,PriceNetto,PriceBrutto,IsHidden,IsBestseller,CoverFileName")] Product product)
         {
-            if (ModelState.IsValid)
-            {
-                db.Productus.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //if (file != null && file.ContentLength > 0)
+            //{
+                if (ModelState.IsValid)
+                {
+                // Generate filename
+                //var fileExt = Path.GetExtension(file.FileName);
+                //var filename = Guid.NewGuid() + fileExt;
 
-            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", product.GenreId);
-            return View(product);
+                //var path = Path.Combine(Server.MapPath(AppConfig.PhotosFolderRelative), filename);
+                //file.SaveAs(path);
+                // Save info to DB
+                //product.CoverFileName = filename;
+                    db.Productus.Add(product);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                    ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", product.GenreId);
+                    return View(product);
+
+            //}
+            //else
+            //{
+            //    ModelState.AddModelError("", "Nie wskazano pliku");
+            //    ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", product.GenreId);
+            //    return View(product);
+            //}
         }
 
         // GET: Products/Edit/5

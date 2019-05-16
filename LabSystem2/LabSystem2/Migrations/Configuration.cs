@@ -29,6 +29,7 @@ namespace LabSystem2.Migrations
                 );
 
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            UserManager.AddToRole("37a6f998-c6d9-494a-bd33-813225078ce7", "Admin");
             UserManager.AddToRole("0f89670c-a738-4283-858a-d7ac2919143b", "Employee"); //piatkowski
             UserManager.AddToRole("3ade4ae3-6aae-48c2-a295-2f783ebd19b3", "Employee"); //smela
             UserManager.AddToRole("e927760d-1f10-4008-82fd-55f337cab8b7", "Employee"); //zaluski
