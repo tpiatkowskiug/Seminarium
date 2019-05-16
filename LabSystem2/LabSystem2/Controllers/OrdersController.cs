@@ -21,6 +21,7 @@ namespace LabSystem2.Controllers
 
 
         // GET: Orders
+        [Authorize(Roles = "Employee")]
         public ActionResult Index(string searchQuery = null)
         {
             var orders = db.Orders.Include(o => o.Employee).Include(o => o.Customer);
@@ -53,6 +54,8 @@ namespace LabSystem2.Controllers
 
 
         // GET: Orders/Details/5
+        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
