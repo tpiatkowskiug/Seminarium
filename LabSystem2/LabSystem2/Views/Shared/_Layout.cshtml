@@ -33,7 +33,7 @@
                     }
                     @if (User.IsInRole("Customer"))
                     {
-                        <li>@Html.ActionLink("Strefa klienta", "ResultList", "Manage")</li>
+                        <li>@Html.ActionLink("Strefa klienta", "CustomerList", "Manage")</li>
                     }
                     @if (User.IsInRole("Admin"))
                     {

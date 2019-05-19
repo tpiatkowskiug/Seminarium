@@ -268,6 +268,10 @@
     <Compile Include="Migrations\201905191936436_changeOrderAndResults.Designer.cs">
       <DependentUpon>201905191936436_changeOrderAndResults.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905192054577_intOnstringInCustomerUser.cs" />
+    <Compile Include="Migrations\201905192054577_intOnstringInCustomerUser.Designer.cs">
+      <DependentUpon>201905192054577_intOnstringInCustomerUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -515,6 +519,7 @@
     <Content Include="Views\ResultsOfOrderGRs\Edit.cshtml" />
     <Content Include="Views\ResultsOfOrderGRs\Index.cshtml" />
     <Content Include="Views\Manage\ResultList.cshtml" />
+    <Content Include="Views\Manage\CustomerList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -568,6 +573,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905191936436_changeOrderAndResults.resx">
       <DependentUpon>201905191936436_changeOrderAndResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905192054577_intOnstringInCustomerUser.resx">
+      <DependentUpon>201905192054577_intOnstringInCustomerUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

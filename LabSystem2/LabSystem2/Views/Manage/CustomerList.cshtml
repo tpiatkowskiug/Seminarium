@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<LabSystem2.Models.Order>
 @{
-    ViewBag.Title = "ResultList";
+    ViewBag.Title = "CustomerList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -25,17 +26,19 @@
                             @order.DateCreated.ToString("dd-MM-yyyy")
                         </td>
                         <td>
-                            <strong>Stan: </strong><br />
-
-                            @if (ViewBag.UserIsLab)
+                            <strong>Data wykonania: </strong>
+                            @foreach (var orderItem in order.ResultsOfOrderGRList)
                             {
-                                using (Html.BeginForm("ChangeOrderState", "Manage"))
+                                if (orderItem.OrderId == orderItem.ResultsOfOrderGRId)
                                 {
-                                    @Html.HiddenFor(o => order.OrderId)
-                                    @Html.EnumDropDownListFor(o => order.OrderState, new { @class = "orderstateddl" })
+                                    @Html.DisplayFor(modelItem => orderItem.ResultsCreationDate)
                                 }
                             }
-                            else
+                        </td>
+                        <td>
+                            <strong>Stan: </strong><br />
+
+                            @if (ViewBag.UserIsCustomer)
                             {
                                 @Html.DisplayFor(o => order.OrderState)
                             }
@@ -57,42 +60,7 @@
                             <strong>Łączny koszt:</strong> @order.TotalPrice zł
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="6">
-                            <section>
-                                <table class="table">
-                                    <tr>
-                                        <th>
-                                            Przedmiot badań
-                                        </th>
-                                        <th>
-                                            Ilość prób
-                                        </th>
-                                        <th>
-                                            Cena jednostkowa
-                                        </th>
-                                    </tr>
-                                    @foreach (var orderItem in order.OrderItems)
-                                    {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => orderItem.Product.ProductTitle)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => orderItem.Quantity)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => orderItem.UnitPrice)
-                                            </td>
-                                        </tr>
-                                    }
-                                </table>
-                            </section>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="6"></td>
-                    </tr>
+
                     <tr>
                         <td colspan="6">
                             <section>
@@ -177,9 +145,6 @@
                     <tr>
                         <td colspan="6"></td>
                     </tr>
-                    <tr>
-                        <td colspan="6"></td>
-                    </tr>
                     <!-- Next order -->
 
                 }
@@ -190,7 +155,7 @@
         else
         {
             <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
-                Brak zamówień.
+                Brak wyników.
             </div>
         }
     </div>
@@ -219,3 +184,5 @@
           });
     });
 </script>
+
+

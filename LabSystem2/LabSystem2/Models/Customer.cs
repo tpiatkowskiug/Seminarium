@@ -58,7 +58,7 @@ namespace LabSystem2.Models
         }
 
        
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
 
 

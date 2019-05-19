@@ -370,13 +370,37 @@ namespace LabSystem2.Controllers
             // For Lab users - return all rusalt
             if (isLab)
             {
+                userOrders = db.Orders.Include("ResultsOfOrderGRList").Include("OrderItems").
+                    OrderByDescending(o => o.DateCreated).ToArray();
+            }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                userOrders = db.Orders.Where(o => o.EmployeeId == userId).Include("ResultsOfOrderGRList").Include("OrderItems").
+                    OrderByDescending(o => o.DateCreated).ToArray();
+            }
+
+            return View(userOrders);
+        }
+
+        public ActionResult CustomerList()
+        {
+
+            bool isCustomer = User.IsInRole("Customer");
+            ViewBag.UserIsCustomer = isCustomer;
+
+            IEnumerable<Order> userOrders;
+
+            // For Lab users - return all rusalt
+            if (isCustomer)
+            {
                 userOrders = db.Orders.Include("ResultsOfOrderGRList").
                     OrderByDescending(o => o.DateCreated).ToArray();
             }
             else
             {
                 var userId = User.Identity.GetUserId();
-                userOrders = db.Orders.Where(o => o.EmployeeId == userId).Include("ResultsOfOrderGRList").
+                userOrders = db.Orders.Where(o => o.Customer.ApplicationUserId == userId).Include("ResultsOfOrderGRList").
                     OrderByDescending(o => o.DateCreated).ToArray();
             }
 
