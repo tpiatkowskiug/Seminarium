@@ -26,16 +26,6 @@
                             @order.DateCreated.ToString("dd-MM-yyyy")
                         </td>
                         <td>
-                            <strong>Data wykonania: </strong>
-                            @foreach (var orderItem in order.ResultsOfOrderGRList)
-                            {
-                                if (orderItem.OrderId == orderItem.ResultsOfOrderGRId)
-                                {
-                                    @Html.DisplayFor(modelItem => orderItem.ResultsCreationDate)
-                                }
-                            }
-                        </td>
-                        <td>
                             <strong>Stan: </strong><br />
 
                             @if (ViewBag.UserIsCustomer)
