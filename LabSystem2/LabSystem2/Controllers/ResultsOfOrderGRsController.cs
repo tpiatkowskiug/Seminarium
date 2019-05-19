@@ -57,7 +57,7 @@ namespace LabSystem2.Controllers
         [HttpPost]
         [Authorize(Roles = "Lab")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ResultsOfOrderGRId,OrderId,OrderMarkingSample,OrderPriceList,WynikiBadanpH,WynikiBadanFosfor,WynikiBadanPotas,WynikiBadanMagnez,AddOrder,Cu,Fe,Mn,Zn,Bor,InneBadania,ResultsCreationDate,EmployeeId,OrderStateRusalt")] ResultsOfOrderGR resultsOfOrderGR)
+        public ActionResult Create([Bind(Include = "ResultsOfOrderGRId,OrderId,OrderMarkingSample,WynikiBadanpH,WynikiBadanFosfor,WynikiBadanPotas,WynikiBadanMagnez,AddOrder,Cu,Fe,Mn,Zn,Bor,InneBadania,ResultsCreationDate,EmployeeId,OrderStateRusalt")] ResultsOfOrderGR resultsOfOrderGR)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace LabSystem2.Controllers
         [HttpPost]
         [Authorize(Roles = "Lab")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ResultsOfOrderGRId,OrderId,OrderMarkingSample,OrderPriceList,WynikiBadanpH,WynikiBadanFosfor,WynikiBadanPotas,WynikiBadanMagnez,AddOrder,Cu,Fe,Mn,Zn,Bor,InneBadania,ResultsCreationDate,EmployeeId,OrderStateRusalt")] ResultsOfOrderGR resultsOfOrderGR)
+        public ActionResult Edit([Bind(Include = "ResultsOfOrderGRId,OrderId,OrderMarkingSample,WynikiBadanpH,WynikiBadanFosfor,WynikiBadanPotas,WynikiBadanMagnez,AddOrder,Cu,Fe,Mn,Zn,Bor,InneBadania,ResultsCreationDate,EmployeeId,OrderStateRusalt")] ResultsOfOrderGR resultsOfOrderGR)
         {
             if (ModelState.IsValid)
             {

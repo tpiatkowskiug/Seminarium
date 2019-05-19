@@ -244,6 +244,22 @@
     <Compile Include="Migrations\201905161934355_changeresult.Designer.cs">
       <DependentUpon>201905161934355_changeresult.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905191022085_changeCustomer.cs" />
+    <Compile Include="Migrations\201905191022085_changeCustomer.Designer.cs">
+      <DependentUpon>201905191022085_changeCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905191035345_relationWithResult-User.cs" />
+    <Compile Include="Migrations\201905191035345_relationWithResult-User.Designer.cs">
+      <DependentUpon>201905191035345_relationWithResult-User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905191055291_changeRusalt.cs" />
+    <Compile Include="Migrations\201905191055291_changeRusalt.Designer.cs">
+      <DependentUpon>201905191055291_changeRusalt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905191305079_addIdUserToResults.cs" />
+    <Compile Include="Migrations\201905191305079_addIdUserToResults.Designer.cs">
+      <DependentUpon>201905191305079_addIdUserToResults.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -490,6 +506,7 @@
     <Content Include="Views\ResultsOfOrderGRs\Details.cshtml" />
     <Content Include="Views\ResultsOfOrderGRs\Edit.cshtml" />
     <Content Include="Views\ResultsOfOrderGRs\Index.cshtml" />
+    <Content Include="Views\Manage\ResultList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -525,6 +542,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905161934355_changeresult.resx">
       <DependentUpon>201905161934355_changeresult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905191022085_changeCustomer.resx">
+      <DependentUpon>201905191022085_changeCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905191035345_relationWithResult-User.resx">
+      <DependentUpon>201905191035345_relationWithResult-User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905191055291_changeRusalt.resx">
+      <DependentUpon>201905191055291_changeRusalt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905191305079_addIdUserToResults.resx">
+      <DependentUpon>201905191305079_addIdUserToResults.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

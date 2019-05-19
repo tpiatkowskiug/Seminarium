@@ -13,6 +13,9 @@ namespace LabSystem2.Models
     {
         public virtual ICollection<Order> Orders { get; set; }
 
+        public int ResultsOfOrderGRId { get; set; }
+        public virtual ICollection<ResultsOfOrderGR> ResultsOfOrderGR { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Element authenticationType musi pasować do elementu zdefiniowanego w elemencie CookieAuthenticationOptions.AuthenticationType

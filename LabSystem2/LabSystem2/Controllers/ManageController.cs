@@ -359,8 +359,33 @@ namespace LabSystem2.Controllers
             return View(userOrders);
         }
 
+        public ActionResult ResultList()
+        {
+
+            bool isLab = User.IsInRole("Lab");
+            ViewBag.UserIsLab = isLab;
+
+            IEnumerable<ResultsOfOrderGR> userOrders;
+
+            // For admin users - return all orders
+            if (isLab)
+            {
+                userOrders = db.GetResultsOfOrderGRs.Include("OrderItems").
+                    OrderByDescending(o => o.ResultsCreationDate).ToArray();
+            }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                userOrders = db.GetResultsOfOrderGRs.Where(o => o.EmployeeId == userId).Include("OrderItems").
+                    OrderByDescending(o => o.ResultsCreationDate).ToArray();
+            }
+
+            return View(userOrders);
+        }
+
         [HttpPost]
         [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Lab")]
         public OrderState ChangeOrderState(Order order)
         {
             Order orderToModify = db.Orders.Find(order.OrderId);
@@ -387,6 +412,37 @@ namespace LabSystem2.Controllers
             }
 
             return order.OrderState;
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Lab")]
+        public OrderStateRusalt ChangeOrderStateRusalt(ResultsOfOrderGR order)
+        {
+            ResultsOfOrderGR orderToModify = db.GetResultsOfOrderGRs.Find(order.ResultsOfOrderGRId);
+            orderToModify.OrderStateRusalt = order.OrderStateRusalt;
+            db.SaveChanges();
+
+            if (orderToModify.OrderStateRusalt == OrderStateRusalt.Shipped)
+            {
+                // Schedule confirmation
+                //string url = Url.Action("SendStatusEmail", "Manage", new { orderid = orderToModify.OrderId, lastname = orderToModify.LastName }, Request.Url.Scheme);
+
+                //BackgroundJob.Enqueue(() => Helpers.CallUrl(url));
+
+                //IMailService mailService = new HangFirePostalMailService();
+                //mailService.SendOrderShippedEmail(orderToModify);
+
+                //mailService.SendOrderShippedEmail(orderToModify);
+
+                //dynamic email = new Postal.Email("OrderShipped");
+                //email.To = orderToModify.Email;
+                //email.OrderId = orderToModify.OrderId;
+                //email.FullAddress = string.Format("{0} {1}, {2}, {3}", orderToModify.FirstName, orderToModify.LastName, orderToModify.Address, orderToModify.CodeAndCity);
+                //email.Send();
+            }
+
+            return order.OrderStateRusalt;
         }
 
         #region Pomocnicy

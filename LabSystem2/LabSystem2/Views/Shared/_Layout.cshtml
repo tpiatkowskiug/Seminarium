@@ -33,18 +33,19 @@
                     }
                     @if (User.IsInRole("Customer"))
                     {
-                        <li>@Html.ActionLink("Strefa klienta", "Index", "ResultsOfOrderGRs")</li>
+                        <li>@Html.ActionLink("Strefa klienta", "ResultList", "Manage")</li>
                     }
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Dodaj produkt", "Create", "Products")</li>
                         <li>@Html.ActionLink("Prcownicy", "Create", "Employees")</li>
                         <li>@Html.ActionLink("Zamówienia", "OrdersList", "Manage")</li>
+                        <li>@Html.ActionLink("Wyniki", "ResultList", "Manage")</li>
                     }
                     @if (User.IsInRole("Lab"))
                     {
                         <li>@Html.ActionLink("Dodaj wyniki", "Create", "ResultsOfOrderGRs")</li>
-                        <li>@Html.ActionLink("Wyniki", "OrdersList", "Manage")</li>
+                        <li>@Html.ActionLink("Wyniki", "ResultList", "Manage")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

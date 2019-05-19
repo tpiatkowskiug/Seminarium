@@ -21,9 +21,6 @@ namespace LabSystem2.Models
         [Display(Name = "Oznakowanie prób")]
         public string OrderMarkingSample { get; set; }
 
-        [Display(Name = "Rodzaj badania")]
-        public string OrderPriceList { get; set; }
-
         [Display(Name = "Wyniki badań pH")]
         [DataType(DataType.MultilineText)]
         public string WynikiBadanpH { get; set; }
@@ -77,7 +74,8 @@ namespace LabSystem2.Models
         public DateTime ResultsCreationDate { get; set; }
 
         [Display(Name = "Wprowadził wyniki")]
-        public int? EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
+        public virtual ApplicationUser UserEmployee { get; set; }
 
         public OrderStateRusalt OrderStateRusalt { get; set; }
 

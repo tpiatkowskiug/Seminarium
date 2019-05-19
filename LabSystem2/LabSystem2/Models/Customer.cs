@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -55,6 +56,11 @@ namespace LabSystem2.Models
             if (this.Email.Contains("spam"))
                 yield return new ValidationResult("Podany e-mail nie wygląda na prawidłowy.", new string[] { "Email" });
         }
+
+       
+        public int ApplicationUserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
 
     }
 }
