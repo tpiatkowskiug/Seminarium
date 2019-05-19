@@ -31,6 +31,10 @@ namespace LabSystem2.Models
 
         public List<OrderItem> OrderItems { get; set; }  //informacja o kolekcji elemtnów, które składają się 
                                                          //na zlecenie badań
+
+        public List<ResultsOfOrderGR> ResultsOfOrderGRList { get; set; }  //informacja o kolekcji wyników, które składają się 
+                                                                          //na zlecenie badań
+
         public virtual Employee Employee { get; set; }
         public virtual Customer Customer { get; set; }
 

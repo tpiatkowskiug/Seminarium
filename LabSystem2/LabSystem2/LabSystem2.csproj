@@ -260,6 +260,14 @@
     <Compile Include="Migrations\201905191305079_addIdUserToResults.Designer.cs">
       <DependentUpon>201905191305079_addIdUserToResults.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905191551155_addlistofResults.cs" />
+    <Compile Include="Migrations\201905191551155_addlistofResults.Designer.cs">
+      <DependentUpon>201905191551155_addlistofResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905191936436_changeOrderAndResults.cs" />
+    <Compile Include="Migrations\201905191936436_changeOrderAndResults.Designer.cs">
+      <DependentUpon>201905191936436_changeOrderAndResults.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -554,6 +562,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905191305079_addIdUserToResults.resx">
       <DependentUpon>201905191305079_addIdUserToResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905191551155_addlistofResults.resx">
+      <DependentUpon>201905191551155_addlistofResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905191936436_changeOrderAndResults.resx">
+      <DependentUpon>201905191936436_changeOrderAndResults.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

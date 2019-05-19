@@ -15,9 +15,6 @@ namespace LabSystem2.Models
         [Display(Name = "Dotyczy zlecenia")]
         public int OrderId { get; set; }
 
-        [Display(Name = "Przedmiot badań")]
-        public List<OrderItem> OrderItems { get; set; }
-
         [Display(Name = "Oznakowanie prób")]
         public string OrderMarkingSample { get; set; }
 
@@ -77,20 +74,9 @@ namespace LabSystem2.Models
         public string EmployeeId { get; set; }
         public virtual ApplicationUser UserEmployee { get; set; }
 
-        public OrderStateRusalt OrderStateRusalt { get; set; }
-
         public virtual Employee Employee { get; set; }
         public virtual Order Order { get; set; }
 
 
-    }
-
-    public enum OrderStateRusalt
-    {
-        [Display(Name = "nowe")]
-        New,
-
-        [Display(Name = "zrealizowane")]
-        Shipped
     }
 }

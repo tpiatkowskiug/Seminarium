@@ -1,14 +1,12 @@
-﻿@model IEnumerable<LabSystem2.Models.ResultsOfOrderGR>
-
+﻿@model IEnumerable<LabSystem2.Models.Order>
 @{
     ViewBag.Title = "ResultList";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 <div>
     <hr />
-    <h2 class="manageHeader">Twoje zlecenie</h2>
+    <h2 class="manageHeader">Twoje zamówienia</h2>
     <div>
 
         @if (Model.Any())
@@ -18,50 +16,45 @@
 
                 @foreach (var order in Model)
                 {
-                    <tr @if (order.Order.OrderState == LabSystem2.Models.OrderState.New) { <text> class="newOrder" </text> }>
+                    <tr @if (order.OrderState == LabSystem2.Models.OrderState.New) { <text> class="newOrder" </text> }>
                         <td>
                             <strong>Nr zamówienia: </strong>@order.OrderId
                         </td>
                         <td>
-                            <strong>Data rejestracji: </strong>
-                            @order.Order.DateCreated.ToString("dd-MM-yyyy")
-                        </td>
-                        <td>
-                            <strong>Data realizacji: </strong>
-                            @order.ResultsCreationDate.ToString("dd-MM-yyyy")
+                            <strong>Data: </strong>
+                            @order.DateCreated.ToString("dd-MM-yyyy")
                         </td>
                         <td>
                             <strong>Stan: </strong><br />
 
                             @if (ViewBag.UserIsLab)
                             {
-                                using (Html.BeginForm("ChangeOrderStateRusalt", "Manage"))
+                                using (Html.BeginForm("ChangeOrderState", "Manage"))
                                 {
                                     @Html.HiddenFor(o => order.OrderId)
-                                    @Html.EnumDropDownListFor(o => order.Order.OrderState, new { @class = "orderstateddl" })
+                                    @Html.EnumDropDownListFor(o => order.OrderState, new { @class = "orderstateddl" })
                                 }
                             }
                             else
                             {
-                                @Html.DisplayFor(o => order.Order.OrderState)
+                                @Html.DisplayFor(o => order.OrderState)
                             }
 
                         </td>
 
                         <td>
                             <strong>Dane wysyłkowe:</strong><br />
-                            @order.Order.Customer.NIP<br />
-                            @order.Order.Customer.NameAndSurname<br />
-                            @order.Order.Customer.Address<br />
-                            @order.Order.Customer.City<br />
-                            @order.Order.Customer.Email<br />
+                            @order.Customer.NIP<br />
+                            @order.Customer.NameAndSurname<br />
+                            @order.Customer.Address<br />
+                            @order.Customer.City<br />
                         </td>
                         <td>
                             <strong>Uwagi: </strong><br />
-                            @order.Order.Comment
+                            @order.Comment
                         </td>
                         <td>
-                            <strong>Łączny koszt:</strong> @order.Order.TotalPrice zł
+                            <strong>Łączny koszt:</strong> @order.TotalPrice zł
                         </td>
                     </tr>
                     <tr>
@@ -70,26 +63,74 @@
                                 <table class="table">
                                     <tr>
                                         <th>
-                                            Przedmiot badań
+                                            Numer próbki
                                         </th>
                                         <th>
-                                            Ilość prób
+                                            pH
                                         </th>
                                         <th>
-                                            Cena jednostkowa
+                                            Fosfor
+                                        </th>
+                                        <th>
+                                            Potas
+                                        </th>
+                                        <th>
+                                            Magnez
+                                        </th>
+                                        <th>
+                                            Inne Badania
+                                        </th>
+                                        <th>
+                                            Mangan
+                                        </th>
+                                        <th>
+                                            Żelazo
+                                        </th>
+                                        <th>
+                                            Miedź
+                                        </th>
+                                        <th>
+                                            Cynk
+                                        </th>
+                                        <th>
+                                            Bor
                                         </th>
                                     </tr>
-                                    @foreach (var orderItem in order.OrderItems)
+                                    @foreach (var orderItem in order.ResultsOfOrderGRList)
                                     {
                                         <tr>
                                             <td>
-                                                @Html.DisplayFor(modelItem => orderItem.Product.ProductTitle)
+                                                @Html.DisplayFor(modelItem => orderItem.OrderMarkingSample)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => orderItem.Quantity)
+                                                @Html.DisplayFor(modelItem => orderItem.WynikiBadanpH)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => orderItem.UnitPrice)
+                                                @Html.DisplayFor(modelItem => orderItem.WynikiBadanFosfor)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => orderItem.WynikiBadanPotas)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => orderItem.WynikiBadanMagnez)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => orderItem.InneBadania)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => orderItem.Mn)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => orderItem.Fe)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => orderItem.Cu)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => orderItem.Zn)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => orderItem.Bor)
                                             </td>
                                         </tr>
                                     }
@@ -116,111 +157,12 @@
         }
     </div>
 
-    <hr />
-    <h2 class="manageHeader">Twoje wyniki badań</h2>
 
-    <div>
-
-        @if (Model.Any())
-        {
-
-            <table id="orders-table">
-
-                @foreach (var order in Model)
-                {
-                    <tr>
-                        <td colspan="6">
-                            <section>
-                                <table class="table">
-                                    <tr>
-                                        <th>Numer próbki</th>
-                                        <th>Wyniki badań pH </th>
-                                        <th>Fosfor </th>
-                                        <th>Potas </th>
-                                        <th>Magnez </th>
-                                        <th>Inne badania </th>
-                                        <th>Dodatkowe badania </th>
-                                        <th>Miedź </th>
-                                        <th>Żelazo </th>
-                                        <th>Mangan </th>
-                                        <th>Cynk </th>
-                                        <th>Bor </th>
-                                    </tr>
-                                    @foreach (var rusaltItem in Model)
-                                    {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => rusaltItem.OrderMarkingSample)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => rusaltItem.WynikiBadanpH)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => rusaltItem.WynikiBadanFosfor)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => rusaltItem.WynikiBadanPotas)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => rusaltItem.WynikiBadanMagnez)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => rusaltItem.InneBadania)
-                                            </td>
-                                            <td>
-                                                @Html.CheckBoxFor(modelItem => rusaltItem.AddOrder, new { @id = "phonePrefferedCheckbox" })
-                                            </td>
-                                            <td id="phonerow">
-                                                @Html.DisplayFor(modelItem => rusaltItem.Cu, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox" })
-                                            </td>
-                                            <td id="phonerow1">
-                                                @Html.DisplayFor(modelItem => rusaltItem.Fe, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox" })
-                                            </td>
-                                            <td id="phonerow2">
-                                                @Html.DisplayFor(modelItem => rusaltItem.Mn, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox" })
-                                            </td>
-                                            <td id="phonerow3">
-                                                @Html.DisplayFor(modelItem => rusaltItem.Zn, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox" })
-                                            </td>
-                                            <td id="phonerow4">
-                                                @Html.DisplayFor(modelItem => rusaltItem.Bor, new { data_val_requirediftrue_boolprop = "phonePrefferedCheckbox" })
-                                            </td>
-                                        </tr>
-                                    }
-                                </table>
-                            </section>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="6"></td>
-                    </tr>
-
-                    <!-- Next rusalt -->
-
-                }
-
-
-            </table>
-        }
-        else
-        {
-            <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
-                Brak zamówień.
-            </div>
-        }
-    </div>
 
 </div>
 
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script src="~/Scripts/RequiredIfTrue.js"></script>
-
-    <script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
     $(".orderstateddl").on('change', function (e) {
         //e.preventDefault();
 
@@ -238,41 +180,4 @@
             }
           });
     });
-    </script>
-
-    <script type="text/javascript">
-        $('#phonerow').toggle($($(
-            '#phonePrefferedCheckbox')).is(':checked'));
-        $('#phonePrefferedCheckbox').click(function () {
-            $('#phonerow').toggle(this.checked);
-        });
-    </script>
-    <script type="text/javascript">
-        $('#phonerow1').toggle($($(
-            '#phonePrefferedCheckbox')).is(':checked'));
-        $('#phonePrefferedCheckbox').click(function () {
-            $('#phonerow1').toggle(this.checked);
-        });
-    </script>
-    <script type="text/javascript">
-        $('#phonerow2').toggle($($(
-            '#phonePrefferedCheckbox')).is(':checked'));
-        $('#phonePrefferedCheckbox').click(function () {
-            $('#phonerow2').toggle(this.checked);
-        });
-    </script>
-    <script type="text/javascript">
-        $('#phonerow3').toggle($($(
-            '#phonePrefferedCheckbox')).is(':checked'));
-        $('#phonePrefferedCheckbox').click(function () {
-            $('#phonerow3').toggle(this.checked);
-        });
-    </script>
-    <script type="text/javascript">
-        $('#phonerow4').toggle($($(
-            '#phonePrefferedCheckbox')).is(':checked'));
-        $('#phonePrefferedCheckbox').click(function () {
-            $('#phonerow4').toggle(this.checked);
-        });
-    </script>
-}
+</script>
