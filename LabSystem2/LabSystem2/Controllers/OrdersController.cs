@@ -51,7 +51,12 @@ namespace LabSystem2.Controllers
             return Json(personList, JsonRequestBehavior.AllowGet);
         }
 
-
+        [HttpPost]
+        public JsonResult GetCustomer(int CustomerId)
+        {
+            var query = db.Customers.ToList().Where(c => c.CustomerId == CustomerId).FirstOrDefault();
+            return Json(query.Email, JsonRequestBehavior.AllowGet);
+        }
 
         // GET: Orders/Details/5
         [Authorize(Roles = "Employee")]
@@ -85,7 +90,7 @@ namespace LabSystem2.Controllers
         [HttpPost]
         [Authorize(Roles = "Employee")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,CustomerId,EmployeeId,DateCreated,Comment,OrderState,TotalPrice")] Order order)
+        public ActionResult Create([Bind(Include = "OrderId,CustomerId,Email,EmployeeId,DateCreated,Comment,OrderState,TotalPrice")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -123,7 +128,7 @@ namespace LabSystem2.Controllers
         [HttpPost]
         [Authorize(Roles = "Employee")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderId,CustomerId,EmployeeId,DateCreated,Comment,OrderState,TotalPrice")] Order order)
+        public ActionResult Edit([Bind(Include = "OrderId,CustomerId,Email,EmployeeId,DateCreated,Comment,OrderState,TotalPrice")] Order order)
         {
             if (ModelState.IsValid)
             {

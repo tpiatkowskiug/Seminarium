@@ -1,0 +1,20 @@
+﻿@model LabSystem2.ViewModels.OrderConfirmationEmail
+Content-Type: text/plain; charset=utf-8
+
+Dziękujemy!
+
+Zlecenie badań zostało zarejestrowane. Wyniki badań w ciągu dwuch tygodni. 
+
+"Zamówienie nr @Model.OrderNumber".
+
+Stacja Chemiczno-Rolnicza
+ul. POW
+00-222 Warszawa
+PKO BP 10 1001 1100 0011 1100 0011
+
+Oryginał badań zostanie wysłany pocztą pod adres: @Model.FullAddress, możliwość sprawdzenie wyników na naszym 
+
+serwisie po uprzednim zarejestrowaniu link: @Url.Action("CustomerList", "Manage", null, "https")
+
+Dziękujemy i zapraszamy ponownie!
+

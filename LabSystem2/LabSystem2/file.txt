@@ -1,0 +1,7 @@
+2019-05-20 12:42:17.5556|INFO|LabSystem2.Controllers.HomeController|Visited main page
+2019-05-20 12:43:40.5086|INFO|LabSystem2.Controllers.HomeController|Visited main page
+2019-05-20 12:44:15.8785|INFO|LabSystem2.Controllers.HomeController|Visited main page
+2019-05-20 12:55:57.1028|INFO|LabSystem2.Controllers.HomeController|Visited main page
+2019-05-20 12:58:25.1428|INFO|LabSystem2.Controllers.HomeController|Visited main page
+2019-05-20 12:58:38.0580|INFO|LabSystem2.Controllers.HomeController|Visited main page
+2019-05-20 12:59:08.8052|INFO|LabSystem2.Controllers.HomeController|Visited main page

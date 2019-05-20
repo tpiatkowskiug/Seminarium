@@ -1,0 +1,174 @@
+﻿<error errorId="87dbc0bf-c9e8-4d04-9ffb-f7e2579c9128" application="/LM/W3SVC/2/ROOT" host="KOMPUTER-PC" type="System.Web.HttpException" message="The controller for path '/Customer/Create' was not found or does not implement IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): The controller for path '/Customer/Create' was not found or does not implement IController.&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at Castle.Proxies.Invocations.IControllerFactory_CreateController.InvokeMethodOnTarget()&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensibility.CastleInvocationToAlternateMethodContextAdapter.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensions.AlternateMethodContextExtensions.TryProceedWithTimer(IAlternateMethodContext context, TimerResult&amp; timerResult)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateTypeToCastleInterceptorAdapter.Intercept(IInvocation invocation)&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Castle.Proxies.IControllerFactoryProxy.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="bsmela@oschr.pl" time="2019-05-20T13:20:02.9378719Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:no-cache&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_PRAGMA:no-cache&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=a7EljSvVMyxVrlRF0iBBO1Z50BqKmAja4I9cC5MyST_y5g2J0xBGOco9ANEwZgYis3oJ-2-JISgxebABgPLw962gb6NUz9DUbJ-rQ4RXKhg1; .AspNet.ApplicationCookie=laG2tKiMczV5AiRgFUf1bdgldxSw1sl5vSXbsprkm7HVRCoUVtxe81AJKCy45cXdXUWQ6CVq-lKnD4jmvDHyiEW0ND1_o8sU13o4A5L_B-arNiopbnyEIuuGEUlv4utnm0V154mPoEohL-CExhMfkA70zPFdR4Smfiqg4k_uzLmPQQqnrdpzQT4C-HTwWesqVR4YlqFGqPe6g2p4v7DK5Ynbfin40F9gVoYnV8N0_1zflA_Vm7-NwtPpxCh71FHmk1bf7unjTQ5_s9GFTn9jH-zx_pgQd1bfZulflVzwKjmqqDwTpJ0dbRZJtB7NXzphacEPfQ6LM_dOKSMksdHswBoBqdxpz55J2peH07M_ihrZ0l1qNr95_L9-tcxC1dXqprk5GCw-AKAK4lGIT6D74823fKHDDbo41VSOtlkoiTxP4JD8d7kEj0Sb7knwgfPYUXBMEDbcokaYcBQv1Sp_z57UI4jr3keejeiUNxmWMEXV9cRORnnvnCi_BfHS0ATH65nQNZIHuobzzZRDWcTIuQ&#xD;&#xA;HTTP_HOST:localhost:60618&#xD;&#xA;HTTP_REFERER:http://localhost:60618/Orders&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: no-cache&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Pragma: no-cache&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: __RequestVerificationToken=a7EljSvVMyxVrlRF0iBBO1Z50BqKmAja4I9cC5MyST_y5g2J0xBGOco9ANEwZgYis3oJ-2-JISgxebABgPLw962gb6NUz9DUbJ-rQ4RXKhg1; .AspNet.ApplicationCookie=laG2tKiMczV5AiRgFUf1bdgldxSw1sl5vSXbsprkm7HVRCoUVtxe81AJKCy45cXdXUWQ6CVq-lKnD4jmvDHyiEW0ND1_o8sU13o4A5L_B-arNiopbnyEIuuGEUlv4utnm0V154mPoEohL-CExhMfkA70zPFdR4Smfiqg4k_uzLmPQQqnrdpzQT4C-HTwWesqVR4YlqFGqPe6g2p4v7DK5Ynbfin40F9gVoYnV8N0_1zflA_Vm7-NwtPpxCh71FHmk1bf7unjTQ5_s9GFTn9jH-zx_pgQd1bfZulflVzwKjmqqDwTpJ0dbRZJtB7NXzphacEPfQ6LM_dOKSMksdHswBoBqdxpz55J2peH07M_ihrZ0l1qNr95_L9-tcxC1dXqprk5GCw-AKAK4lGIT6D74823fKHDDbo41VSOtlkoiTxP4JD8d7kEj0Sb7knwgfPYUXBMEDbcokaYcBQv1Sp_z57UI4jr3keejeiUNxmWMEXV9cRORnnvnCi_BfHS0ATH65nQNZIHuobzzZRDWcTIuQ&#xD;&#xA;Host: localhost:60618&#xD;&#xA;Referer: http://localhost:60618/Orders&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="bsmela@oschr.pl" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="bsmela@oschr.pl" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Customer/Create" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\Customer\Create" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="49294" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Customer/Create" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="60618" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Customer/Create" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_PRAGMA">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=a7EljSvVMyxVrlRF0iBBO1Z50BqKmAja4I9cC5MyST_y5g2J0xBGOco9ANEwZgYis3oJ-2-JISgxebABgPLw962gb6NUz9DUbJ-rQ4RXKhg1; .AspNet.ApplicationCookie=laG2tKiMczV5AiRgFUf1bdgldxSw1sl5vSXbsprkm7HVRCoUVtxe81AJKCy45cXdXUWQ6CVq-lKnD4jmvDHyiEW0ND1_o8sU13o4A5L_B-arNiopbnyEIuuGEUlv4utnm0V154mPoEohL-CExhMfkA70zPFdR4Smfiqg4k_uzLmPQQqnrdpzQT4C-HTwWesqVR4YlqFGqPe6g2p4v7DK5Ynbfin40F9gVoYnV8N0_1zflA_Vm7-NwtPpxCh71FHmk1bf7unjTQ5_s9GFTn9jH-zx_pgQd1bfZulflVzwKjmqqDwTpJ0dbRZJtB7NXzphacEPfQ6LM_dOKSMksdHswBoBqdxpz55J2peH07M_ihrZ0l1qNr95_L9-tcxC1dXqprk5GCw-AKAK4lGIT6D74823fKHDDbo41VSOtlkoiTxP4JD8d7kEj0Sb7knwgfPYUXBMEDbcokaYcBQv1Sp_z57UI4jr3keejeiUNxmWMEXV9cRORnnvnCi_BfHS0ATH65nQNZIHuobzzZRDWcTIuQ" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:60618" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:60618/Orders" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="a7EljSvVMyxVrlRF0iBBO1Z50BqKmAja4I9cC5MyST_y5g2J0xBGOco9ANEwZgYis3oJ-2-JISgxebABgPLw962gb6NUz9DUbJ-rQ4RXKhg1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="laG2tKiMczV5AiRgFUf1bdgldxSw1sl5vSXbsprkm7HVRCoUVtxe81AJKCy45cXdXUWQ6CVq-lKnD4jmvDHyiEW0ND1_o8sU13o4A5L_B-arNiopbnyEIuuGEUlv4utnm0V154mPoEohL-CExhMfkA70zPFdR4Smfiqg4k_uzLmPQQqnrdpzQT4C-HTwWesqVR4YlqFGqPe6g2p4v7DK5Ynbfin40F9gVoYnV8N0_1zflA_Vm7-NwtPpxCh71FHmk1bf7unjTQ5_s9GFTn9jH-zx_pgQd1bfZulflVzwKjmqqDwTpJ0dbRZJtB7NXzphacEPfQ6LM_dOKSMksdHswBoBqdxpz55J2peH07M_ihrZ0l1qNr95_L9-tcxC1dXqprk5GCw-AKAK4lGIT6D74823fKHDDbo41VSOtlkoiTxP4JD8d7kEj0Sb7knwgfPYUXBMEDbcokaYcBQv1Sp_z57UI4jr3keejeiUNxmWMEXV9cRORnnvnCi_BfHS0ATH65nQNZIHuobzzZRDWcTIuQ" />
+    </item>
+  </cookies>
+</error>

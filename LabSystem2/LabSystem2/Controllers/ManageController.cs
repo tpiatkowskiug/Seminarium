@@ -9,6 +9,7 @@ using Microsoft.Owin.Security;
 using LabSystem2.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
+using NLog;
 
 namespace LabSystem2.Controllers
 {

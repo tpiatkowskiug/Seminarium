@@ -24,11 +24,15 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Rodzaje badań", "List", "Store")</li>
+                    <li>
+                        <a href="@Url.Action("List", "Store", new { genrename = @"[\w& ]+"})">
+                            Przedmiot badań
+                        </a>
+                    </li>
                     @if (User.IsInRole("Employee"))
                     {
                         <li>@Html.ActionLink("Zlecenia", "Index", "Orders")</li>
-                        <li>@Html.ActionLink("Zleceniodawca", "Create", "Customer")</li>
+                        <li>@Html.ActionLink("Baza Klientów", "Index", "Customers")</li>
                         <li>@Html.ActionLink("Zamówienia", "OrdersList", "Manage")</li>
                     }
                     @if (User.IsInRole("Customer"))
@@ -40,7 +44,11 @@
                         <li>@Html.ActionLink("Dodaj produkt", "Create", "Products")</li>
                         <li>@Html.ActionLink("Prcownicy", "Create", "Employees")</li>
                         <li>@Html.ActionLink("Zamówienia", "OrdersList", "Manage")</li>
-                        <li>@Html.ActionLink("Wyniki", "ResultList", "Manage")</li>
+                        <li>
+                            <a class="manageLink" href="@Url.Content("~/elmah")">
+                                Logi
+                            </a>
+                        </li>
                     }
                     @if (User.IsInRole("Lab"))
                     {

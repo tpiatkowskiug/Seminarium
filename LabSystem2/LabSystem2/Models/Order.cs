@@ -15,6 +15,9 @@ namespace LabSystem2.Models
         [Display(Name = "Zleceniodawca")]
         public int? CustomerId { get; set; }
 
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
         [Display(Name = "Wprowadził zlecenie")]
         public string EmployeeId { get; set; }
         public virtual ApplicationUser UserEmployee { get; set; }

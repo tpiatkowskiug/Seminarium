@@ -1,6 +1,7 @@
 ﻿using LabSystem2.Infrastructure;
 using LabSystem2.Models;
 using LabSystem2.ViewModels;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,12 @@ namespace LabSystem2.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private ICacheProvider cache = new DefaultCacheProvider();
 
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         public ActionResult Index()
         {
 
-            //logger.Info("Visited main page");
+            logger.Info("Visited main page");
 
             var bestsellers = db.Productus.Where(a => a.IsBestseller && !a.IsHidden).OrderBy(g => Guid.NewGuid()).Take(3);
 

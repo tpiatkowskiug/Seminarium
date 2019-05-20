@@ -20,7 +20,7 @@ namespace LabSystem2.Controllers
 {
     public class CartController : Controller
     {
-        //private static Logger logger = LogManager.GetCurrentClassLogger();
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -71,11 +71,17 @@ namespace LabSystem2.Controllers
             ShoppingCartManager shoppingCart = new ShoppingCartManager(this.sessionManager, this.db);
             shoppingCart.AddToCart(id);
 
-            // logger.Info("Added product {0} to cart", id);
+            logger.Info("Added product {0} to cart", id);
 
              return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public JsonResult GetCustomer(int CustomerId)
+        {
+            var query = db.Customers.ToList().Where(c => c.CustomerId == CustomerId).FirstOrDefault();
+            return Json(query.Email, JsonRequestBehavior.AllowGet);
+        }
 
         public int GetCartItemsCount()
         {
@@ -153,7 +159,7 @@ namespace LabSystem2.Controllers
             }
             return Json(results);
         }
-        [Authorize(Roles = "Employee")]
+
         public async Task<ActionResult> Checkout()
         {
             if (Request.IsAuthenticated)
@@ -176,7 +182,6 @@ namespace LabSystem2.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> Checkout(Order orderdetails)
         {
             if (ModelState.IsValid)
@@ -203,7 +208,7 @@ namespace LabSystem2.Controllers
                 // Send mail confirmation
                 // Refetch - need also albums details
                 //var order = db.Orders.Include("OrderItems").SingleOrDefault(o => o.OrderId == newOrder.OrderId);            
-                //var order = db.Orders.Include("OrderItems").Include("OrderItems.Album").SingleOrDefault(o => o.OrderId == newOrder.OrderId);
+                var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderId == newOrder.OrderId);
 
 
                 //IMailService mailService = new HangFirePostalMailService();
@@ -218,24 +223,24 @@ namespace LabSystem2.Controllers
 
 
 
-                //// Strongly typed - without background
-                ////OrderConfirmationEmail email = new OrderConfirmationEmail();
-                ////email.To = order.Email;
-                ////email.Cost = order.TotalPrice;
-                ////email.OrderNumber = order.OrderId;
-                ////email.FullAddress = string.Format("{0} {1}, {2}, {3}", order.FirstName, order.LastName, order.Address, order.CodeAndCity);
-                ////email.OrderItems = order.OrderItems;
-                ////email.CoverPath = AppConfig.PhotosFolderRelative;
+                // Strongly typed - without background
+                OrderConfirmationEmail email = new OrderConfirmationEmail();
+                email.To = order.Email;
+                email.Cost = order.TotalPrice;
+                email.OrderNumber = order.OrderId;
+              //  email.FullAddress = string.Format("{0} {1}, {2}, {3}", order.Customer.NIP, order.Customer.NameAndSurname, order.Customer.Address, order.Customer.City);
+                email.OrderItems = order.OrderItems;
+                email.CoverPath = AppConfig.PhotosFolderRelative;
 
-                //// Loosely typed - without background
-                ////dynamic email = new Postal.Email("OrderConfirmation");
-                ////email.To = order.Email;
-                ////email.Cost = order.TotalPrice;
-                ////email.OrderNumber = order.OrderId;
-                ////email.FullAddress = string.Format("{0} {1}, {2}, {3}", order.FirstName, order.LastName, order.Address, order.CodeAndCity);
-                ////email.OrderItems = order.OrderItems;
-                ////email.CoverPath = AppConfig.PhotosFolderRelative;
-                ////email.Send();
+                //Loosely typed -without background
+                //dynamic email = new Postal.Email("OrderConfirmation");
+                //email.To = order.Customer.Email;
+                //email.Cost = order.TotalPrice;
+                //email.OrderNumber = order.OrderId;
+                //email.FullAddress = string.Format("{0} {1}, {2}, {3}", order.Customer.NIP, order.Customer.NameAndSurname, order.Customer.Address, order.Customer.City);
+                //email.OrderItems = order.OrderItems;
+                //email.CoverPath = AppConfig.PhotosFolderRelative;
+                //email.Send();
 
                 //// Easiest background
                 ////HostingEnvironment.QueueBackgroundWorkItem(ct => email.Send());
