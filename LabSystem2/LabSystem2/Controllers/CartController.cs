@@ -1,4 +1,4 @@
-﻿using LabSystem2.DAL;
+﻿ using LabSystem2.DAL;
 using LabSystem2.Models;
 using LabSystem2.ViewModels;
 using System;
@@ -12,7 +12,7 @@ using Microsoft.AspNet.Identity.Owin;
 using LabSystem2.Infrastructure;
 using System.Web.Hosting;
 using System.Net;
-//using Hangfire;
+using Hangfire;
 using NLog;
 using LabSystem2;
 
@@ -26,20 +26,20 @@ namespace LabSystem2.Controllers
 
         private ISessionManager sessionManager { get; set; }
 
-       // private IMailService mailService { get; set; }
+        private IMailService mailService { get; set; }
 
         private ApplicationUserManager _userManager;
         private ShoppingCartManager shoppingCartManager;
 
-        public CartController()
+        public CartController(IMailService mailService, ISessionManager sessionManager)
         {
-            //this.mailService = mailService;
+            this.mailService = mailService;
 
             // Simple way - but hard coupling
             this.sessionManager = new SessionManager();
             this.shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
             // DI way
-            //this.sessionManager = sessionManager;
+            this.sessionManager = sessionManager;
         }
 
         public ApplicationUserManager UserManager
@@ -208,42 +208,41 @@ namespace LabSystem2.Controllers
                 // Send mail confirmation
                 // Refetch - need also albums details
                 //var order = db.Orders.Include("OrderItems").SingleOrDefault(o => o.OrderId == newOrder.OrderId);            
-                var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderId == newOrder.OrderId);
+                var order = db.Orders.Include("ResultsOfOrderGRList").SingleOrDefault(o => o.OrderId == newOrder.OrderId);
 
 
                 //IMailService mailService = new HangFirePostalMailService();
                 //mailService.SendOrderConfirmationEmail(order);
 
-                // this.mailService.SendOrderConfirmationEmail(order);
+                this.mailService.SendOrderConfirmationEmail(order);
 
-                //string url = Url.Action("SendConfirmationEmail", "Cart", new { orderid = newOrder.OrderId, lastname = newOrder.LastName }, Request.Url.Scheme);
+                string url = Url.Action("SendConfirmationEmail", "Manage", new { orderid = newOrder.OrderId, lastname = newOrder.Email}, Request.Url.Scheme);
 
-                //// Hangfire - nice one (if ASP.NET app will be still running)
-                //BackgroundJob.Enqueue(() => Helpers.CallUrl(url));
+                // Hangfire - nice one (if ASP.NET app will be still running)
+                BackgroundJob.Enqueue(() => Helpers.CallUrl(url));
 
 
 
                 // Strongly typed - without background
-                OrderConfirmationEmail email = new OrderConfirmationEmail();
-                email.To = order.Email;
-                email.Cost = order.TotalPrice;
-                email.OrderNumber = order.OrderId;
-              //  email.FullAddress = string.Format("{0} {1}, {2}, {3}", order.Customer.NIP, order.Customer.NameAndSurname, order.Customer.Address, order.Customer.City);
-                email.OrderItems = order.OrderItems;
-                email.CoverPath = AppConfig.PhotosFolderRelative;
+                //OrderConfirmationEmail email = new OrderConfirmationEmail();
+                //email.To = order.Email;
+                //email.Cost = order.TotalPrice;
+                //email.OrderNumber = order.OrderId;
+                //email.OrderItems = order.OrderItems;
+                //email.ResultsOfOrderGRList = order.ResultsOfOrderGRList;
+                //email.CoverPath = AppConfig.PhotosFolderRelative;
 
                 //Loosely typed -without background
                 //dynamic email = new Postal.Email("OrderConfirmation");
                 //email.To = order.Customer.Email;
                 //email.Cost = order.TotalPrice;
                 //email.OrderNumber = order.OrderId;
-                //email.FullAddress = string.Format("{0} {1}, {2}, {3}", order.Customer.NIP, order.Customer.NameAndSurname, order.Customer.Address, order.Customer.City);
                 //email.OrderItems = order.OrderItems;
                 //email.CoverPath = AppConfig.PhotosFolderRelative;
                 //email.Send();
 
-                //// Easiest background
-                ////HostingEnvironment.QueueBackgroundWorkItem(ct => email.Send());
+                //Easiest background
+                //HostingEnvironment.QueueBackgroundWorkItem(ct => email.Send());
 
                 return RedirectToAction("OrderConfirmation");
             }

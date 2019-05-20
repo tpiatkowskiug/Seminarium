@@ -10,6 +10,9 @@ using LabSystem2.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 using NLog;
+using LabSystem2.ViewModels;
+using LabSystem2.Infrastructure;
+using System.Net;
 
 namespace LabSystem2.Controllers
 {
@@ -18,6 +21,8 @@ namespace LabSystem2.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
+        private IMailService mailService;
 
         public ManageController()
         {
@@ -27,6 +32,14 @@ namespace LabSystem2.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+        }
+
+        
+
+        public ManageController(ApplicationDbContext context, IMailService mailService)
+        {
+            this.mailService = mailService;
+            this.db = context;
         }
 
         public ApplicationSignInManager SignInManager
@@ -335,7 +348,6 @@ namespace LabSystem2.Controllers
 
             base.Dispose(disposing);
         }
-        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ActionResult OrdersList()
         {
@@ -427,7 +439,7 @@ namespace LabSystem2.Controllers
                 //IMailService mailService = new HangFirePostalMailService();
                 //mailService.SendOrderShippedEmail(orderToModify);
 
-                //mailService.SendOrderShippedEmail(orderToModify);
+                mailService.SendOrderShippedEmail(orderToModify);
 
                 //dynamic email = new Postal.Email("OrderShipped");
                 //email.To = orderToModify.Email;
@@ -439,6 +451,49 @@ namespace LabSystem2.Controllers
             return order.OrderState;
         }
 
+        [AllowAnonymous]
+        public ActionResult SendStatusEmail(int orderid, string lastname)
+        {
+            // This could also be used (but problems when hosted on Azure Websites)
+            // if (Request.IsLocal)            
+
+            var orderToModify = db.Orders.Include("ResultsOfOrderGRList").SingleOrDefault(o => o.OrderId == orderid && o.Email == lastname);
+
+            if (orderToModify == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            OrderShippedEmail email = new OrderShippedEmail();
+            email.To = orderToModify.Email;
+            email.OrderId = orderToModify.OrderId;
+            email.ResultsOfOrderGRList = orderToModify.ResultsOfOrderGRList;
+            email.Send();
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        [AllowAnonymous]
+        public ActionResult SendConfirmationEmail(int orderid, string lastname)
+        {
+            // orderid and lastname as a basic form of auth
+
+            // Also might be called by scheduler (ie. Azure scheduler), pinging endpoint and using some kind of queue / db
+
+            // This could also be used (but problems when hosted on Azure Websites)
+            // if (Request.IsLocal)            
+
+            var order = db.Orders.Include("OrderItems").Include("OrderItems.Album").SingleOrDefault(o => o.OrderId == orderid && o.Email == lastname);
+
+            if (order == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            OrderConfirmationEmail email = new OrderConfirmationEmail();
+            email.To = order.Email;
+            email.Cost = order.TotalPrice;
+            email.OrderNumber = order.OrderId;  
+            email.ResultsOfOrderGRList = order.ResultsOfOrderGRList;
+            email.CoverPath = AppConfig.PhotosFolderRelative;
+            email.Send();
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
 
         #region Pomocnicy
         // Służy do ochrony XSRF podczas dodawania logowań zewnętrznych
