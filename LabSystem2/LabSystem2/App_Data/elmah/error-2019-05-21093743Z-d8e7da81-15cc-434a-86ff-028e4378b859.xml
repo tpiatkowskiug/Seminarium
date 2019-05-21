@@ -1,0 +1,174 @@
+﻿<error errorId="d8e7da81-15cc-434a-86ff-028e4378b859" application="/LM/W3SVC/2/ROOT" host="KOMPUTER-PC" type="Ninject.ActivationException" message="Error activating ManageController using implicit self-binding of ManageController&#xD;&#xA;Several constructors have the same priority. Please specify the constructor using ToConstructor syntax or add an Inject attribute.&#xD;&#xA;&#xD;&#xA;Constructors:&#xD;&#xA;ManageController(ApplicationDbContext contextIMailService mailService)&#xD;&#xA;ManageController(ApplicationUserManager userManagerApplicationSignInManager signInManager)&#xD;&#xA;&#xD;&#xA;Activation path:&#xD;&#xA;  1) Request for ManageController&#xD;&#xA;&#xD;&#xA;Suggestions:&#xD;&#xA;  1) Ensure that the implementation type has a public constructor.&#xD;&#xA;  2) If you have implemented the Singleton pattern, use a binding with InSingletonScope() instead.&#xD;&#xA;" source="Ninject" detail="System.InvalidOperationException: An error occurred when trying to create a controller of type 'LabSystem2.Controllers.ManageController'. Make sure that the controller has a parameterless public constructor. ---&gt; Ninject.ActivationException: Error activating ManageController using implicit self-binding of ManageController&#xD;&#xA;Several constructors have the same priority. Please specify the constructor using ToConstructor syntax or add an Inject attribute.&#xD;&#xA;&#xD;&#xA;Constructors:&#xD;&#xA;ManageController(ApplicationDbContext contextIMailService mailService)&#xD;&#xA;ManageController(ApplicationUserManager userManagerApplicationSignInManager signInManager)&#xD;&#xA;&#xD;&#xA;Activation path:&#xD;&#xA;  1) Request for ManageController&#xD;&#xA;&#xD;&#xA;Suggestions:&#xD;&#xA;  1) Ensure that the implementation type has a public constructor.&#xD;&#xA;  2) If you have implemented the Singleton pattern, use a binding with InSingletonScope() instead.&#xD;&#xA;&#xD;&#xA;   at Ninject.Infrastructure.Language.ExtensionsForIEnumerableOfT.SingleOrThrowException[T](IEnumerable`1 series, Func`1 exceptionCreator)&#xD;&#xA;   at Ninject.Activation.Providers.StandardProvider.DetermineConstructorInjectionDirective(IContext context)&#xD;&#xA;   at Ninject.Activation.Providers.StandardProvider.Create(IContext context)&#xD;&#xA;   at Ninject.Activation.Context.ResolveInternal(Object scope)&#xD;&#xA;   at Ninject.Activation.Context.Resolve()&#xD;&#xA;   at Ninject.KernelBase.Resolve(IRequest request, Boolean handleMissingBindings)&#xD;&#xA;   at Ninject.KernelBase.Resolve(IRequest request)&#xD;&#xA;   at Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType)&#xD;&#xA;   at Castle.Proxies.Invocations.IDependencyResolver_GetService.InvokeMethodOnTarget()&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensibility.CastleInvocationToAlternateMethodContextAdapter.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensions.AlternateMethodContextExtensions.TryProceedWithTimer(IAlternateMethodContext context, TimerResult&amp; timerResult)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateTypeToCastleInterceptorAdapter.Intercept(IInvocation invocation)&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Castle.Proxies.IDependencyResolverProxy.GetService(Type serviceType)&#xD;&#xA;   at MvcSiteMapProvider.DI.DependencyResolverDecorator.GetService(Type serviceType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at Castle.Proxies.Invocations.IControllerFactory_CreateController.InvokeMethodOnTarget()&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensibility.CastleInvocationToAlternateMethodContextAdapter.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensions.AlternateMethodContextExtensions.TryProceedWithTimer(IAlternateMethodContext context, TimerResult&amp; timerResult)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateTypeToCastleInterceptorAdapter.Intercept(IInvocation invocation)&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Castle.Proxies.IControllerFactoryProxy.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="admin@oschr.pl" time="2019-05-21T09:37:43.5950055Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:no-cache&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_PRAGMA:no-cache&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=gcKoZuJDShbJ5b-XJH35svFXqYrE_wSADgW8RBP-9mRAuda5mwyZje8TCThWd2EjD-E_X2mH-gFZxi9SXbwPV8tGEzCmz_CBzzM_gk2wxZ81; .AspNet.ApplicationCookie=z7RnwWM2TVBESv_X1v7YlRH6fMhQucxrgqlBYoW4Nmv9AriveMkU9lqaeawaRBGRG4dF2qf58L0yHAqQNyhiTuVeriuG2j4Ek-wNU2BiuIro0uusDW_DDxd227yCXfmxRZpNliQCNgpgN5rjMskfORmlMPxoUX4xjN8BCGs1NIcqPoi2ZW_f5P9a8-lxFLgSvOylTulyZl8pCxSuX-kQ4oBl7KMUNCH6A0dHJhqmqpb5sv4NjwDKte7MpERxK-tq9cguitGA2XaL6gCdYpT9-cUQUI5lcH3LyVOxzzsuDC4wT4bYPlTz9JyyAhigGYp2S-LE69uI-qWGhdyhY8zKWmLUd_l75qX5o2Xz1NMSFBDZ0ssY6nXtv5Ni7CH7nNQO_KTUoJrUcHsuXE4n6-QrQdZQSN775f-l4SoBtMUnzzbcA7aNwVIU7Lmg49MmyqIQaugdta8-EC35RhaY1T85q2XARtrBbUk1-SAUdw_iObWENu_NTBe_EAKnOAD_mEZe2_eXZw8bgInINRxs2EoqZQ&#xD;&#xA;HTTP_HOST:localhost:60618&#xD;&#xA;HTTP_REFERER:http://localhost:60618/&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: no-cache&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Pragma: no-cache&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: __RequestVerificationToken=gcKoZuJDShbJ5b-XJH35svFXqYrE_wSADgW8RBP-9mRAuda5mwyZje8TCThWd2EjD-E_X2mH-gFZxi9SXbwPV8tGEzCmz_CBzzM_gk2wxZ81; .AspNet.ApplicationCookie=z7RnwWM2TVBESv_X1v7YlRH6fMhQucxrgqlBYoW4Nmv9AriveMkU9lqaeawaRBGRG4dF2qf58L0yHAqQNyhiTuVeriuG2j4Ek-wNU2BiuIro0uusDW_DDxd227yCXfmxRZpNliQCNgpgN5rjMskfORmlMPxoUX4xjN8BCGs1NIcqPoi2ZW_f5P9a8-lxFLgSvOylTulyZl8pCxSuX-kQ4oBl7KMUNCH6A0dHJhqmqpb5sv4NjwDKte7MpERxK-tq9cguitGA2XaL6gCdYpT9-cUQUI5lcH3LyVOxzzsuDC4wT4bYPlTz9JyyAhigGYp2S-LE69uI-qWGhdyhY8zKWmLUd_l75qX5o2Xz1NMSFBDZ0ssY6nXtv5Ni7CH7nNQO_KTUoJrUcHsuXE4n6-QrQdZQSN775f-l4SoBtMUnzzbcA7aNwVIU7Lmg49MmyqIQaugdta8-EC35RhaY1T85q2XARtrBbUk1-SAUdw_iObWENu_NTBe_EAKnOAD_mEZe2_eXZw8bgInINRxs2EoqZQ&#xD;&#xA;Host: localhost:60618&#xD;&#xA;Referer: http://localhost:60618/&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin@oschr.pl" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin@oschr.pl" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Manage/OrdersList" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\Manage\OrdersList" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="49779" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Manage/OrdersList" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="60618" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Manage/OrdersList" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_PRAGMA">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=gcKoZuJDShbJ5b-XJH35svFXqYrE_wSADgW8RBP-9mRAuda5mwyZje8TCThWd2EjD-E_X2mH-gFZxi9SXbwPV8tGEzCmz_CBzzM_gk2wxZ81; .AspNet.ApplicationCookie=z7RnwWM2TVBESv_X1v7YlRH6fMhQucxrgqlBYoW4Nmv9AriveMkU9lqaeawaRBGRG4dF2qf58L0yHAqQNyhiTuVeriuG2j4Ek-wNU2BiuIro0uusDW_DDxd227yCXfmxRZpNliQCNgpgN5rjMskfORmlMPxoUX4xjN8BCGs1NIcqPoi2ZW_f5P9a8-lxFLgSvOylTulyZl8pCxSuX-kQ4oBl7KMUNCH6A0dHJhqmqpb5sv4NjwDKte7MpERxK-tq9cguitGA2XaL6gCdYpT9-cUQUI5lcH3LyVOxzzsuDC4wT4bYPlTz9JyyAhigGYp2S-LE69uI-qWGhdyhY8zKWmLUd_l75qX5o2Xz1NMSFBDZ0ssY6nXtv5Ni7CH7nNQO_KTUoJrUcHsuXE4n6-QrQdZQSN775f-l4SoBtMUnzzbcA7aNwVIU7Lmg49MmyqIQaugdta8-EC35RhaY1T85q2XARtrBbUk1-SAUdw_iObWENu_NTBe_EAKnOAD_mEZe2_eXZw8bgInINRxs2EoqZQ" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:60618" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:60618/" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="gcKoZuJDShbJ5b-XJH35svFXqYrE_wSADgW8RBP-9mRAuda5mwyZje8TCThWd2EjD-E_X2mH-gFZxi9SXbwPV8tGEzCmz_CBzzM_gk2wxZ81" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="z7RnwWM2TVBESv_X1v7YlRH6fMhQucxrgqlBYoW4Nmv9AriveMkU9lqaeawaRBGRG4dF2qf58L0yHAqQNyhiTuVeriuG2j4Ek-wNU2BiuIro0uusDW_DDxd227yCXfmxRZpNliQCNgpgN5rjMskfORmlMPxoUX4xjN8BCGs1NIcqPoi2ZW_f5P9a8-lxFLgSvOylTulyZl8pCxSuX-kQ4oBl7KMUNCH6A0dHJhqmqpb5sv4NjwDKte7MpERxK-tq9cguitGA2XaL6gCdYpT9-cUQUI5lcH3LyVOxzzsuDC4wT4bYPlTz9JyyAhigGYp2S-LE69uI-qWGhdyhY8zKWmLUd_l75qX5o2Xz1NMSFBDZ0ssY6nXtv5Ni7CH7nNQO_KTUoJrUcHsuXE4n6-QrQdZQSN775f-l4SoBtMUnzzbcA7aNwVIU7Lmg49MmyqIQaugdta8-EC35RhaY1T85q2XARtrBbUk1-SAUdw_iObWENu_NTBe_EAKnOAD_mEZe2_eXZw8bgInINRxs2EoqZQ" />
+    </item>
+  </cookies>
+</error>

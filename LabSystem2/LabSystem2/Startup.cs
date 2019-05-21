@@ -5,6 +5,7 @@ using Owin;
 using Hangfire;
 using Hangfire.SqlServer;
 using Hangfire.Dashboard;
+using System.Configuration;
 
 [assembly: OwinStartupAttribute(typeof(LabSystem2.Startup))]
 namespace LabSystem2
@@ -14,18 +15,27 @@ namespace LabSystem2
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-#pragma warning disable CS0618 // Typ lub składowa jest przestarzała
-            app.UseHangfire(config =>
-            {
-                config.UseAuthorizationFilters(new AuthorizationFilter
-                {
-                    Roles = "Admin"
-                });
+            GlobalConfiguration.Configuration.UseSqlServerStorage("DefaultConnection");
 
-                config.UseSqlServerStorage("DefaultConnection");
-                config.UseServer();
-            });
-#pragma warning restore CS0618 // Typ lub składowa jest przestarzała
+            app.UseHangfireDashboard();
+            app.UseHangfireServer();
         }
+
+        //        public void Configuration(IAppBuilder app)
+        //        {
+        //            ConfigureAuth(app);
+        //#pragma warning disable CS0618 // Typ lub składowa jest przestarzała
+        //            app.UseHangfire(config =>
+        //            {
+        //                config.UseAuthorizationFilters(new AuthorizationFilter
+        //                {
+        //                    Roles = "Admin"
+        //                });
+
+        //                config.UseSqlServerStorage(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+        //                config.UseServer();
+        //            });
+        //#pragma warning restore CS0618 // Typ lub składowa jest przestarzała
+        //        }
     }
 }

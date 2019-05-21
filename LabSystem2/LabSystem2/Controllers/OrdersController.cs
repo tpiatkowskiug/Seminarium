@@ -60,7 +60,6 @@ namespace LabSystem2.Controllers
 
         // GET: Orders/Details/5
         [Authorize(Roles = "Employee")]
-        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -90,7 +89,7 @@ namespace LabSystem2.Controllers
         [HttpPost]
         [Authorize(Roles = "Employee")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,CustomerId,Email,EmployeeId,DateCreated,Comment,OrderState,TotalPrice")] Order order)
+        public ActionResult Create([Bind(Include = "OrderId,CustomerId,Email,DateCreated,Comment,OrderState,TotalPrice")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -128,7 +127,7 @@ namespace LabSystem2.Controllers
         [HttpPost]
         [Authorize(Roles = "Employee")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderId,CustomerId,Email,EmployeeId,DateCreated,Comment,OrderState,TotalPrice")] Order order)
+        public ActionResult Edit([Bind(Include = "OrderId,CustomerId,Email,DateCreated,Comment,OrderState,TotalPrice")] Order order)
         {
             if (ModelState.IsValid)
             {

@@ -15,9 +15,6 @@ namespace LabSystem2.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ResultsOfOrderGRs
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Cuastomer")]
-        [Authorize(Roles = "Employee")]
         public ActionResult Index()
         {
             var getResultsOfOrderGRs = db.GetResultsOfOrderGRs.Include(r => r.Employee).Include(r => r.Order);

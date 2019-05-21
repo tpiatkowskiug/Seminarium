@@ -1,0 +1,133 @@
+﻿<error errorId="5711aaeb-890c-430c-964a-cd8e7b805d44" host="KOMPUTER-PC" type="System.Data.SqlClient.SqlException" message="2019-05-21 12:51:23.3243 WARN An exception occurred while trying to perform the migration. Retrying..." source=".Net SqlClient Data Provider" detail="   w System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   w System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   w System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)&#xD;&#xA;   w System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)&#xD;&#xA;   w System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)&#xD;&#xA;   w System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean&amp; usedCache, Boolean asyncWrite, Boolean inRetry)&#xD;&#xA;   w System.Data.SqlClient.SqlCommand.ExecuteNonQuery()&#xD;&#xA;   w Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition&amp; command, Action`2 paramReader)&#xD;&#xA;   w Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition&amp; command)&#xD;&#xA;   w Hangfire.SqlServer.SqlServerObjectsInstaller.Install(DbConnection connection, String schema, Boolean enableHeavyMigrations)&#xD;&#xA;   w Hangfire.SqlServer.SqlServerStorage.&lt;Initialize&gt;b__38_0(DbConnection connection)&#xD;&#xA;   w Hangfire.SqlServer.SqlServerStorage.&lt;&gt;c__DisplayClass31_0.&lt;UseConnection&gt;b__0(DbConnection connection)&#xD;&#xA;   w Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)&#xD;&#xA;   w Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)&#xD;&#xA;   w Hangfire.SqlServer.SqlServerStorage.Initialize()" time="2019-05-21T10:51:23.3243067Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="" />
+    </item>
+    <item name="HTTPS">
+      <value string="" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="80" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.0" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="" />
+    </item>
+    <item name="URL">
+      <value string="/" />
+    </item>
+  </serverVariables>
+</error>

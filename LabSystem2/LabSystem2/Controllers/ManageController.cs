@@ -13,6 +13,7 @@ using NLog;
 using LabSystem2.ViewModels;
 using LabSystem2.Infrastructure;
 using System.Net;
+using Hangfire;
 
 namespace LabSystem2.Controllers
 {
@@ -26,6 +27,13 @@ namespace LabSystem2.Controllers
 
         public ManageController()
         {
+   
+        }
+
+        public ManageController(ApplicationDbContext context, IMailService mailService)
+        {
+            this.mailService = mailService;
+            this.db = context;
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -34,13 +42,6 @@ namespace LabSystem2.Controllers
             SignInManager = signInManager;
         }
 
-        
-
-        public ManageController(ApplicationDbContext context, IMailService mailService)
-        {
-            this.mailService = mailService;
-            this.db = context;
-        }
 
         public ApplicationSignInManager SignInManager
         {
@@ -421,30 +422,29 @@ namespace LabSystem2.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Lab")]
         public OrderState ChangeOrderState(Order order)
         {
             Order orderToModify = db.Orders.Find(order.OrderId);
             orderToModify.OrderState = order.OrderState;
+           // db.Entry(order).State = EntityState.Modified;
             db.SaveChanges();
 
             if (orderToModify.OrderState == OrderState.Shipped)
             {
                 // Schedule confirmation
-                //string url = Url.Action("SendStatusEmail", "Manage", new { orderid = orderToModify.OrderId, lastname = orderToModify.LastName }, Request.Url.Scheme);
+                string url = Url.Action("SendStatusEmail", "Manage", new { orderid = orderToModify.OrderId, lastname = orderToModify.Email }, Request.Url.Scheme);
 
-                //BackgroundJob.Enqueue(() => Helpers.CallUrl(url));
+                BackgroundJob.Enqueue(() => Helpers.CallUrl(url));
 
                 //IMailService mailService = new HangFirePostalMailService();
                 //mailService.SendOrderShippedEmail(orderToModify);
 
-                mailService.SendOrderShippedEmail(orderToModify);
+                //mailService.SendOrderShippedEmail(orderToModify);
 
                 //dynamic email = new Postal.Email("OrderShipped");
                 //email.To = orderToModify.Email;
                 //email.OrderId = orderToModify.OrderId;
-                //email.FullAddress = string.Format("{0} {1}, {2}, {3}", orderToModify.FirstName, orderToModify.LastName, orderToModify.Address, orderToModify.CodeAndCity);
+                //email.ResultsOfOrderGRList = orderToModify.ResultsOfOrderGRList;
                 //email.Send();
             }
 
@@ -480,7 +480,7 @@ namespace LabSystem2.Controllers
             // This could also be used (but problems when hosted on Azure Websites)
             // if (Request.IsLocal)            
 
-            var order = db.Orders.Include("OrderItems").Include("OrderItems.Album").SingleOrDefault(o => o.OrderId == orderid && o.Email == lastname);
+            var order = db.Orders.Include("ResultsOfOrderGRList").SingleOrDefault(o => o.OrderId == orderid && o.Email == lastname);
 
             if (order == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 

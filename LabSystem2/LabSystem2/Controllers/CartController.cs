@@ -29,17 +29,17 @@ namespace LabSystem2.Controllers
         private IMailService mailService { get; set; }
 
         private ApplicationUserManager _userManager;
-        private ShoppingCartManager shoppingCartManager;
+       // private ShoppingCartManager shoppingCartManager;
 
         public CartController(IMailService mailService, ISessionManager sessionManager)
         {
             this.mailService = mailService;
-
-            // Simple way - but hard coupling
-            this.sessionManager = new SessionManager();
-            this.shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
-            // DI way
             this.sessionManager = sessionManager;
+            // Simple way - but hard coupling
+            //this.sessionManager = new SessionManager();
+            //this.shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
+            // DI way
+            
         }
 
         public ApplicationUserManager UserManager
@@ -186,7 +186,7 @@ namespace LabSystem2.Controllers
         {
             if (ModelState.IsValid)
             {
-               // logger.Info("Checking out");
+                logger.Info("Checking out");
 
                 // Get user
                 var userId = User.Identity.GetUserId();   //identyfiaktor pracownika wprowadzającego zlecenie
@@ -206,7 +206,6 @@ namespace LabSystem2.Controllers
                 shoppingCartManager.EmptyCart();
 
                 // Send mail confirmation
-                // Refetch - need also albums details
                 //var order = db.Orders.Include("OrderItems").SingleOrDefault(o => o.OrderId == newOrder.OrderId);            
                 var order = db.Orders.Include("ResultsOfOrderGRList").SingleOrDefault(o => o.OrderId == newOrder.OrderId);
 
@@ -216,10 +215,10 @@ namespace LabSystem2.Controllers
 
                 this.mailService.SendOrderConfirmationEmail(order);
 
-                string url = Url.Action("SendConfirmationEmail", "Manage", new { orderid = newOrder.OrderId, lastname = newOrder.Email}, Request.Url.Scheme);
+                //string url = Url.Action("SendConfirmationEmail", "Manage", new { orderid = newOrder.OrderId, lastname = newOrder.Email}, Request.Url.Scheme);
 
                 // Hangfire - nice one (if ASP.NET app will be still running)
-                BackgroundJob.Enqueue(() => Helpers.CallUrl(url));
+                //BackgroundJob.Enqueue(() => Helpers.CallUrl(url));
 
 
 
