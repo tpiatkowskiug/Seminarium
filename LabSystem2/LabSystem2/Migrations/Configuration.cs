@@ -34,9 +34,9 @@ namespace LabSystem2.Migrations
             UserManager.AddToRole("3ade4ae3-6aae-48c2-a295-2f783ebd19b3", "Employee"); //smela
             UserManager.AddToRole("e927760d-1f10-4008-82fd-55f337cab8b7", "Employee"); //zaluski
             UserManager.AddToRole("c85cad58-aa35-45fe-a067-cd98cd404870", "Lab");
-            UserManager.AddToRole("89445ac1-0503-47a8-9c96-67f02ad05a90", "Customer");
-            UserManager.AddToRole("26168a73-2b63-4424-ab82-7fbaa9234f85", "Customer");
-            UserManager.AddToRole("eb3703a3-b44b-407d-9182-297e1d9fc6c7", "Customer");
+            UserManager.AddToRole("89445ac1-0503-47a8-9c96-67f02ad05a90", "Customer"); //tomekniema
+            UserManager.AddToRole("26168a73-2b63-4424-ab82-7fbaa9234f85", "Customer"); //jnowak
+            UserManager.AddToRole("eb3703a3-b44b-407d-9182-297e1d9fc6c7", "Customer"); //magda
             
         }
 
