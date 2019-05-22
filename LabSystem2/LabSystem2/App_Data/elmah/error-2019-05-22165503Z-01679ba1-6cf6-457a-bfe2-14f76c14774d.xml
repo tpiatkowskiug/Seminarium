@@ -1,0 +1,209 @@
+﻿<error errorId="01679ba1-6cf6-457a-bfe2-14f76c14774d" application="/LM/W3SVC/2/ROOT" host="KOMPUTER-PC" type="System.Data.SqlClient.SqlException" message="The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value.&#xD;&#xA;The statement has been terminated." source=".Net SqlClient Data Provider" detail="System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---&gt; System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---&gt; System.Data.SqlClient.SqlException: The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value.&#xD;&#xA;The statement has been terminated.&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)&#xD;&#xA;   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()&#xD;&#xA;   at System.Data.SqlClient.SqlDataReader.get_MetaData()&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task&amp; task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task&amp; task, Boolean&amp; usedCache, Boolean asyncWrite, Boolean inRetry)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.&lt;Reader&gt;b__c(DbCommand t, DbCommandInterceptionContext`1 c)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)&#xD;&#xA;   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.&lt;Update&gt;b__2(UpdateTranslator ut)&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.&lt;SaveChangesToStore&gt;b__35()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.&lt;&gt;c__DisplayClass2a.&lt;SaveChangesInternal&gt;b__27()&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.SaveChanges()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.SaveChanges()&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()&#xD;&#xA;   at System.Data.Entity.DbContext.SaveChanges()&#xD;&#xA;   at LabSystem2.Infrastructure.ShoppingCartManager.CreateOrder(Order newOrder, String userId) in D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\Infrastructure\ShoppingCartManager.cs:line 170&#xD;&#xA;   at LabSystem2.Controllers.CartController.&lt;Checkout&gt;d__22.MoveNext() in D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\Controllers\CartController.cs:line 203&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass8_0.&lt;BeginInvokeAsynchronousActionMethod&gt;b__1(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__11_0()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass11_1.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__2()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass7_0.&lt;BeginInvokeActionMethodWithFilters&gt;b__1(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_6.&lt;BeginInvokeAction&gt;b__3()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_1.&lt;BeginInvokeAction&gt;b__5(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecuteCore&gt;b__152_1(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecute&gt;b__151_2(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;&gt;c.&lt;BeginProcessRequest&gt;b__20_1(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="tpiatkowski@oschr.pl" time="2019-05-22T16:55:03.8103641Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:no-cache&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_PRAGMA:no-cache&#xD;&#xA;HTTP_CONTENT_LENGTH:283&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=sH0Ut5hMydO6URjtjP4izsLwZyEMhn9MC15tBSi18tBj9InYUPNbmRayKUoweA8wXlqtO5-O3mebstlIYfUBOeKdGwEi3_lxMYzFJ4tEc2Y1; .AspNet.ApplicationCookie=I7oDDHW4WOSVq9NQCpv_PSy1t7SNxq9MMIwpaotJmR3PnA08dDQ0qQgyfzWFX48tjp_a9dNCP7_tNXUnvYD0tamJR6sVk8ptg7DEMm5E7_4cyEcs16U99YB84XedXkzzubUv51rDcKCTbCSI2tBPLz1nJ65cT4YTbF9j_uTBtv7PABCNKySIcHUZ-j8FCId81t7AaUCNWkfZvqCGmBcKs7yCVYhul-DWe6FGm0RROmZhMZB_tpaEmhf0MmjRe0YnseA3eyG-8rzAw4KJF_AvqvcLT5lF9bYHODJXXG2qlRyC8d1RvAKcR0LytLNN_MRA2CFfqckAA_utPFoV4jCdInpXZk4zZ7SIMLkeAiOASv89oake13j0W4X-oW202W2Gu5suXLh8PKQa1mBtFKogmiEOGW4CgYStE386W1KA3I5bbTWLCv79Q48zaKSmS4kGxK31asHDszn7B3s8yrWpxD67IGmn2w4lA4x-4mFJOIDK8AP0P2NbXQemq65KLuiEq92GmmDvb-kXQv4AaR_otg; ASP.NET_SessionId=2g0g11na0w5q1kqonjhrv1cc&#xD;&#xA;HTTP_HOST:localhost:60618&#xD;&#xA;HTTP_REFERER:http://localhost:60618/Cart/Checkout&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:http://localhost:60618&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: no-cache&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Pragma: no-cache&#xD;&#xA;Content-Length: 283&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: __RequestVerificationToken=sH0Ut5hMydO6URjtjP4izsLwZyEMhn9MC15tBSi18tBj9InYUPNbmRayKUoweA8wXlqtO5-O3mebstlIYfUBOeKdGwEi3_lxMYzFJ4tEc2Y1; .AspNet.ApplicationCookie=I7oDDHW4WOSVq9NQCpv_PSy1t7SNxq9MMIwpaotJmR3PnA08dDQ0qQgyfzWFX48tjp_a9dNCP7_tNXUnvYD0tamJR6sVk8ptg7DEMm5E7_4cyEcs16U99YB84XedXkzzubUv51rDcKCTbCSI2tBPLz1nJ65cT4YTbF9j_uTBtv7PABCNKySIcHUZ-j8FCId81t7AaUCNWkfZvqCGmBcKs7yCVYhul-DWe6FGm0RROmZhMZB_tpaEmhf0MmjRe0YnseA3eyG-8rzAw4KJF_AvqvcLT5lF9bYHODJXXG2qlRyC8d1RvAKcR0LytLNN_MRA2CFfqckAA_utPFoV4jCdInpXZk4zZ7SIMLkeAiOASv89oake13j0W4X-oW202W2Gu5suXLh8PKQa1mBtFKogmiEOGW4CgYStE386W1KA3I5bbTWLCv79Q48zaKSmS4kGxK31asHDszn7B3s8yrWpxD67IGmn2w4lA4x-4mFJOIDK8AP0P2NbXQemq65KLuiEq92GmmDvb-kXQv4AaR_otg; ASP.NET_SessionId=2g0g11na0w5q1kqonjhrv1cc&#xD;&#xA;Host: localhost:60618&#xD;&#xA;Referer: http://localhost:60618/Cart/Checkout&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36&#xD;&#xA;Origin: http://localhost:60618&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="tpiatkowski@oschr.pl" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="tpiatkowski@oschr.pl" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="283" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Cart/Checkout" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\Cart\Checkout" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="49735" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Cart/Checkout" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="60618" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Cart/Checkout" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_PRAGMA">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="283" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=sH0Ut5hMydO6URjtjP4izsLwZyEMhn9MC15tBSi18tBj9InYUPNbmRayKUoweA8wXlqtO5-O3mebstlIYfUBOeKdGwEi3_lxMYzFJ4tEc2Y1; .AspNet.ApplicationCookie=I7oDDHW4WOSVq9NQCpv_PSy1t7SNxq9MMIwpaotJmR3PnA08dDQ0qQgyfzWFX48tjp_a9dNCP7_tNXUnvYD0tamJR6sVk8ptg7DEMm5E7_4cyEcs16U99YB84XedXkzzubUv51rDcKCTbCSI2tBPLz1nJ65cT4YTbF9j_uTBtv7PABCNKySIcHUZ-j8FCId81t7AaUCNWkfZvqCGmBcKs7yCVYhul-DWe6FGm0RROmZhMZB_tpaEmhf0MmjRe0YnseA3eyG-8rzAw4KJF_AvqvcLT5lF9bYHODJXXG2qlRyC8d1RvAKcR0LytLNN_MRA2CFfqckAA_utPFoV4jCdInpXZk4zZ7SIMLkeAiOASv89oake13j0W4X-oW202W2Gu5suXLh8PKQa1mBtFKogmiEOGW4CgYStE386W1KA3I5bbTWLCv79Q48zaKSmS4kGxK31asHDszn7B3s8yrWpxD67IGmn2w4lA4x-4mFJOIDK8AP0P2NbXQemq65KLuiEq92GmmDvb-kXQv4AaR_otg; ASP.NET_SessionId=2g0g11na0w5q1kqonjhrv1cc" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:60618" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:60618/Cart/Checkout" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:60618" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="vTgqhPXlYWbIqdndAL1MqKFGeGQ2fJYy8t_4rrpAeZbH96qIz1wvy-SmwQDnL2ZatjugO00GpdANJ1xhEXjU5Sfv3eswEZ7PucPiQxdsU-eSmsU2cPaNTJcDPjFce_0Gdy-XVHnADLsyJaRTuFM7cQ2" />
+    </item>
+    <item name="CustomerId">
+      <value string="1" />
+    </item>
+    <item name="Email">
+      <value string="jnowak@nowak.pl" />
+    </item>
+    <item name="DateCreated">
+      <value string="Jan 1, 001" />
+    </item>
+    <item name="Comment">
+      <value string="bez uwag" />
+    </item>
+    <item name="OrderState">
+      <value string="0" />
+    </item>
+    <item name="EmployeeId">
+      <value string="1" />
+    </item>
+  </form>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="sH0Ut5hMydO6URjtjP4izsLwZyEMhn9MC15tBSi18tBj9InYUPNbmRayKUoweA8wXlqtO5-O3mebstlIYfUBOeKdGwEi3_lxMYzFJ4tEc2Y1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="I7oDDHW4WOSVq9NQCpv_PSy1t7SNxq9MMIwpaotJmR3PnA08dDQ0qQgyfzWFX48tjp_a9dNCP7_tNXUnvYD0tamJR6sVk8ptg7DEMm5E7_4cyEcs16U99YB84XedXkzzubUv51rDcKCTbCSI2tBPLz1nJ65cT4YTbF9j_uTBtv7PABCNKySIcHUZ-j8FCId81t7AaUCNWkfZvqCGmBcKs7yCVYhul-DWe6FGm0RROmZhMZB_tpaEmhf0MmjRe0YnseA3eyG-8rzAw4KJF_AvqvcLT5lF9bYHODJXXG2qlRyC8d1RvAKcR0LytLNN_MRA2CFfqckAA_utPFoV4jCdInpXZk4zZ7SIMLkeAiOASv89oake13j0W4X-oW202W2Gu5suXLh8PKQa1mBtFKogmiEOGW4CgYStE386W1KA3I5bbTWLCv79Q48zaKSmS4kGxK31asHDszn7B3s8yrWpxD67IGmn2w4lA4x-4mFJOIDK8AP0P2NbXQemq65KLuiEq92GmmDvb-kXQv4AaR_otg" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="2g0g11na0w5q1kqonjhrv1cc" />
+    </item>
+  </cookies>
+</error>

@@ -60,8 +60,14 @@ namespace LabSystem2.Controllers
 
             var cartItems = shoppingCartManager.GetCart();
             var cartTotalPrice = shoppingCartManager.GetCartTotalPrice();
+            ViewBag.GenreList = new SelectList(db.Genres, "GenreId", "Name");
+            ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle");
+            CartViewModel cartVM = new CartViewModel()
+            {
+                CartItems = cartItems,
+                TotalPrice = cartTotalPrice,
 
-            CartViewModel cartVM = new CartViewModel() { CartItems = cartItems, TotalPrice = cartTotalPrice };
+            };
 
             return View(cartVM);
         }
@@ -73,7 +79,8 @@ namespace LabSystem2.Controllers
 
             logger.Info("Added product {0} to cart", id);
 
-             return RedirectToAction("Index");
+            //return Json("Index", JsonRequestBehavior.AllowGet);
+            return RedirectToAction("Index", "Cart");
         }
 
         [HttpPost]

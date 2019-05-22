@@ -1,143 +1,132 @@
 ﻿@model LabSystem2.Models.OrderItem
 
-@{
-    ViewBag.Title = "Zlecenie badań";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<script src="~/Scripts/jquery-3.3.1.js"></script>
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#GenreId").change(function () {
-            $.get("/OrderItems/GetProductsByCategoryId", { GenreId: $("#GenreId").val() }, function (data) {
-                $("#ProductId").empty();
-                $.each(data, function (index, row) {
-                    $("#ProductId").append("<option value='" + row.ProductId + "'>" + row.ProductTitle + "</option>")
-                });
-            });
-        })
-    });
-</script>
-
-<script src="~/Scripts/jquery-3.3.1.js"></script>
-<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
-<script src="~/Scripts/jquery.validate.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-<script src="~/Scripts/jquery.validate.globalize.js"></script>
-<script src="~/Scripts/globalize/jQueryFixes.js"></script>
-<script type="text/javascript">
-    function myFunction(e) {
-        var Idproduct = $(e).val();  //get selected value
-        //check whether the selected value is null.
-        if (Idproduct != "") {
-            $.ajax({
-                type: "Post",
-                url: "/OrderItems/GetProductPrice",
-                data: { ProductId: Idproduct },
-                datatype: "json",
-                success: function (response) {
-                    $("input[name='Product.PriceBrutto']").val(response);
-                    var price = $("[name='Product.PriceBrutto']").val();
-                    var qty = $("[name='Quantity']").val();
-                    var subTotal = parseInt(qty, 10) * parseFloat(price);
-                    if (!isNaN(subTotal)) {
-                        $("input[name='UnitPrice']").val(subTotal.toFixed(2));
-                    }
-                },
-                error: function (error) {
-                    alert(error);
-                }
-            });
-        }
-        else {
-            $("input[name='Product.PriceBrutto']").val(""); //clear price
-        }
-    };
-</script>
-<script type="text/javascript">
-    function gotoPage() {
-        // bind change event to select
-        $('#dynamic_select').on('change', function () {
-            var url = $(this).val(); // get selected value
-            if (url) { // require a URL
-                window.location = url; // redirect
-            }
-            return false;
-        });
+    @{
+        ViewBag.Title = "Zlecenie badań";
+        Layout = "~/Views/Shared/_Layout.cshtml";
     }
-</script>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-    <h4>Zlecenie badań</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.GenreId, "GenreId", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("GenreId", ViewBag.GenreList as SelectList, "--- Przedmiot badań ---", htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.GenreId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10 name=" qty"">
-            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.MarkingSample, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.MarkingSample, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MarkingSample, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProductId, "ProductId", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("ProductId", new SelectList(" "), "--- Zakres badań ---", htmlAttributes: new { @class = "form-control", @onchange = "myFunction(this)" })
-            @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Product.PriceBrutto, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10" name="price">
-            @Html.EditorFor(model => model.Product.PriceBrutto, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Product.PriceBrutto, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10" name="subtot">
-            @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Dodaj przedmiot badań do zlecenia" class="btn btn-default" />
-        </div>
-    </div>
-</div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
     <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
 
-</div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#GenreId").change(function () {
+                $.get("/OrderItems/GetProductsByCategoryId", { GenreId: $("#GenreId").val() }, function (data) {
+                    $("#ProductId").empty();
+                    $.each(data, function (index, row) {
+                        $("#ProductId").append("<option value='" + row.ProductId + "'>" + row.ProductTitle + "</option>")
+
+                    });
+                });
+            })
+        });
+    </script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.globalize.js"></script>
+    <script src="~/Scripts/globalize/jQueryFixes.js"></script>
+    <script type="text/javascript">
+        function myFunction(e) {
+            var Idproduct = $(e).val();  //get selected value
+            //check whether the selected value is null.
+            if (Idproduct != "") {
+                $.ajax({
+                    type: "Post",
+                    url: "/OrderItems/GetProductPrice",
+                    data: { ProductId: Idproduct },
+                    datatype: "json",
+                    success: function (response) {
+                        $("input[name='Product.PriceBrutto']").val(response);
+                        var price = $("[name='Product.PriceBrutto']").val();
+                        var qty = $("[name='Quantity']").val();
+                        var subTotal = parseInt(qty, 10) * parseFloat(price);
+                        if (!isNaN(subTotal)) {
+                            $("input[name='UnitPrice']").val(subTotal.toFixed(2));
+                        }
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
+            }
+            else {
+                $("input[name='Product.PriceBrutto']").val(""); //clear price
+            }
+        };
+    </script>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Zlecenie badań</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.GenreId, "GenreId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("GenreId", ViewBag.GenreList as SelectList, "--- Przedmiot badań ---", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.GenreId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10 name=" qty"">
+                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MarkingSample, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MarkingSample, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MarkingSample, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductId, "ProductId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ProductId", new SelectList(" "), "--- Zakres badań ---", htmlAttributes: new { @class = "form-control", @onchange = " myFunction(this)" })
+                    @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Product.PriceBrutto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" name="price">
+                    @Html.EditorFor(model => model.Product.PriceBrutto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Product.PriceBrutto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" name="subtot">
+                    @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Dodaj przedmiot badań do zlecenia" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
+    </div>

@@ -41,7 +41,6 @@ namespace LabSystem2.Controllers
         [Authorize(Roles = "Employee")]
         public ActionResult Create()
         {
-
             List<Genre> GenreList = db.Genres.ToList();
             ViewBag.GenreList = new SelectList(GenreList, "GenreId", "Name");
             ViewBag.ProductId = new SelectList(db.Productus, "ProductId", "ProductTitle");

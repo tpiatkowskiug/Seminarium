@@ -11,10 +11,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Employee.NameAndSurname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Order.EmployeeId)
+            @Html.DisplayNameFor(model => model.Order.Customer.NameAndSurname)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.OrderMarkingSample)
@@ -62,10 +59,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Employee.NameAndSurname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Order.EmployeeId)
+                @Html.DisplayFor(modelItem => item.Order.Customer.NameAndSurname)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OrderMarkingSample)

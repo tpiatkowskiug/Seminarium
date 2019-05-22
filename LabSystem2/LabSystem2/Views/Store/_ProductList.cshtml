@@ -8,9 +8,6 @@
         {
             <li>
                 <article>
-                    <a class="addtocartlink" href="@Url.Action("AddToCart", "Cart", new { id = product.ProductId })">
-                        <img src="@Url.Content("~/Content/Images/cart.png")" alt="Dodaj" />
-                    </a>
                     <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = product.ProductId } )">
                         <img class="album-cover" src="@Url.Content("~/Content/Covers/" + product.CoverFileName)" />
                         <h1>

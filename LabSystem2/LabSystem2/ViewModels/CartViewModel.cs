@@ -8,6 +8,11 @@ namespace LabSystem2.ViewModels
 {
     public class CartViewModel
     {
+
+        public int? GenreId { get; set; }
+        public int? ProductId { get; set; }
+        public virtual Genre Genre { get; set; }
+        public virtual Product Product { get; set; }
         public List<CartItem> CartItems { get; set; }
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
