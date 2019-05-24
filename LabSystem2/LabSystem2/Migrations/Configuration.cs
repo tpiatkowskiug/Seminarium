@@ -37,7 +37,8 @@ namespace LabSystem2.Migrations
             UserManager.AddToRole("89445ac1-0503-47a8-9c96-67f02ad05a90", "Customer"); //tomekniema
             UserManager.AddToRole("26168a73-2b63-4424-ab82-7fbaa9234f85", "Customer"); //jnowak
             UserManager.AddToRole("eb3703a3-b44b-407d-9182-297e1d9fc6c7", "Customer"); //magda
-            
+            UserManager.AddToRole("282dc81e-5e8c-41ed-86e4-0c6e70707291", "Customer"); //janniezbedny
+
         }
 
         //  This method will be called after migrating to the latest version.

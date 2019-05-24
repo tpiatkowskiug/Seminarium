@@ -1,0 +1,171 @@
+﻿<error errorId="5db49918-7670-4202-9a04-90efeecb7e96" application="/LM/W3SVC/2/ROOT" host="KOMPUTER-PC" type="System.Web.HttpCompileException" message="External component has thrown an exception." source="System.Web" detail="System.Web.HttpCompileException (0x80004005): External component has thrown an exception.&#xD;&#xA;   at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetCompiledType(String virtualPath)&#xD;&#xA;   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.GetCompiledType(String virtualPath)&#xD;&#xA;   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_6.&lt;BeginInvokeAction&gt;b__3()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_1.&lt;BeginInvokeAction&gt;b__5(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecuteCore&gt;b__152_1(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecute&gt;b__151_2(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;&gt;c.&lt;BeginProcessRequest&gt;b__20_1(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="lzaluski@oschr.pl" time="2019-05-24T16:16:07.4680161Z" statusCode="500" webHostHtmlMessage="&lt;!DOCTYPE html&gt;&#xD;&#xA;&lt;html&gt;&#xD;&#xA;    &lt;head&gt;&#xD;&#xA;        &lt;title&gt;Compilation Error&lt;/title&gt;&#xD;&#xA;        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;&#xD;&#xA;        &lt;style&gt;&#xD;&#xA;         body {font-family:&quot;Verdana&quot;;font-weight:normal;font-size: .7em;color:black;} &#xD;&#xA;         p {font-family:&quot;Verdana&quot;;font-weight:normal;color:black;margin-top: -5px}&#xD;&#xA;         b {font-family:&quot;Verdana&quot;;font-weight:bold;color:black;margin-top: -5px}&#xD;&#xA;         H1 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:18pt;color:red }&#xD;&#xA;         H2 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:14pt;color:maroon }&#xD;&#xA;         pre {font-family:&quot;Consolas&quot;,&quot;Lucida Console&quot;,Monospace;font-size:11pt;margin:0;padding:0.5em;line-height:14pt}&#xD;&#xA;         .marker {font-weight: bold; color: black;text-decoration: none;}&#xD;&#xA;         .version {color: gray;}&#xD;&#xA;         .error {margin-bottom: 10px;}&#xD;&#xA;         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }&#xD;&#xA;         @media screen and (max-width: 639px) {&#xD;&#xA;          pre { width: 440px; overflow: auto; white-space: pre-wrap; word-wrap: break-word; }&#xD;&#xA;         }&#xD;&#xA;         @media screen and (max-width: 479px) {&#xD;&#xA;          pre { width: 280px; }&#xD;&#xA;         }&#xD;&#xA;        &lt;/style&gt;&#xD;&#xA;    &lt;/head&gt;&#xD;&#xA;&#xD;&#xA;    &lt;body bgcolor=&quot;white&quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;span&gt;&lt;H1&gt;Server Error in '/' Application.&lt;hr width=100% size=1 color=silver&gt;&lt;/H1&gt;&#xD;&#xA;&#xD;&#xA;            &lt;h2&gt; &lt;i&gt;Compilation Error&lt;/i&gt; &lt;/h2&gt;&lt;/span&gt;&#xD;&#xA;&#xD;&#xA;            &lt;font face=&quot;Arial, Helvetica, Geneva, SunSans-Regular, sans-serif &quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Description: &lt;/b&gt;An error occurred during the compilation of a resource required to service this request. Please review the following specific error details and modify your source code appropriately.&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Compiler Error Message: &lt;/b&gt;The compiler failed with error code -1.&lt;br&gt;&lt;br&gt;&#xD;&#xA;&lt;br&gt;&lt;div class=&quot;expandable&quot; onclick=&quot;OnToggleTOCLevel1('compilerOutputDiv')&quot;&gt;Show Detailed Compiler Output:&lt;/div&gt;&#xD;&#xA;&lt;div id=&quot;compilerOutputDiv&quot; style=&quot;display: none;&quot;&gt;&#xD;&#xA;            &lt;br&gt;&lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;C:\Program Files (x86)\IIS Express&amp;gt;D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\bin\roslyn\csc.exe /t:library /utf8output /nostdlib+ /R:&amp;quot;C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Runtime\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Runtime.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\13034fe4\00c8d184_3aaece01\Antlr3.Runtime.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\dda0f7d9\00872ebf_94a8d301\Newtonsoft.Json.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.Web\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Data.DataSetExtensions\v4.0_4.0.0.0__b77a5c561934e089\System.Data.DataSetExtensions.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\App_global.asax.sqp88pry.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\38ba75a6\00b3fcae_3a18cf01\WebGrease.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\c214abeb\00000c81_5c13cf01\RazorEngine.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\00e57dd9\0068fd1c_4e9bd301\System.Web.Mvc.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Web.Extensions\v4.0_4.0.0.0__31bf3856ad364e35\System.Web.Extensions.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.IdentityModel\v4.0_4.0.0.0__b77a5c561934e089\System.IdentityModel.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\4d7f4645\00ed0a4f_c6dbd301\MvcSiteMapProvider.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Web.Services\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\797668da\008e04e4_8bfed401\Hangfire.SqlServer.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Web.ApplicationServices\v4.0_4.0.0.0__31bf3856ad364e35\System.Web.ApplicationServices.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\b0e14319\0016470c_c2dbd301\Microsoft.AspNet.Identity.Owin.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\90b1a88e\d14929c7_4b12d501\LabSystem2.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\8be9549e\00d04e9d_9721cf01\Glimpse.Mvc5.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\c60f7d8f\000771e0_8bfed401\Hangfire.Core.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\e03ae035\0060277c_9783d001\Elmah.Mvc.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.ServiceModel.Activities\v4.0_4.0.0.0__31bf3856ad364e35\System.ServiceModel.Activities.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\b4f053ec\008066da_dc12d001\Hangfire.Dashboard.Authorization.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\587a8caf\00bc1e98_f84bd301\EntityFramework.SqlServer.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\c3caf01f\00e8a144_dfa4d301\Microsoft.Owin.Security.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\983be084\00570e73_c04bd301\Ninject.Web.Common.WebHost.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.ServiceModel\v4.0_4.0.0.0__b77a5c561934e089\System.ServiceModel.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\07ab35ef\009c58ba_4e9bd301\System.Web.WebPages.Deployment.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\a922ee17\0016470c_c2dbd301\Microsoft.AspNet.Identity.EntityFramework.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\8a5f13fd\0023fa4c_dfa4d301\Microsoft.Owin.Security.Twitter.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\2d252646\00a6d731_3527cf01\System.Web.Optimization.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\Microsoft.VisualStudio.Web.PageInspector.Loader\v4.0_1.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.Web.PageInspector.Loader.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.WorkflowServices\v4.0_4.0.0.0__31bf3856ad364e35\System.WorkflowServices.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\1d3fa515\00844b2b_4e9bd301\System.Web.Razor.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.ServiceModel.Web\v4.0_4.0.0.0__31bf3856ad364e35\System.ServiceModel.Web.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\1cabb2d3\00c9974a_dfa4d301\Microsoft.Owin.Security.MicrosoftAccount.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\f8a0d4d4\00a68f1f_d9c8cf01\Postal.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Drawing\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\assembly\GAC_MSIL\Microsoft.Web.Administration\7.9.0.0__31bf3856ad364e35\Microsoft.Web.Administration.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Serialization\v4.0_4.0.0.0__b77a5c561934e089\System.Runtime.Serialization.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.ServiceModel.Activation\v4.0_4.0.0.0__31bf3856ad364e35\System.ServiceModel.Activation.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\4d0576e8\00838b5b_3a47d101\NLog.Elmah.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.ComponentModel.DataAnnotations\v4.0_4.0.0.0__31bf3856ad364e35\System.ComponentModel.DataAnnotations.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\6fd2291b\009c58ba_4e9bd301\System.Web.WebPages.Razor.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\b367c136\001cbe16_536acd01\Microsoft.Web.Infrastructure.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Activities\v4.0_4.0.0.0__31bf3856ad364e35\System.Activities.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\06a62ea1\0093a84c_c6dbd301\MvcSiteMapProvider.WebActivator.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\3adc5916\00974597_17f0d201\Microsoft.AspNet.TelemetryCorrelation.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\59e70d39\00420447_dfa4d301\Microsoft.Owin.Security.Cookies.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\61efbc15\0032ead8_96cccd01\Owin.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\65911b42\00e9150b_c2dbd301\Microsoft.AspNet.Identity.Core.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\da079572\0062ff6f_ff4ad301\Ninject.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\032aaa1e\00441c6f_d018cd01\Elmah.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\d3400470\00f6c84b_dfa4d301\Microsoft.Owin.Security.OAuth.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\de2db9f1\00da7a3d_dfa4d301\Microsoft.Owin.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\9e38f7c9\006491dc_c64bd301\Ninject.Web.Mvc.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\91f7f3c9\009c58ba_4e9bd301\System.Web.Helpers.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\b7e421db\00f3d719_5cf3d301\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\c9342294\006b3d1d_1406ce01\WebActivatorEx.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\Microsoft.CSharp\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.CSharp.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\aab1b8d3\007834d6_8a21cf01\Glimpse.Core.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\2cb014c5\006f3548_dfa4d301\Microsoft.Owin.Security.Facebook.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\53d61cb5\009c58ba_4e9bd301\System.Web.WebPages.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\9c7f1f73\0091719c_6d00d301\System.Diagnostics.DiagnosticSource.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\93d57cf2\009635e1_7cffd401\NLog.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\a099c21a\006f3548_dfa4d301\Microsoft.Owin.Security.Google.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\a675df4b\00a31d9c_9721cf01\Glimpse.AspNet.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Web.DynamicData\v4.0_4.0.0.0__31bf3856ad364e35\System.Web.DynamicData.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\cf8bb4ba\00570e73_c04bd301\Ninject.Web.Common.dll&amp;quot; /R:&amp;quot;C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\4296a29b\008e3f42_dfa4d301\Microsoft.Owin.Host.SystemWeb.dll&amp;quot; /R:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\assembly\dl3\96572c4f\008fed96_f84bd301\EntityFramework.dll&amp;quot; /out:&amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\App_Web_index.cshtml.8c32f4cc.olnhe-ol.dll&amp;quot; /D:DEBUG /debug+ /optimize- /warnaserror- /w:4 /nowarn:1659;1699;1701;612;618 /langversion:default /nowarn:1659;1699;1701  &amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\App_Web_index.cshtml.8c32f4cc.olnhe-ol.0.cs&amp;quot; &amp;quot;C:\Users\MagdaITomek\AppData\Local\Temp\Temporary ASP.NET Files\vs\4452e848\4b4446f3\App_Web_index.cshtml.8c32f4cc.olnhe-ol.1.cs&amp;quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &#xD;&#xA;&#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&#xD;&#xA;    &lt;script type=&quot;text/javascript&quot;&gt;&#xD;&#xA;    function OnToggleTOCLevel1(level2ID)&#xD;&#xA;    {&#xD;&#xA;      var elemLevel2 = document.getElementById(level2ID);&#xD;&#xA;      if (elemLevel2.style.display == 'none')&#xD;&#xA;      {&#xD;&#xA;        elemLevel2.style.display = '';&#xD;&#xA;      }&#xD;&#xA;      else {&#xD;&#xA;        elemLevel2.style.display = 'none';&#xD;&#xA;      }&#xD;&#xA;    }&#xD;&#xA;    &lt;/script&gt;&#xD;&#xA;                          &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;    &lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&#xD;&#xA;">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:no-cache&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_PRAGMA:no-cache&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=SnNBLcwwJDMGcRsgCy0iv5zCd37NhFJPKrZ3LkySnXXK7x802MjzD-k3s2q3limJVpQ53JhD1p-3jO3CDltGJJ6doxP7M9h_IJCob1KG6qI1; .AspNet.ApplicationCookie=A5cz_mpUEcwocyQ99ksfu99YAwt4uZ4yh8yIboyLHrk-jptjJymyfaV0m3wGmfVJF2AHShLMoBpOCiWubvf_etk3GwM-2cw35-ss6fuwiIsFfp3HYc8VclmxYquKuhmu3JBdj95yO5TVgyQMTf6ry3mhY2fCR6j5UnrCId5ZHjX_9_MSTukrJu-n4mGxtNkImNF_x4aXLyW3ZeO6BSPrmRL9UrTJa9qbLHVh0RRjy1Odvg7fceIZMTjUSuW9c78hoYOuf8MRVDyFMMK8XuuQhpYHJ40EA29hzTr6s8bVfxvBFJuLHIA2PymBqD7GB-yac__-I4VLf75JtqkuA_XSsX0m-acLTqHlPZRhtPMnEsAvWzkFZv66mY648k_fnwCV8vsKohdAQUqijG9vxnOePVUcVitOVb30wdrN3qB_wBocZMt4EfyQSAPB1Q7-yUSVJyc9ZR2EmN9pirdxG-bczj5HES3o4qV4TJzFHocowrlNuRe-iZnhUh0CCsCJUWoi9BPBXcGYNcGhMqGJLxHa3A&#xD;&#xA;HTTP_HOST:localhost:60618&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: no-cache&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Pragma: no-cache&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: __RequestVerificationToken=SnNBLcwwJDMGcRsgCy0iv5zCd37NhFJPKrZ3LkySnXXK7x802MjzD-k3s2q3limJVpQ53JhD1p-3jO3CDltGJJ6doxP7M9h_IJCob1KG6qI1; .AspNet.ApplicationCookie=A5cz_mpUEcwocyQ99ksfu99YAwt4uZ4yh8yIboyLHrk-jptjJymyfaV0m3wGmfVJF2AHShLMoBpOCiWubvf_etk3GwM-2cw35-ss6fuwiIsFfp3HYc8VclmxYquKuhmu3JBdj95yO5TVgyQMTf6ry3mhY2fCR6j5UnrCId5ZHjX_9_MSTukrJu-n4mGxtNkImNF_x4aXLyW3ZeO6BSPrmRL9UrTJa9qbLHVh0RRjy1Odvg7fceIZMTjUSuW9c78hoYOuf8MRVDyFMMK8XuuQhpYHJ40EA29hzTr6s8bVfxvBFJuLHIA2PymBqD7GB-yac__-I4VLf75JtqkuA_XSsX0m-acLTqHlPZRhtPMnEsAvWzkFZv66mY648k_fnwCV8vsKohdAQUqijG9vxnOePVUcVitOVb30wdrN3qB_wBocZMt4EfyQSAPB1Q7-yUSVJyc9ZR2EmN9pirdxG-bczj5HES3o4qV4TJzFHocowrlNuRe-iZnhUh0CCsCJUWoi9BPBXcGYNcGhMqGJLxHa3A&#xD;&#xA;Host: localhost:60618&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="lzaluski@oschr.pl" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="lzaluski@oschr.pl" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Orders" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Tomek\UG\source\repos\Seminarium\LabSystem2\LabSystem2\Orders" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="50070" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Orders" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="60618" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Orders" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_PRAGMA">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=SnNBLcwwJDMGcRsgCy0iv5zCd37NhFJPKrZ3LkySnXXK7x802MjzD-k3s2q3limJVpQ53JhD1p-3jO3CDltGJJ6doxP7M9h_IJCob1KG6qI1; .AspNet.ApplicationCookie=A5cz_mpUEcwocyQ99ksfu99YAwt4uZ4yh8yIboyLHrk-jptjJymyfaV0m3wGmfVJF2AHShLMoBpOCiWubvf_etk3GwM-2cw35-ss6fuwiIsFfp3HYc8VclmxYquKuhmu3JBdj95yO5TVgyQMTf6ry3mhY2fCR6j5UnrCId5ZHjX_9_MSTukrJu-n4mGxtNkImNF_x4aXLyW3ZeO6BSPrmRL9UrTJa9qbLHVh0RRjy1Odvg7fceIZMTjUSuW9c78hoYOuf8MRVDyFMMK8XuuQhpYHJ40EA29hzTr6s8bVfxvBFJuLHIA2PymBqD7GB-yac__-I4VLf75JtqkuA_XSsX0m-acLTqHlPZRhtPMnEsAvWzkFZv66mY648k_fnwCV8vsKohdAQUqijG9vxnOePVUcVitOVb30wdrN3qB_wBocZMt4EfyQSAPB1Q7-yUSVJyc9ZR2EmN9pirdxG-bczj5HES3o4qV4TJzFHocowrlNuRe-iZnhUh0CCsCJUWoi9BPBXcGYNcGhMqGJLxHa3A" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:60618" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="SnNBLcwwJDMGcRsgCy0iv5zCd37NhFJPKrZ3LkySnXXK7x802MjzD-k3s2q3limJVpQ53JhD1p-3jO3CDltGJJ6doxP7M9h_IJCob1KG6qI1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="A5cz_mpUEcwocyQ99ksfu99YAwt4uZ4yh8yIboyLHrk-jptjJymyfaV0m3wGmfVJF2AHShLMoBpOCiWubvf_etk3GwM-2cw35-ss6fuwiIsFfp3HYc8VclmxYquKuhmu3JBdj95yO5TVgyQMTf6ry3mhY2fCR6j5UnrCId5ZHjX_9_MSTukrJu-n4mGxtNkImNF_x4aXLyW3ZeO6BSPrmRL9UrTJa9qbLHVh0RRjy1Odvg7fceIZMTjUSuW9c78hoYOuf8MRVDyFMMK8XuuQhpYHJ40EA29hzTr6s8bVfxvBFJuLHIA2PymBqD7GB-yac__-I4VLf75JtqkuA_XSsX0m-acLTqHlPZRhtPMnEsAvWzkFZv66mY648k_fnwCV8vsKohdAQUqijG9vxnOePVUcVitOVb30wdrN3qB_wBocZMt4EfyQSAPB1Q7-yUSVJyc9ZR2EmN9pirdxG-bczj5HES3o4qV4TJzFHocowrlNuRe-iZnhUh0CCsCJUWoi9BPBXcGYNcGhMqGJLxHa3A" />
+    </item>
+  </cookies>
+</error>

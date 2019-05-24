@@ -406,17 +406,17 @@ namespace LabSystem2.Controllers
             IEnumerable<Order> userOrders;
 
             // For Lab users - return all rusalt
-            if (isCustomer)
-            {
-                userOrders = db.Orders.Include("ResultsOfOrderGRList").
-                    OrderByDescending(o => o.DateCreated).ToArray();
-            }
-            else
-            {
+            //if (isCustomer)
+            //{
+            //    userOrders = db.Orders.Include("ResultsOfOrderGRList").Include("OrderItems").
+            //        OrderByDescending(o => o.DateCreated).ToArray();
+            //}
+            //else
+            //{
                 var userId = User.Identity.GetUserId();
-                userOrders = db.Orders.Where(o => o.Customer.ApplicationUserId == userId).Include("ResultsOfOrderGRList").
+                userOrders = db.Orders.Where(o => o.Customer.ApplicationUserId == userId).Include("ResultsOfOrderGRList").Include("OrderItems").
                     OrderByDescending(o => o.DateCreated).ToArray();
-            }
+           // }
 
             return View(userOrders);
         }
@@ -426,6 +426,7 @@ namespace LabSystem2.Controllers
         {
             Order orderToModify = db.Orders.Find(order.OrderId);
             orderToModify.OrderState = order.OrderState;
+            orderToModify.Payment = order.Payment;
            // db.Entry(order).State = EntityState.Modified;
             db.SaveChanges();
 

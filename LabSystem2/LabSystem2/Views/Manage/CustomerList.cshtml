@@ -17,39 +17,35 @@
 
                 @foreach (var order in Model)
                 {
-                    <tr @if (order.OrderState == LabSystem2.Models.OrderState.New) { <text> class="newOrder" </text> }>
-                        <td>
-                            <strong>Nr zamówienia: </strong>@order.OrderId
-                        </td>
-                        <td>
-                            <strong>Data rejestracji: </strong>
-                            @order.DateCreated.ToString("dd-MM-yyyy")
-                        </td>
-                        <td>
-                            <strong>Stan: </strong><br />
+                <tr @if (order.OrderState == LabSystem2.Models.OrderState.New) { <text> class="newOrder" </text> }>
+                    <td>
+                        <strong>Nr zamówienia: </strong>@order.OrderId
+                    </td>
+                    <td>
+                        <strong>Data rejestracji: </strong>
+                        @order.DateCreated.ToString("dd-MM-yyyy")
+                    </td>
+                    <td>
+                        <strong>Stan: </strong><br />
 
-                            @if (ViewBag.UserIsCustomer)
-                            {
-                                @Html.DisplayFor(o => order.OrderState)
-                            }
+                        @if (ViewBag.UserIsCustomer)
+                        {
+                            @Html.DisplayFor(o => order.OrderState)
+                        }
 
-                        </td>
+                    </td>
 
-                        <td>
-                            <strong>Dane wysyłkowe:</strong><br />
-                            @order.Customer.NIP<br />
-                            @order.Customer.NameAndSurname<br />
-                            @order.Customer.Address<br />
-                            @order.Customer.City<br />
-                        </td>
-                        <td>
-                            <strong>Uwagi: </strong><br />
-                            @order.Comment
-                        </td>
-                        <td>
-                            <strong>Łączny koszt:</strong> @order.TotalPrice zł
-                        </td>
-                    </tr>
+                    <td>
+                        <strong>Dane wysyłkowe:</strong><br />
+                        @order.Customer.NIP<br />
+                        @order.Customer.NameAndSurname<br />
+                        @order.Customer.Address<br />
+                        @order.Customer.City<br />
+                    </td>
+                    <td>
+                        <strong>Łączny koszt:</strong> @order.TotalPrice zł
+                    </td>
+                </tr>
                     <tr>
                         <td colspan="6">
                             <section>

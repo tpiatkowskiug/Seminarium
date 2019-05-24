@@ -28,7 +28,11 @@ namespace LabSystem2.Models
 
         public string Comment { get; set; }
 
+        [Display(Name = "Stan realizacji")]
         public OrderState OrderState { get; set; }
+
+        [Display(Name = "Sposób płatności ")]
+        public Payment Payment { get; set; }
 
         public decimal TotalPrice { get; set; }
 
@@ -50,5 +54,14 @@ namespace LabSystem2.Models
 
         [Display(Name = "zrealizowane")]
         Shipped
+    }
+
+    public enum Payment
+    {
+        [Display(Name = "niezapłacono/przelew")]
+        Cash,
+
+        [Display(Name = "zapłacono")]
+        Transfer
     }
 }

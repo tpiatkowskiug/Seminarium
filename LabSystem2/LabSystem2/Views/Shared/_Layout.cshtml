@@ -24,11 +24,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
-                    <li>
-                        <a href="@Url.Action("List", "Store", new { genrename = @"[\w& ]+"})">
-                            Przedmiot badań
-                        </a>
-                    </li>
+
                     @if (User.IsInRole("Employee"))
                     {
                         <li>@Html.ActionLink("Zlecenia", "Index", "Orders")</li>

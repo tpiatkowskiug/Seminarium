@@ -33,6 +33,7 @@
                                 {
                                     @Html.HiddenFor(o => order.OrderId)
                                     @Html.EnumDropDownListFor(o => order.OrderState, new { @class = "orderstateddl" })
+                                    @Html.EnumDropDownListFor(o => order.Payment)
                                 }
                             }
                             else
